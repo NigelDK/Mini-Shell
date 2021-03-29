@@ -1,0 +1,40 @@
+#include "../includes/minishell.h"
+
+void    ft_print_prompt_2(void)
+{
+	printf("\033[0;33m");
+	printf("➜  ");
+	printf("\033[0;34m");
+	printf("~ ");
+	printf("\033[0m");
+	fflush(stdout);
+}
+
+void    ft_print_prompt(int cd)
+{
+	long size;
+	char *buf;
+	char *ptr;
+
+	size = pathconf(".", _PC_PATH_MAX);
+	if (!(buf = (char *)malloc((size_t)size)))
+		ft_error();
+	ptr = getcwd(buf, (size_t)size);
+	if (cd == 0)
+		ft_print_prompt_2();
+	else if (cd == 1)
+	{
+		if (ft_strcmp_2(ft_strstr_rev_2(ptr, "/"), "project_minishell", 1) == 0)
+			ft_print_prompt_2();
+		else
+		{
+			printf("\033[0;33m");
+			printf("➜  ");
+			printf("\033[0;34m");
+			printf("%s ", ft_strstr_rev_2(ptr, "/"));
+			printf("\033[0m");
+			fflush(stdout);
+		}
+	}
+	free(ptr);
+}
