@@ -9,6 +9,7 @@ SRCS = srcs/main.c \
 	srcs/cd.c \
 	srcs/pwd.c \
 	srcs/export.c \
+	srcs/env.c \
 	get_next_line/get_next_line.c \
 	get_next_line/get_next_line_utils.c \
 	libft/ft_lstdelone.c \

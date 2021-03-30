@@ -23,6 +23,8 @@ void	infinity_loop(t_v *v)
 			ft_pwd();
 		else if (ft_strcmp_2(words[0], "export", 1) == 0)
 			ft_export(words, v);
+		else if (ft_strcmp_2(words[0], "env", 1) == 0)
+			ft_env(words, v);
 		ft_print_prompt(cd);
 		i = -1;
 		while (words[++i])

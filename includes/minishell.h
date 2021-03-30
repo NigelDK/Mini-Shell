@@ -25,5 +25,6 @@ void	ft_print_prompt(int cd);
 void	ft_print_prompt_2(void);
 void	ft_export(char **words, t_v *v);
 int	ft_cd(char **words, int cd);
+void ft_env(char **words, t_v *v);
 
 #endif
