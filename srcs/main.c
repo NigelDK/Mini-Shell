@@ -1,25 +1,23 @@
 #include "../includes/minishell.h"
 
-void	infinity_loop(t_v *v, char *line)
+void	infinity_loop(t_v *v, char *line, int *cd)
 {
 	int		i;
-	int		cd;
 	char	**words;
 
-	cd = 0;
+
 	if (!(words = ft_split(line, ' ')))
 		ft_error_split(&line, &words);
 	if (ft_strcmp_2(words[0], "echo", 1) == 0)
 		ft_echo(words, line, v);
 	else if (ft_strcmp_2(words[0], "cd", 1) == 0)
-		cd = ft_cd(words, cd);
+		cd[0] = ft_cd(words, *cd);
 	else if (ft_strcmp_2(words[0], "pwd", 1) == 0)
 		ft_pwd();
 	else if (ft_strcmp_2(words[0], "export", 1) == 0)
 		ft_export(words, v);
 	else if (ft_strcmp_2(words[0], "env", 1) == 0)
 		ft_env(words, v);
-	ft_print_prompt(cd);
 	i = -1;
 	while (words[++i])
 		free(words[i]);
@@ -32,7 +30,9 @@ void	lexer(t_v *v)
 	char	**words;
 	int		ret;
 	int		i;
+	int		cd;
 	
+	cd = 0;
 	while ((ret = get_next_line(0, &line)) > 0)
 	{
 		if (ret == -1)
@@ -41,7 +41,8 @@ void	lexer(t_v *v)
 			ft_error_split(&line, &words);
 		i = -1;
 		while (words[++i])
-			infinity_loop(v, words[i]);
+			infinity_loop(v, words[i], &cd);
+		ft_print_prompt(cd);
 		i = -1;
 		while (words[++i])
 			free(words[i]);
