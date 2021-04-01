@@ -5,7 +5,6 @@ void	infinity_loop(t_v *v, char *line, int *cd)
 	int		i;
 	char	**words;
 
-
 	if (!(words = ft_split(line, ' ')))
 		ft_error_split(&line, &words);
 	if (ft_strcmp_2(words[0], "echo", 1) == 0)
