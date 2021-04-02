@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 09:32:22 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/02 09:32:24 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/02 16:15:39 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	infinity_loop(t_v *v, char *line, int *cd, t_ls data)
 	int		i;
 	char	**words;
 
-	if (!(words = ft_split(line, ' ')))
+	if (!(words = shell_split(line, ' ')))
 		ft_error_split(&line, &words);
 	if (ft_strcmp_2(words[0], "echo", 1) == 0)
 		ft_echo(words, line, v);
@@ -50,7 +50,7 @@ void	lexer(t_v *v, t_ls data)
 	{
 		if (ret == -1)
 			ft_error();
-		if (!(words = ft_split(line, ';')))
+		if (!(words = shell_split(line, ';')))
 			ft_error_split(&line, &words);
 		i = -1;
 		while (words[++i])

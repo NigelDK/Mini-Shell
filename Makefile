@@ -11,6 +11,7 @@ SRCS = srcs/main.c \
 	srcs/export.c \
 	srcs/env.c \
 	srcs/sys_call.c \
+	srcs/shell_split.c \
 	get_next_line/get_next_line.c \
 	get_next_line/get_next_line_utils.c \
 	libft/ft_lstsize.c \
@@ -63,14 +64,14 @@ CC = gcc
 
 RM = rm -f
 
-CFLAGS = -Wall -Wextra -I${HEADERS_FOLDER}
+CFLAGS = -Wall -Wextra -I${HEADERS_FOLDER} -g
 
 all: ${NAME}
 
 ${NAME}: ${OBJECTS}
 
 	ar rc ${NAME} ${OBJECTS}
-	gcc libftminishell.a -o minishell
+	gcc -g libftminishell.a -o minishell
 
 clean:
 
