@@ -12,10 +12,15 @@
 # include <string.h>
 # include <errno.h>
 
+typedef struct	s_ls
+{
+	char **envp;
+}				t_ls;
+
 char	*ft_strstr_2(const char *s1, const char *s2);
 char	*ft_strjoin2(char *s1, char *s2);
-int	ft_getline(char **line);
-int	ft_strcmp_2(const char *s1, const char *s2, int a);
+int		ft_getline(char **line);
+int		ft_strcmp_2(const char *s1, const char *s2, int a);
 void	ft_exit_success(char **line, char ***words);
 void	ft_error_split(char **line, char ***words);
 void	ft_error(void);
@@ -24,7 +29,8 @@ void	ft_pwd(void);
 void	ft_print_prompt(int cd);
 void	ft_print_prompt_2(void);
 void	ft_export(char **words, t_v *v);
-int	ft_cd(char **words, int cd);
-void ft_env(char **words, t_v *v);
+int		ft_cd(char **words, int cd);
+void 	ft_env(char **words, t_v *v);
+void	sys_call(char **words, t_ls data);
 
 #endif
