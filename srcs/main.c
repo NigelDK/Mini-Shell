@@ -29,6 +29,8 @@ void	infinity_loop(t_v *v, char *line, int *cd, t_ls data)
 		ft_export(words, v);
 	else if (ft_strcmp_2(words[0], "env", 1) == 0)
 		ft_env(words, v);
+	else if (ft_strcmp_2(words[0], "unset", 1) == 0)
+		ft_unset(words, v);
 	else
 		sys_call(words, data);
 	i = -1;
@@ -81,16 +83,16 @@ void	ft_envp(t_v *v, char **envp)
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_v 	v;
+	t_v 	*v;
 	t_ls	data;
 
 	data.envp = envp; 
-	v.str = NULL;
-	v.next = NULL;
+	if (!(v = ft_lstnew_2(NULL)))
+		ft_error();
 	argc = (unsigned int)argc;
 	argv = NULL;
 	ft_print_prompt_2();
-	ft_envp(&v, envp);
-	lexer(&v, data);
+	ft_envp(v, envp);
+	lexer(v, data);
 	return (0);
 }

@@ -7,6 +7,7 @@ SRCS = srcs/main.c \
 	srcs/echo.c \
 	srcs/utils.c \
 	srcs/cd.c \
+	srcs/unset.c \
 	srcs/pwd.c \
 	srcs/export.c \
 	srcs/env.c \

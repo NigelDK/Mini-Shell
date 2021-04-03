@@ -14,7 +14,7 @@
 
 void	ft_print_env_2(t_v *v)
 {
-	while (v)
+	while (v->next)
 	{
 		if (ft_strncmp(v->str, "_=", 2) == 0)
 			printf("%s\n", v->str);
@@ -24,7 +24,7 @@ void	ft_print_env_2(t_v *v)
 
 void	ft_print_env(t_v *v)
 {
-	while (v)
+	while (v->next)
 	{
 		if (v->str && (v->str[0] != '_' || v->str[1] != '='))
 			printf("%s\n", v->str);

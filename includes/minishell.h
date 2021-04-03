@@ -33,5 +33,7 @@ int		ft_cd(char **words, int cd);
 void 	ft_env(char **words, t_v *v);
 void	sys_call(char **words, t_ls data);
 char	**shell_split(char *s, char c);
+void	ft_memdel(char *ap);
+void	ft_unset(char **words, t_v *v);
 
 #endif
