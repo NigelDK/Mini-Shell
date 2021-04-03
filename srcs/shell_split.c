@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 15:53:02 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/03 14:37:39 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/03 16:47:03 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int		cmd_len(char *s, char c)
 	i = 0;
 	q = 0;
 	dq = 0;
-	while (*s && (*s && (*s != c || (*s == c && (q == 1 || dq == 1)))))
+	while (*s && (*s != c || (*s == c && (q == 1 || dq == 1))))
 	{
 		if (*s == 39)
 			(q == 0 && dq == 0) ? (q = 1) : (q = 0);
@@ -77,8 +77,10 @@ char			**shell_split(char *s, char c)
 	int		q;
 	int		dq;
 
-	if (!s || !(tab = malloc((sizeof(char) * cmd_cnt(s, c)) + 1)))
+	if (!s || !(tab = malloc((sizeof(char *) * cmd_cnt(s, c)) + 1)))
 		return (NULL);
+	while (*s && *s == c)
+		s++;
 	j = 0;
 	while (*s)
 	{
@@ -90,7 +92,7 @@ char			**shell_split(char *s, char c)
 		}
 		q = 0;
 		dq = 0;
-		while (*s && (*s && (*s != c || (*s == c && (q == 1 || dq == 1)))))
+		while (*s && (*s != c || (*s == c && (q == 1 || dq == 1))))
 		{
 			if (*s == 39)
 				(q == 0 && dq == 0) ? (q = 1) : (q = 0);

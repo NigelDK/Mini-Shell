@@ -81,6 +81,7 @@ clean:
 fclean: clean
 
 	${RM} ${NAME}
+	rm minishell
 
 re: fclean all
 
