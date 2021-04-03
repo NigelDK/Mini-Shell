@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 15:53:02 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/03 16:47:03 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/03 17:20:37 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char			**shell_split(char *s, char c)
 	int		q;
 	int		dq;
 
-	if (!s || !(tab = malloc((sizeof(char *) * cmd_cnt(s, c)) + 1)))
+	if (!*s || !(tab = malloc(sizeof(char *) * (cmd_cnt(s, c) + 1))))
 		return (NULL);
 	while (*s && *s == c)
 		s++;
@@ -85,7 +85,7 @@ char			**shell_split(char *s, char c)
 	while (*s)
 	{
 		i = 0;
-		if (!(tab[j] = malloc((sizeof(char) * cmd_len(s, c)) + 1)))
+		if (!(tab[j] = malloc(sizeof(char) * (cmd_len(s, c) + 1))))
 		{
 			ft_freee(tab, j);
 			return (NULL);
