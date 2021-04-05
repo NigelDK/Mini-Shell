@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minummin </var/mail/minummin>              +#+  +:+       +#+        */
+/*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/03 14:39:16 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/05 16:24:14 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,8 @@ void	sys_call(char **words, t_ls data);
 char	**shell_split(char *s, char c);
 void	ft_memdel(char *ap);
 void	ft_unset(char **words, t_v *v);
+void	lexer(t_v *v, t_ls data);
+int		ft_pipe(t_v *v, char *line, int *cd, t_ls data);
+void	infinity_loop(t_v *v, char *line, int *cd, t_ls data);
 
 #endif

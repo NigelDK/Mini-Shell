@@ -13,6 +13,9 @@ SRCS = srcs/main.c \
 	srcs/env.c \
 	srcs/sys_call.c \
 	srcs/shell_split.c \
+	srcs/lexer.c \
+	srcs/ft_pipe.c \
+	srcs/infinity_loop.c \
 	get_next_line/get_next_line.c \
 	get_next_line/get_next_line_utils.c \
 	libft/ft_lstsize.c \
