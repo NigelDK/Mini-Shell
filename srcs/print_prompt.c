@@ -36,7 +36,7 @@ void    ft_print_prompt(int cd)
 		ft_print_prompt_2();
 	else if (cd == 1)
 	{
-		if (ft_strcmp_2(ft_strstr_rev_2(ptr, "/"), "project_minishell", 1) == 0)
+		if (ft_strcmp_2(ptr, "/", 1) == 0)
 			ft_print_prompt_2();
 		else
 		{

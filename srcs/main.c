@@ -32,6 +32,7 @@ int	main(int argc, char **argv, char **envp)
 	t_v 	*v;
 	t_ls	data;
 
+	chdir("/");
 	data.envp = envp; 
 	if (!(v = ft_lstnew_2(NULL)))
 		ft_error();
