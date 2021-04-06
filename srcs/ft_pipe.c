@@ -24,38 +24,58 @@ static int		tab_cnt(char **tab)
 
 int			ft_pipe(t_v *v, char *line, int *cd, t_ls data)
 {
+	int		i;
 	int		fd[2];
 	int		pid[2];
 	int		cmd_cnt;
 	char	**cmds;
-	
+
+	i = -1;
 	if (!(cmds = shell_split(line, '|')))
 		ft_error_split(&line, &cmds);
 	cmd_cnt = tab_cnt(cmds);
 	if (cmd_cnt == 1)
+	{
+		free(cmds[0]);
+		free(cmds);
 		return (0);
-	if (pipe(fd) == -1)
-		ft_error();
-	if ((pid[0] = fork()) < 0)
-		ft_error();
-	if (pid[0] == 0)
-	{
-		if (dup2(fd[1], 1) == -1)
-			ft_error();
-		close(fd[0]);
-		close(fd[1]);
-		infinity_loop(v, cmds[0], cd, data);
 	}
-	if ((pid[1] = fork()) < 0)
-		ft_error();
-	if (pid[1] == 0)
+	else
 	{
-		if (dup2(fd[0], 0) == -1)
+		if (pipe(fd) == -1)
 			ft_error();
-		close(fd[0]);
-		close(fd[1]);
-		infinity_loop(v, cmds[1], cd, data);
+		if ((pid[0] = fork()) < 0)
+			ft_error();
+		if (pid[0] == 0)
+		{
+			if (dup2(fd[1], 1) == -1)
+				ft_error();
+			close(fd[0]);
+			close(fd[1]);
+			infinity_loop(&v, cmds[0], cd, data);
+			while (cmds[++i])
+				free(cmds[i]);
+			free(cmds);
+			exit (1);
+		}
+		if ((pid[1] = fork()) < 0)
+			ft_error();
+		if (pid[1] == 0)
+		{
+			if (dup2(fd[0], 0) == -1)
+				ft_error();
+			close(fd[0]);
+			close(fd[1]);
+			infinity_loop(&v, cmds[1], cd, data);
+			while (cmds[++i])
+				free(cmds[i]);
+			free(cmds);
+			exit (1);
+		}
 	}
+	while (cmds[++i])
+		free(cmds[i]);
+	free(cmds);
 	close(fd[0]);
 	close(fd[1]);
 	wait(&pid[0]);

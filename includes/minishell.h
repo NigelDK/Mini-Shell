@@ -17,6 +17,7 @@
 # include "../libft/libft.h"
 # include <sys/wait.h>
 # include <sys/types.h>
+# include <sys/stat.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -47,8 +48,9 @@ void	sys_call(char **words, t_ls data);
 char	**shell_split(char *s, char c);
 void	ft_memdel(char *ap);
 void	ft_unset(char **words, t_v *v);
+void	ft_unset2(char **words, t_v **v);
 void	lexer(t_v *v, t_ls data);
 int		ft_pipe(t_v *v, char *line, int *cd, t_ls data);
-void	infinity_loop(t_v *v, char *line, int *cd, t_ls data);
+void	infinity_loop(t_v **v, char *line, int *cd, t_ls data);
 
 #endif

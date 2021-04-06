@@ -21,6 +21,31 @@ void    ft_memdel(char *ap)
 	}
 }
 
+void	ft_unset2(char **words, t_v **v)
+{
+	char *temp;
+	t_v *t;
+
+	temp = NULL;
+	if (!words[1])
+		printf("unset: not enough arguments\n");
+	else
+	{
+		if (*v)
+		{
+			temp = ft_strstr_reverse((*v)->str, "=");
+			if (ft_strcmp_2(words[1], temp, 1) == 0)
+			{
+				t = *v;
+				*v = (*v)->next;
+				ft_lstdelone_2(t, ft_memdel);
+			}
+			free(temp);
+		}
+	}
+}
+
+
 void    ft_unset(char **words, t_v *v)
 {
 	int i;
