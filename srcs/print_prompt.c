@@ -16,7 +16,7 @@ void    ft_print_prompt_2(void)
 {
 	printf("😎  ");
 	printf("\033[0;31m");
-        printf("➜ ");
+        printf("~ ");
 	printf("\033[0m");
 	fflush(stdout);
 }
