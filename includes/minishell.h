@@ -52,5 +52,6 @@ void	ft_unset2(char **words, t_v **v);
 void	lexer(t_v *v, t_ls data);
 int		ft_pipe(t_v *v, char *line, int *cd, t_ls data);
 void	infinity_loop(t_v **v, char *line, int *cd, t_ls data);
+void	ft_exit(char **words, t_v **v, char *temp);
 
 #endif

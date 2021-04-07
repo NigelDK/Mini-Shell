@@ -36,6 +36,8 @@ void	infinity_loop(t_v **v, char *line, int *cd, t_ls data)
 		ft_unset2(words, v);
 	else if (ft_strcmp_2(words[0], "unset", 1) == 0)
 		ft_unset(words, *v);
+	else if (ft_strcmp_2(words[0], "exit", 1) == 0)
+		ft_exit(words, v, temp);
 	else
 		sys_call(words, data);
 	i = -1;
