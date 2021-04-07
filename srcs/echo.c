@@ -109,6 +109,7 @@ void	ft_echo(char **words, char *line, t_v *v)
 	{
 		printf("\033[0;7m");
 		printf("%%");
+		printf("\033[0m");
 	}
 	if (!mark)
 		printf("\n");
