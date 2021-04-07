@@ -39,7 +39,7 @@ void    ft_print_prompt(int cd)
 			ft_print_prompt_2();
 		else
 		{
-			printf("👉  ");
+			printf("😎  ");
 			printf("\033[0;31m");
 			printf("%s ", ft_strstr_rev_2(ptr, "/"));
 			printf("\033[0m");
