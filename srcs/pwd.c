@@ -12,12 +12,17 @@
 
 #include "../includes/minishell.h"
 
-void	ft_pwd(void)
+void	ft_pwd(char **words)
 {
 	long size;
 	char *buf;
 	char *ptr;
 
+	if (words[1])
+	{
+		printf("pwd: too many arguments\n");
+		return ;
+	}
 	size = pathconf(".", _PC_PATH_MAX);
 	if (!(buf = (char *)malloc((size_t)size)))
 		ft_error();

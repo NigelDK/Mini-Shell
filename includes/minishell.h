@@ -24,6 +24,8 @@
 # include <fcntl.h>
 # include <string.h>
 # include <errno.h>
+# include <locale.h>
+# include <wchar.h>
 
 typedef struct	s_ls
 {
@@ -38,7 +40,7 @@ void	ft_exit_success(char **line, char ***words);
 void	ft_error_split(char **line, char ***words);
 void	ft_error(void);
 void	ft_echo(char **words, char *line, t_v *v);
-void	ft_pwd(void);
+void	ft_pwd(char **words);
 void	ft_print_prompt(int cd);
 void	ft_print_prompt_2(void);
 void	ft_export(char **words, t_v *v);

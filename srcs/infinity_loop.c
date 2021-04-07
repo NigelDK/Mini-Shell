@@ -26,7 +26,7 @@ void	infinity_loop(t_v **v, char *line, int *cd, t_ls data)
 	else if (ft_strcmp_2(words[0], "cd", 1) == 0)
 		cd[0] = ft_cd(words, *cd);
 	else if (ft_strcmp_2(words[0], "pwd", 1) == 0)
-		ft_pwd();
+		ft_pwd(words);
 	else if (ft_strcmp_2(words[0], "export", 1) == 0)
 		ft_export(words, *v);
 	else if (ft_strcmp_2(words[0], "env", 1) == 0)
