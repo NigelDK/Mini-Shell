@@ -6,53 +6,11 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 14:49:09 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/08 20:50:27 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/08 21:11:59 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
-
-static void		free_tab(char ***tab)
-{
-	int	i;
-
-	i = -1;
-	while (tab[0][++i])
-		free(tab[0][i]);
-	free(tab[0]);
-}
-
-static void		free_fd(int ***fd, int cmd_cnt)
-{
-	int	i;
-
-	i = -1;
-	while (++i < cmd_cnt - 1)
-		free(fd[0][i]);
-	free(fd[0]);
-}
-
-static int		tab_cnt(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-		i++;
-	return (i);
-}
-
-static void		close_fd(int **fd, int cmd_cnt)
-{
-	int	i;
-
-	i = -1;
-	while (++i < cmd_cnt - 1)
-	{
-		close(fd[i][0]);
-		close(fd[i][1]);
-	}
-}
+#include "../../includes/minishell.h"
 
 static void		pipes_and_pids(int ***fd, int **pid, int cmd_cnt)
 {
@@ -134,7 +92,7 @@ static void		last_pipe(int *pid, int ***fd, int cmd_cnt, t_v *v, t_ls *data)
 	}
 }
 
-int			ft_pipe(t_v *v, char *line, t_ls *data)
+int				ft_pipe(t_v *v, char *line, t_ls *data)
 {
 	int		i;
 	int		cmd_cnt;
@@ -161,6 +119,8 @@ int			ft_pipe(t_v *v, char *line, t_ls *data)
 	free(pid);
 	return (1);
 }
+
+
 /*
 int			ft_pipe(t_v *v, char *line, int *cd, t_ls data)
 {

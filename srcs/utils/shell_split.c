@@ -6,11 +6,11 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 15:53:02 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/03 17:20:37 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/08 21:05:08 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 static int		cmd_cnt(char *s, char c)
 {

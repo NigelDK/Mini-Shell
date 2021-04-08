@@ -6,11 +6,11 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 16:23:36 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/05 16:26:32 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/08 21:02:37 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void	infinity_loop(t_v **v, char *line, t_ls *data)
 {

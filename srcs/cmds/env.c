@@ -6,11 +6,11 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 17:47:16 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/03 14:36:04 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/08 20:59:19 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void	ft_print_env_2(t_v *v)
 {

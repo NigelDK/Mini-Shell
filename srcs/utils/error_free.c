@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   error_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minummin </var/mail/minummin>              +#+  +:+       +#+        */
+/*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:36:14 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/03 14:36:21 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/08 21:05:18 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void	 ft_error_v(t_v *v)
 {

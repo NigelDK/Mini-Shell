@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_prompt.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minummin </var/mail/minummin>              +#+  +:+       +#+        */
+/*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:37:15 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/03 14:37:18 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/08 21:05:13 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void    ft_print_prompt_2(void)
 {

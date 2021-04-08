@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minummin </var/mail/minummin>              +#+  +:+       +#+        */
+/*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:35:12 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/03 14:35:17 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/08 20:58:58 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void    ft_memdel(char *ap)
 {

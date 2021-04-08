@@ -6,11 +6,11 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 18:22:33 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/05 16:18:31 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/08 20:59:02 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 char	*path_variable(t_ls *data, int *j, t_v **v)
 {

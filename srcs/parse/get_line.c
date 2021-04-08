@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_line.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minummin </var/mail/minummin>              +#+  +:+       +#+        */
+/*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:36:55 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/03 14:36:57 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/08 21:02:26 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 char	*ft_strjoin2(char *s1, char *s2)
 {

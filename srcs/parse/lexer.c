@@ -6,11 +6,11 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 10:36:18 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/05 16:31:11 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/08 21:02:44 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void	lexer(t_v *v, t_ls *data)
 {
