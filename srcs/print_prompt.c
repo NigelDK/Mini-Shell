@@ -16,24 +16,29 @@ void    ft_print_prompt_2(void)
 {
 	printf("😎  ");
 	printf("\033[0;31m");
-        printf("~ ");
+	printf("~ ");
 	printf("\033[0m");
 	fflush(stdout);
 }
 
-void    ft_print_prompt(int cd, t_v *v)
+void    ft_print_prompt(t_ls *data, t_v *v)
 {
 	long size;
 	char *buf;
 	char *ptr;
 
+	if (data->n_c == 1)
+	{
+		printf("\033[0;7m%%\033[0m\n");
+		data->n_c = 0;
+	}
 	size = pathconf(".", _PC_PATH_MAX);
 	if (!(buf = (char *)malloc((size_t)size)))
 		ft_error_v(v);
 	ptr = getcwd(buf, (size_t)size);
-	if (cd == 0)
+	if (data->cd == 0)
 		ft_print_prompt_2();
-	else if (cd == 1)
+	else if (data->cd == 1)
 	{
 		if (ft_strcmp_2(ptr, "/", 1) == 0)
 			ft_print_prompt_2();

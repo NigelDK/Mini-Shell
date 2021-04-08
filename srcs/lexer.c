@@ -17,6 +17,7 @@ void	lexer(t_v *v, t_ls *data)
 	int		ret;
 	int		i;
 
+	data->n_c = 0;
 	data->cd = 0;
 	while ((ret = get_next_line(0, &data->line)) >= 0)
 	{
@@ -24,7 +25,7 @@ void	lexer(t_v *v, t_ls *data)
 		{
 			if (ret == -1)
 				ft_error_v(v);
-			if (!(data->words = shell_split(data->line, ';'))) // free in shell split
+			if (!(data->words = shell_split(data->line, ';')))
 				ft_error_data_v(data, v);
 			i = -1;
 			while (data->words[++i])
@@ -36,6 +37,6 @@ void	lexer(t_v *v, t_ls *data)
 			free(data->words);
 		}
 		free(data->line);
-		ft_print_prompt(data->cd, v);
+		ft_print_prompt(data, v);
 	}
 }

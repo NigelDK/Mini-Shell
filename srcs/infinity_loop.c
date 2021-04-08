@@ -20,7 +20,7 @@ void	infinity_loop(t_v **v, char *line, t_ls *data)
 	if (!(data->words2 = shell_split(line, ' ')))
 		ft_error_data_v_2(data, v);
 	if (ft_strcmp_2(data->words2[0], "echo", 1) == 0)
-		ft_echo(data->words2, line, *v);
+		ft_echo(data, data->words2, line, *v);
 	else if (ft_strcmp_2(data->words2[0], "cd", 1) == 0)
 		data->cd = ft_cd(data->words2, data->cd);
 	else if (ft_strcmp_2(data->words2[0], "pwd", 1) == 0)

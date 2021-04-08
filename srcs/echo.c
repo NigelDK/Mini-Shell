@@ -71,7 +71,7 @@ int	ft_echo_3(char **words, char *line, int c, t_v *v)
 	return (mark);
 }
 
-void	ft_echo(char **words, char *line, t_v *v)
+void	ft_echo(t_ls *data, char **words, char *line, t_v *v)
 {
 	int i;
 	int o;
@@ -105,11 +105,11 @@ void	ft_echo(char **words, char *line, t_v *v)
 				printf("%s ", words[i]);
 		}
 	}
+	data->n_c = 0;
 	if (o == 2)
 	{
-		printf("\033[0;7m");
-		printf("%%");
-		printf("\033[0m");
+		data->n_c = 1;
+		return ;
 	}
 	if (!mark)
 		printf("\n");
