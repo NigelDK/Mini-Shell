@@ -20,9 +20,9 @@ void	ft_envp(t_v *v, char **envp)
 	while (envp[++i])
         {
                 if (!(v->str = ft_strdup(envp[i])))
-                        ft_error();
+                        ft_error_v(v);
                 if (!(v->next = ft_lstnew_2(NULL)))
-                        ft_error();
+                        ft_error_v(v);
 		v = v->next;
         }
 }
@@ -35,11 +35,11 @@ int	main(int argc, char **argv, char **envp)
 	chdir("/");
 	data.envp = envp; 
 	if (!(v = ft_lstnew_2(NULL)))
-		ft_error();
+		ft_error_v(v);
 	argc = (unsigned int)argc;
 	argv = NULL;
 	ft_print_prompt_2();
 	ft_envp(v, envp);
-	lexer(v, data);
+	lexer(v, &data);
 	return (0);
 }

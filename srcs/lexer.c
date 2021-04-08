@@ -12,33 +12,30 @@
 
 #include "../includes/minishell.h"
 
-void	lexer(t_v *v, t_ls data)
+void	lexer(t_v *v, t_ls *data)
 {
-	char	*line;
-	char	**words;
 	int		ret;
 	int		i;
-	int		cd;
 
-	cd = 0;
-	while ((ret = get_next_line(0, &line)) >= 0)
+	data->cd = 0;
+	while ((ret = get_next_line(0, &data->line)) >= 0)
 	{
-		if (line[0])
+		if (data->line[0])
 		{
 			if (ret == -1)
-				ft_error();
-			if (!(words = shell_split(line, ';')))
-				ft_error_split(&line, &words);
+				ft_error_v(v);
+			if (!(data->words = shell_split(data->line, ';'))) // free in shell split
+				ft_error_data_v(data, v);
 			i = -1;
-			while (words[++i])
-				if (!ft_pipe(v, words[i], &cd, data))
-					infinity_loop(&v, words[i], &cd, data);
+			while (data->words[++i])
+				if (!ft_pipe(v, data->words[i], data))
+					infinity_loop(&v, data->words[i], data);
 			i = -1;
-			while (words[++i])
-				free(words[i]);
-			free(words);
+			while (data->words[++i])
+				free(data->words[i]);
+			free(data->words);
 		}
-		ft_print_prompt(cd);
-		free(line);
+		free(data->line);
+		ft_print_prompt(data->cd, v);
 	}
 }

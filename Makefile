@@ -69,7 +69,7 @@ CC = gcc
 
 RM = rm -f
 
-CFLAGS = -Wall -Wextra -I${HEADERS_FOLDER} -g
+CFLAGS = -Wall -Wextra -Werror -I${HEADERS_FOLDER} -g
 
 all: ${NAME}
 

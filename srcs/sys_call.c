@@ -12,7 +12,7 @@
 
 #include "../includes/minishell.h"
 
-char	*path_variable(char **words, int *j)
+char	*path_variable(t_ls *data, int *j, t_v **v)
 {
 	struct stat info;
 	char **path;
@@ -21,12 +21,12 @@ char	*path_variable(char **words, int *j)
 	int i;
 
 	i = -1;
-	temp = ft_strjoin("/", words[0]);
+	temp = ft_strjoin("/", data->words2[0]);
 	path = shell_split(getenv("PATH"), ':');
 	while (path[++i])
 	{
 		if (!(cmd = ft_strjoin(path[i], temp)))
-			ft_error();
+			ft_error_syscall(data, v, path, temp);
 		if (lstat(cmd, &info) == 0)
 		{
 			*j = 1;
@@ -42,22 +42,26 @@ char	*path_variable(char **words, int *j)
 	return (cmd);
 }
 
-void	sys_call(char **words, t_ls data)
+void	sys_call(t_ls *data, t_v **v)
 {
 	pid_t	pid;
 	char	*cmd;
 	int j;
 
 	j = 0;
-	cmd = path_variable(words, &j);
+	cmd = path_variable(data, &j, v);
 	if ((pid = fork()) < 0)
-		ft_error();
+	{
+		free(cmd);
+		ft_error_data_v_2(data, v);
+	}
 	if (pid == 0)
 	{
-		if (execve(cmd, words, data.envp) < 0)
-			printf("zsh: command not found: %s\n", words[0]);
+		if (execve(cmd, data->words2, data->envp) < 0)
+			printf("zsh: command not found: %s\n", data->words2[0]);
 		if (j == 1)
 			free(cmd);
+		ft_error_data_v_child(data, v);
 		exit (1);
 	}
 	if (j == 1)

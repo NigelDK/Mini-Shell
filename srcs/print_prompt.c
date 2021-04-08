@@ -21,7 +21,7 @@ void    ft_print_prompt_2(void)
 	fflush(stdout);
 }
 
-void    ft_print_prompt(int cd)
+void    ft_print_prompt(int cd, t_v *v)
 {
 	long size;
 	char *buf;
@@ -29,7 +29,7 @@ void    ft_print_prompt(int cd)
 
 	size = pathconf(".", _PC_PATH_MAX);
 	if (!(buf = (char *)malloc((size_t)size)))
-		ft_error();
+		ft_error_v(v);
 	ptr = getcwd(buf, (size_t)size);
 	if (cd == 0)
 		ft_print_prompt_2();

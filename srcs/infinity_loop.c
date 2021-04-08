@@ -12,37 +12,36 @@
 
 #include "../includes/minishell.h"
 
-void	infinity_loop(t_v **v, char *line, int *cd, t_ls data)
+void	infinity_loop(t_v **v, char *line, t_ls *data)
 {
 	int		i;
-	char	**words;
-	char	*temp;
 
-	temp = ft_strstr_reverse((*v)->str, "=");
-	if (!(words = shell_split(line, ' ')))
-		ft_error_split(&line, &words);
-	if (ft_strcmp_2(words[0], "echo", 1) == 0)
-		ft_echo(words, line, *v);
-	else if (ft_strcmp_2(words[0], "cd", 1) == 0)
-		cd[0] = ft_cd(words, *cd);
-	else if (ft_strcmp_2(words[0], "pwd", 1) == 0)
-		ft_pwd(words);
-	else if (ft_strcmp_2(words[0], "export", 1) == 0)
-		ft_export(words, *v);
-	else if (ft_strcmp_2(words[0], "env", 1) == 0)
-		ft_env(words, *v);
-	else if (ft_strcmp_2(words[0], "unset", 1) == 0
-	&& ft_strcmp_2(words[1], temp, 1) == 0)
-		ft_unset2(words, v);
-	else if (ft_strcmp_2(words[0], "unset", 1) == 0)
-		ft_unset(words, *v);
-	else if (ft_strcmp_2(words[0], "exit", 1) == 0)
-		ft_exit(words, v, temp);
+	data->temp = ft_strstr_reverse((*v)->str, "=");
+	if (!(data->words2 = shell_split(line, ' ')))
+		ft_error_data_v_2(data, v);
+	if (ft_strcmp_2(data->words2[0], "echo", 1) == 0)
+		ft_echo(data->words2, line, *v);
+	else if (ft_strcmp_2(data->words2[0], "cd", 1) == 0)
+		data->cd = ft_cd(data->words2, data->cd);
+	else if (ft_strcmp_2(data->words2[0], "pwd", 1) == 0)
+		ft_pwd(data->words2);
+	else if (ft_strcmp_2(data->words2[0], "export", 1) == 0)
+		ft_export(data->words2, *v);
+	else if (ft_strcmp_2(data->words2[0], "env", 1) == 0)
+		ft_env(data->words2, *v);
+	else if (ft_strcmp_2(data->words2[0], "unset", 1) == 0
+	&& ft_strcmp_2(data->words2[1], data->temp, 1) == 0)
+		ft_unset2(data->words2, v);
+	else if (ft_strcmp_2(data->words2[0], "unset", 1) == 0)
+		ft_unset(data->words2, *v);
+	else if (ft_strcmp_2(data->words2[0], "exit", 1) == 0)
+		ft_exit(data->words2, v, data->temp);
 	else
-		sys_call(words, data);
+		sys_call(data, v);
 	i = -1;
-	while (words[++i])
-		free(words[i]);
-	free(words);
-	free(temp);
+	while (data->words2[++i])
+		free(data->words2[i]);
+	if (data->words2)
+		free(data->words2);
+	free(data->temp);
 }

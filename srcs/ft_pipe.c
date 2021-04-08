@@ -22,7 +22,7 @@ static int		tab_cnt(char **tab)
 	return (i);
 }
 
-int			ft_pipe(t_v *v, char *line, int *cd, t_ls data)
+int			ft_pipe(t_v *v, char *line, t_ls *data)
 {
 	int		i;
 	int		j;
@@ -32,7 +32,7 @@ int			ft_pipe(t_v *v, char *line, int *cd, t_ls data)
 	int		**fd;
 	
 	if (!(cmds = shell_split(line, '|')))
-		ft_error_split(&line, &cmds);
+		ft_error();
 	cmd_cnt = tab_cnt(cmds);
 	if (cmd_cnt == 1)
 		return (0);
@@ -64,7 +64,7 @@ int			ft_pipe(t_v *v, char *line, int *cd, t_ls data)
 			close(fd[j][0]);
 			close(fd[j][1]);
 		}
-		infinity_loop(&v, cmds[0], cd, data);
+		infinity_loop(&v, cmds[0], data);
 		exit (1);
 	}
 
@@ -86,7 +86,7 @@ int			ft_pipe(t_v *v, char *line, int *cd, t_ls data)
 				close(fd[j][0]);
 				close(fd[j][1]);
 			}
-			infinity_loop(&v, cmds[i], cd, data);
+			infinity_loop(&v, cmds[i], data);
 			exit (1);
 		}
 	}
@@ -105,7 +105,7 @@ int			ft_pipe(t_v *v, char *line, int *cd, t_ls data)
 			close(fd[j][0]);
 			close(fd[j][1]);
 		}
-		infinity_loop(&v, cmds[i], cd, data);
+		infinity_loop(&v, cmds[i], data);
 		exit (1);
 	}
 	i = -1;
