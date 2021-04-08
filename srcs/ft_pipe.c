@@ -6,11 +6,31 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 14:49:09 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/07 18:03:40 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/08 20:50:27 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+static void		free_tab(char ***tab)
+{
+	int	i;
+
+	i = -1;
+	while (tab[0][++i])
+		free(tab[0][i]);
+	free(tab[0]);
+}
+
+static void		free_fd(int ***fd, int cmd_cnt)
+{
+	int	i;
+
+	i = -1;
+	while (++i < cmd_cnt - 1)
+		free(fd[0][i]);
+	free(fd[0]);
+}
 
 static int		tab_cnt(char **tab)
 {
@@ -22,53 +42,57 @@ static int		tab_cnt(char **tab)
 	return (i);
 }
 
-int			ft_pipe(t_v *v, char *line, t_ls *data)
+static void		close_fd(int **fd, int cmd_cnt)
 {
-	int		i;
-	int		j;
-	int		cmd_cnt;
-	int		*pid;
-	char	**cmds;
-	int		**fd;
-	
-	if (!(cmds = shell_split(line, '|')))
-		ft_error();
-	cmd_cnt = tab_cnt(cmds);
-	if (cmd_cnt == 1)
-		return (0);
+	int	i;
 
-	// malloc and open pipes
-	if (!(fd = malloc(sizeof(int *) * (cmd_cnt - 1))))
+	i = -1;
+	while (++i < cmd_cnt - 1)
+	{
+		close(fd[i][0]);
+		close(fd[i][1]);
+	}
+}
+
+static void		pipes_and_pids(int ***fd, int **pid, int cmd_cnt)
+{
+	int	i;
+
+	if (!(fd[0] = malloc(sizeof(int *) * (cmd_cnt - 1))))
 		ft_error();
 	i = -1;
 	while (++i < cmd_cnt - 1)
 	{
-		if (!(fd[i] = malloc(sizeof(int) * 2)))
+		if (!(fd[0][i] = malloc(sizeof(int) * 2)))
 			ft_error();
-		if (pipe(fd[i]) == -1)
+		if (pipe(fd[0][i]) == -1)
 			ft_error();
 	}
-	if (!(pid = malloc(sizeof(int) * cmd_cnt)))
+	if (!(pid[0] = malloc(sizeof(int) * cmd_cnt)))
 		ft_error();
+}
 
-	// first pipe
+static void		first_pipe(int *pid, int ***fd, int cmd_cnt, t_v *v, t_ls *data)
+{
 	if ((pid[0] = fork()) == -1)
 		ft_error();
 	if (pid[0] == 0)
 	{
-		if (dup2(fd[0][1], 1) == -1)
+		if (dup2(fd[0][0][1], 1) == -1)
 			ft_error();
-		j = -1;
-		while (++j < cmd_cnt - 1)
-		{
-			close(fd[j][0]);
-			close(fd[j][1]);
-		}
-		infinity_loop(&v, cmds[0], data);
+		close_fd(fd[0], cmd_cnt);
+		infinity_loop(&v, data->words1[0], data);
+		free_tab(&data->words1);
+		free_fd(fd, cmd_cnt);
+		free(pid);
 		exit (1);
-	}
+	}	
+}
 
-	// mid body pipes
+static void		mid_pipes(int *pid, int ***fd, int cmd_cnt, t_v *v, t_ls *data)
+{
+	int	i;
+	
 	i = 0;
 	while (++i < cmd_cnt - 1)
 	{	
@@ -76,47 +100,65 @@ int			ft_pipe(t_v *v, char *line, t_ls *data)
 			ft_error();
 		if (pid[i] == 0)
 		{
-			if (dup2(fd[i - 1][0], 0) == -1)
+			if (dup2(fd[0][i - 1][0], 0) == -1)
 				ft_error();
-			if (dup2(fd[i][1], 1) == -1)
+			if (dup2(fd[0][i][1], 1) == -1)
 				ft_error();
-			j = -1;
-			while (++j < cmd_cnt - 1)
-			{
-				close(fd[j][0]);
-				close(fd[j][1]);
-			}
-			infinity_loop(&v, cmds[i], data);
+			close_fd(fd[0], cmd_cnt);
+			infinity_loop(&v, data->words1[i], data);
+			free_tab(&data->words1);
+			free_fd(fd, cmd_cnt);
+			free(pid);
 			exit (1);
 		}
-	}
+	}	
+}
 
-	// last pipe
+static void		last_pipe(int *pid, int ***fd, int cmd_cnt, t_v *v, t_ls *data)
+{
+	int	i;
+	
 	i = cmd_cnt - 1;
 	if ((pid[i] = fork()) == -1)
 		ft_error();
 	if (pid[i] == 0)
 	{
-		if (dup2(fd[i - 1][0], 0) == -1)
+		if (dup2(fd[0][i - 1][0], 0) == -1)
 			ft_error();
-		j = -1;
-		while (++j < cmd_cnt - 1)
-		{
-			close(fd[j][0]);
-			close(fd[j][1]);
-		}
-		infinity_loop(&v, cmds[i], data);
+		close_fd(fd[0], cmd_cnt);
+		infinity_loop(&v, data->words1[i], data);
+		free_tab(&data->words1);
+		free_fd(fd, cmd_cnt);
+		free(pid);
 		exit (1);
 	}
-	i = -1;
-	while (++i < cmd_cnt - 1)
+}
+
+int			ft_pipe(t_v *v, char *line, t_ls *data)
+{
+	int		i;
+	int		cmd_cnt;
+	int		*pid;
+	int		**fd;
+	
+	if (!(data->words1 = shell_split(line, '|')))
+		ft_error();
+	if ((cmd_cnt = tab_cnt(data->words1)) == 1)
 	{
-		close(fd[i][0]);
-		close(fd[i][1]);
+		free_tab(&data->words1);
+		return (0);
 	}
+	pipes_and_pids(&fd, &pid, cmd_cnt);
+	first_pipe(pid, &fd, cmd_cnt, v, data);
+	mid_pipes(pid, &fd, cmd_cnt, v, data);
+	last_pipe(pid, &fd, cmd_cnt, v, data);
+	close_fd(fd, cmd_cnt);
+	free_tab(&data->words1);
+	free_fd(&fd, cmd_cnt);
 	i = -1;
 	while (++i < cmd_cnt)
 		wait(&pid[i]);
+	free(pid);
 	return (1);
 }
 /*
@@ -126,16 +168,16 @@ int			ft_pipe(t_v *v, char *line, int *cd, t_ls data)
 	int		fd[2][2];
 	int		pid[3];
 	int		cmd_cnt;
-	char	**cmds;
+	char	**data->words1;
 
 	i = -1;
-	if (!(cmds = shell_split(line, '|')))
-		ft_error_split(&line, &cmds);
-	cmd_cnt = tab_cnt(cmds);
+	if (!(data->words1 = shell_split(line, '|')))
+		ft_error_split(&line, &data->words1);
+	cmd_cnt = tab_cnt(data->words1);
 	if (cmd_cnt == 1)
 	{
-		free(cmds[0]);
-		free(cmds);
+		free(data->words1[0]);
+		free(data->words1);
 		return (0);
 	}
 	else
@@ -154,10 +196,10 @@ int			ft_pipe(t_v *v, char *line, int *cd, t_ls data)
 			close(fd[0][1]);
 			close(fd[1][0]);
 			close(fd[1][1]);
-			infinity_loop(&v, cmds[0], cd, data);
-			while (cmds[++i])
-				free(cmds[i]);
-			free(cmds);
+			infinity_loop(&v, data->words1[0], cd, data);
+			while (data->words1[++i])
+				free(data->words1[i]);
+			free(data->words1);
 			exit (1);
 		}
 //
@@ -173,10 +215,10 @@ int			ft_pipe(t_v *v, char *line, int *cd, t_ls data)
 			close(fd[0][1]);
 			close(fd[1][0]);
 			close(fd[1][1]);
-			infinity_loop(&v, cmds[1], cd, data);
-			while (cmds[++i])
-				free(cmds[i]);
-			free(cmds);
+			infinity_loop(&v, data->words1[1], cd, data);
+			while (data->words1[++i])
+				free(data->words1[i]);
+			free(data->words1);
 			exit (1);
 		}
 //
@@ -190,16 +232,16 @@ int			ft_pipe(t_v *v, char *line, int *cd, t_ls data)
 			close(fd[0][1]);
 			close(fd[1][0]);
 			close(fd[1][1]);
-			infinity_loop(&v, cmds[2], cd, data);
-			while (cmds[++i])
-				free(cmds[i]);
-			free(cmds);
+			infinity_loop(&v, data->words1[2], cd, data);
+			while (data->words1[++i])
+				free(data->words1[i]);
+			free(data->words1);
 			exit (1);
 		}
 	}
-	while (cmds[++i])
-		free(cmds[i]);
-	free(cmds);
+	while (data->words1[++i])
+		free(data->words1[i]);
+	free(data->words1);
 	close(fd[0][0]);
 	close(fd[0][1]);
 	close(fd[1][0]);

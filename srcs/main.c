@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 09:32:22 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/05 10:37:19 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/08 20:45:17 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ int	main(int argc, char **argv, char **envp)
 	t_v 	*v;
 	t_ls	data;
 
+	if (!argv)
+		return (0);
 	chdir("/");
 	data.envp = envp; 
 	if (!(v = ft_lstnew_2(NULL)))
 		ft_error_v(v);
 	argc = (unsigned int)argc;
-	argv = NULL;
 	ft_print_prompt_2();
 	ft_envp(v, envp);
 	lexer(v, &data);

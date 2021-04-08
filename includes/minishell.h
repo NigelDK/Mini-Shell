@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/05 16:24:14 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/08 20:53:15 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@
 
 typedef struct	s_ls
 {
-	int	n_c;
-	int	cd;
+	int		n_c;
+	int		cd;
 	char	**envp;
 	char	**words;
+	char	**words1;
 	char	**words2;
 	char	*temp;
 	char	*line;
