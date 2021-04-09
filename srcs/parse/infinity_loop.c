@@ -6,17 +6,27 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 16:23:36 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/08 21:02:37 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/09 16:20:06 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+int		check_for_redir(t_v **v, char *line, t_ls *data)
+{
+	if (!redir_out(v, line, data))
+		return (0);
+
+	return (1);
+}
 
 void	infinity_loop(t_v **v, char *line, t_ls *data)
 {
 	int		i;
 
 	data->temp = ft_strstr_reverse((*v)->str, "=");
+	if (check_for_redir(v, line, data))
+		return ;
 	if (!(data->words2 = shell_split(line, ' ')))
 		ft_error_data_v_2(data, v);
 	if (ft_strcmp_2(data->words2[0], "echo", 1) == 0)

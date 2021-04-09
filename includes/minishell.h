@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/08 21:15:15 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/09 16:27:06 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct	s_ls
 	char	**words;
 	char	**words1;
 	char	**words2;
+	char	**words3;
 	char	*temp;
 	char	*line;
 }				t_ls;
@@ -75,5 +76,6 @@ void			ft_error_data_v_2(t_ls *data, t_v **v);
 void			ft_error_syscall(t_ls *data, t_v **v, char **path, char *temp);
 void			ft_error_data_v_child(t_ls *data, t_v **v);
 void			free_tab(char ***tab);
+int				redir_out(t_v **v, char *line, t_ls *data);
 
 #endif

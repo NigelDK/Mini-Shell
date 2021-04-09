@@ -13,6 +13,7 @@ SRCS = srcs/main.c \
 	srcs/parse/ft_pipe.c \
 	srcs/parse/infinity_loop.c \
 	srcs/parse/get_line.c \
+	srcs/parse/redir_out.c \
 	srcs/utils/error_free.c \
 	srcs/utils/print_prompt.c \
 	srcs/utils/utils.c \
@@ -79,7 +80,7 @@ all: ${NAME}
 ${NAME}: ${OBJECTS}
 
 	ar rc ${NAME} ${OBJECTS}
-	gcc -g libftminishell.a -ltermcap -o minishell
+	gcc -g libftminishell.a -o minishell
 
 clean:
 
