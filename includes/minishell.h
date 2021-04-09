@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/09 16:27:06 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/09 20:36:01 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ void			ft_error_syscall(t_ls *data, t_v **v, char **path, char *temp);
 void			ft_error_data_v_child(t_ls *data, t_v **v);
 void			free_tab(char ***tab);
 int				redir_out(t_v **v, char *line, t_ls *data);
+int				redir_in(t_v **v, char *line, t_ls *data);
 
 #endif

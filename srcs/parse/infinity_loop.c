@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 16:23:36 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/09 17:20:23 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/09 20:35:31 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int		check_for_redir(t_v **v, char *line, t_ls *data)
 {
 	if (redir_out(v, line, data))
 		return (1);
-
+	if (redir_in(v, line, data))
+		return (1);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 15:55:22 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/09 17:40:02 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/09 20:35:26 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 void	check_append(char *line, int *append)
 {
 	int	i;
+	int	j;
 	int	q;
 	int	dq;
 
 	i = -1;
+	j = 0;
 	q = 0;
 	dq = 0;
 	while (line[++i])
@@ -27,14 +29,14 @@ void	check_append(char *line, int *append)
 			(q == 0 && dq == 0) ? (q = 1) : (q = 0);
 		if (line[i] == '"')
 			(dq == 0 && q == 0) ? (dq = 1) : (dq = 0);
-		if (line[i - 1] != '>' && line[i] == '>' && line[i + 1] != '>'
-				&& q == 0 && dq == 0)
-			append[0] = 0;
-		if (line[i] == '>' && line[i + 1] == '>' && q == 0 && dq == 0)
-			append[0] = 1;
-		if (line[i] == '>' && line[i + 1] == '>' && line[i + 2]
-				&& line[i + 2] == '>' && q == 0 && dq == 0)
-			ft_error();
+		(line[i - 1] != '>' && line[i] == '>' && line[i + 1] != '>'
+			&& q == 0 && dq == 0) ? (append[0] = 0) : (0);
+		(line[i] == '>' && line[i + 1] == '>' && q == 0 && dq == 0) ?
+			(append[0] = 1) : (0);
+		(line[i] == '>' && line[i + 1] == '>' && line[i + 2]
+		&& line[i + 2] == '>' && q == 0 && dq == 0) ? (ft_error()) : (0);
+		(line[i] == '>') ? (j++) : (0);
+		(j > 2) ? (ft_error()) : (0);
 	}
 }
 
@@ -53,9 +55,9 @@ int	redir_out(t_v **v, char *line, t_ls *data)
 		free_tab(&data->words3);
 		return (0);
 	}
-	check_append(line, &append);
 	if ((cmd_cnt = tab_cnt(data->words3)) > 2)
 		ft_error();
+	check_append(line, &append);
 	if ((pid = fork()) == -1)
 		ft_error();
 	if (pid == 0)
