@@ -30,64 +30,64 @@ static void		pipes_and_pids(int ***fd, int **pid, int cmd_cnt)
 		ft_error();
 }
 
-static void		first_pipe(int *pid, int ***fd, int cmd_cnt, t_v *v, t_ls *data)
+static void		first_pipe(int ***fd, t_pipe p, t_v *v, t_ls *data)
 {
-	if ((pid[0] = fork()) == -1)
+	if ((p.pid[0] = fork()) == -1)
 		ft_error();
-	if (pid[0] == 0)
+	if (p.pid[0] == 0)
 	{
 		if (dup2(fd[0][0][1], 1) == -1)
 			ft_error();
-		close_fd(fd[0], cmd_cnt);
+		close_fd(fd[0], p.cmd_cnt);
 		infinity_loop(&v, data->words1[0], data);
 		free_tab(&data->words1);
-		free_fd(fd, cmd_cnt);
-		free(pid);
+		free_fd(fd, p.cmd_cnt);
+		free(p.pid);
 		exit (1);
 	}	
 }
 
-static void		mid_pipes(int *pid, int ***fd, int cmd_cnt, t_v *v, t_ls *data)
+static void		mid_pipes(int ***fd, t_pipe p, t_v *v, t_ls *data)
 {
 	int	i;
 	
 	i = 0;
-	while (++i < cmd_cnt - 1)
+	while (++i < p.cmd_cnt - 1)
 	{	
-		if ((pid[i] = fork()) == -1)
+		if ((p.pid[i] = fork()) == -1)
 			ft_error();
-		if (pid[i] == 0)
+		if (p.pid[i] == 0)
 		{
 			if (dup2(fd[0][i - 1][0], 0) == -1)
 				ft_error();
 			if (dup2(fd[0][i][1], 1) == -1)
 				ft_error();
-			close_fd(fd[0], cmd_cnt);
+			close_fd(fd[0], p.cmd_cnt);
 			infinity_loop(&v, data->words1[i], data);
 			free_tab(&data->words1);
-			free_fd(fd, cmd_cnt);
-			free(pid);
+			free_fd(fd, p.cmd_cnt);
+			free(p.pid);
 			exit (1);
 		}
 	}	
 }
 
-static void		last_pipe(int *pid, int ***fd, int cmd_cnt, t_v *v, t_ls *data)
+static void		last_pipe(int ***fd, t_pipe p, t_v *v, t_ls *data)
 {
 	int	i;
 	
-	i = cmd_cnt - 1;
-	if ((pid[i] = fork()) == -1)
+	i = p.cmd_cnt - 1;
+	if ((p.pid[i] = fork()) == -1)
 		ft_error();
-	if (pid[i] == 0)
+	if (p.pid[i] == 0)
 	{
 		if (dup2(fd[0][i - 1][0], 0) == -1)
 			ft_error();
-		close_fd(fd[0], cmd_cnt);
+		close_fd(fd[0], p.cmd_cnt);
 		infinity_loop(&v, data->words1[i], data);
 		free_tab(&data->words1);
-		free_fd(fd, cmd_cnt);
-		free(pid);
+		free_fd(fd, p.cmd_cnt);
+		free(p.pid);
 		exit (1);
 	}
 }
@@ -95,28 +95,27 @@ static void		last_pipe(int *pid, int ***fd, int cmd_cnt, t_v *v, t_ls *data)
 int				ft_pipe(t_v *v, char *line, t_ls *data)
 {
 	int		i;
-	int		cmd_cnt;
-	int		*pid;
 	int		**fd;
+	t_pipe		p;
 	
 	if (!(data->words1 = shell_split(line, '|')))
 		ft_error();
-	if ((cmd_cnt = tab_cnt(data->words1)) == 1)
+	if ((p.cmd_cnt = tab_cnt(data->words1)) == 1)
 	{
 		free_tab(&data->words1);
 		return (0);
 	}
-	pipes_and_pids(&fd, &pid, cmd_cnt);
-	first_pipe(pid, &fd, cmd_cnt, v, data);
-	mid_pipes(pid, &fd, cmd_cnt, v, data);
-	last_pipe(pid, &fd, cmd_cnt, v, data);
-	close_fd(fd, cmd_cnt);
+	pipes_and_pids(&fd, &p.pid, p.cmd_cnt);
+	first_pipe(&fd, p, v, data);
+	mid_pipes(&fd, p, v, data);
+	last_pipe(&fd, p, v, data);
+	close_fd(fd, p.cmd_cnt);
 	free_tab(&data->words1);
-	free_fd(&fd, cmd_cnt);
+	free_fd(&fd, p.cmd_cnt);
 	i = -1;
-	while (++i < cmd_cnt)
-		wait(&pid[i]);
-	free(pid);
+	while (++i < p.cmd_cnt)
+		wait(&p.pid[i]);
+	free(p.pid);
 	return (1);
 }
 

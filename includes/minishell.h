@@ -24,8 +24,13 @@
 # include <fcntl.h>
 # include <string.h>
 # include <errno.h>
-# include <locale.h>
-# include <wchar.h>
+# include <termcap.h>
+
+typedef struct s_pipe
+{
+	int	cmd_cnt;
+	int	*pid;
+}		t_pipe;
 
 typedef struct	s_ls
 {
