@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 18:22:33 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/08 20:59:02 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/12 13:53:47 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	sys_call(t_ls *data, t_v **v)
 		free(cmd);
 		ft_error_data_v_2(data, v);
 	}
+	signal(SIGINT, child_signal_handler);
 	if (pid == 0)
 	{
 		if (execve(cmd, data->words2, data->envp) < 0)

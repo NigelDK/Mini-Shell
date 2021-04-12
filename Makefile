@@ -9,6 +9,7 @@ SRCS = srcs/main.c \
 	srcs/cmds/export.c \
 	srcs/cmds/env.c \
 	srcs/cmds/sys_call.c \
+	srcs/cmds/signal_handlers.c \
 	srcs/parse/lexer.c \
 	srcs/parse/ft_pipe.c \
 	srcs/parse/infinity_loop.c \

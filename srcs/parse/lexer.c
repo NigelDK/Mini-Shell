@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 10:36:18 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/08 21:02:44 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/12 14:07:55 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	lexer(t_v *v, t_ls *data)
 	data->cd = 0;
 	while ((ret = get_next_line(0, &data->line)) >= 0)
 	{
+		signal(SIGINT, main_signal_handler);
 		if (data->line[0])
 		{
 			if (ret == -1)
