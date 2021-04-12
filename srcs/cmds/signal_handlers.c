@@ -26,6 +26,6 @@ void	main_signal_handler(int signr)
 	if (signr == SIGINT)
 	{
 		printf("\n");
-//		signal(SIGINT, main_signal_handler);
+		ft_print_prompt_2();
 	}
 }

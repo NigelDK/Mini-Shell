@@ -24,6 +24,7 @@
 # include <fcntl.h>
 # include <string.h>
 # include <errno.h>
+# include <signal.h>
 
 typedef struct s_pipe
 {
@@ -78,6 +79,6 @@ void			free_tab(char ***tab);
 int				redir_out(t_v **v, char *line, t_ls *data);
 int				redir_in(t_v **v, char *line, t_ls *data);
 void 		   	child_signal_handler(int signr);
-void			main_signal_handler(void);
+void			main_signal_handler(int signr);
 
 #endif

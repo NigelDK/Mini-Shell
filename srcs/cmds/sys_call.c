@@ -55,9 +55,9 @@ void	sys_call(t_ls *data, t_v **v)
 		free(cmd);
 		ft_error_data_v_2(data, v);
 	}
-	signal(SIGINT, child_signal_handler);
 	if (pid == 0)
 	{
+		signal(SIGINT, child_signal_handler);
 		if (execve(cmd, data->words2, data->envp) < 0)
 			printf("zsh: command not found: %s\n", data->words2[0]);
 		if (j == 1)
