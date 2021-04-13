@@ -16,7 +16,7 @@ void	child_signal_handler(int signr)
 {
 	if (signr == SIGINT)
 	{
-		printf("\n");
+//		printf("\n");
 		signal(SIGINT, child_signal_handler);
 	}
 }

@@ -12,7 +12,33 @@
 
 #include "../../includes/minishell.h"
 
-int		check_for_redir(t_v **v, char *line, t_ls *data)
+static void		quote_double_quote(t_ls *data, t_v **v)
+{
+	int		i;
+	char	**tmp;
+
+	i = -1;
+	while (data->words2[++i])
+	{
+		if (data->words2[i][0] == 39/* || data->words2[i][0] == '"'*/)
+		{
+			if (data->words2[i][0] == 39)
+			{
+				if (!(tmp = ft_split(data->words2[i], 39)))
+					ft_error_data_v_2(data, v);
+			}
+//			else if (data->words2[i][0] == '"')
+//				if (!(tmp = ft_split(data->words2[i], '"')))
+//					ft_error_data_v_2(data, v);
+			free(data->words2[i]);
+			data->words2[i] = tmp[0];
+			free(tmp[1]);
+			free(tmp);
+		}
+	}
+}
+
+static int		check_for_redir(t_v **v, char *line, t_ls *data)
 {
 	if (redir_out(v, line, data))
 		return (1);
@@ -21,7 +47,7 @@ int		check_for_redir(t_v **v, char *line, t_ls *data)
 	return (0);
 }
 
-void	infinity_loop(t_v **v, char *line, t_ls *data)
+void			infinity_loop(t_v **v, char *line, t_ls *data)
 {
 	int		i;
 
@@ -30,6 +56,7 @@ void	infinity_loop(t_v **v, char *line, t_ls *data)
 		return ;
 	if (!(data->words2 = shell_split(line, ' ')))
 		ft_error_data_v_2(data, v);
+	quote_double_quote(data, v);
 	if (ft_strcmp_2(data->words2[0], "echo", 1) == 0)
 		ft_echo(data, data->words2, line, *v);
 	else if (ft_strcmp_2(data->words2[0], "cd", 1) == 0)
