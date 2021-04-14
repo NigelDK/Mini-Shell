@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/12 14:11:06 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/14 11:11:34 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char			**shell_split(char *s, char c);
 void			ft_memdel(char *ap);
 void			ft_unset(char **words, t_v *v);
 void			ft_unset2(char **words, t_v **v);
-void			lexer(t_v *v, t_ls *data);
+void			lexer(t_v *v, t_ls *data, char *tester);
 int				ft_pipe(t_v *v, char *line, t_ls *data);
 void			free_fd(int ***fd, int cmd_cnt);
 int				tab_cnt(char **tab);
