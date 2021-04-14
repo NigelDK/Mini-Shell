@@ -16,6 +16,7 @@ SRCS = srcs/main.c \
 	srcs/parse/get_line.c \
 	srcs/parse/redir_out.c \
 	srcs/parse/redir_in.c \
+	srcs/parse/cmd_substitution.c \
 	srcs/utils/error_free.c \
 	srcs/utils/print_prompt.c \
 	srcs/utils/utils.c \

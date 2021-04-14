@@ -26,7 +26,10 @@ void	lexer(t_v *v, t_ls *data, char *tester)
 //	while (ret >= 0) // tester1
 	while ((ret = get_next_line(0, &data->line)) >= 0) // tester0
 	{
+<<<<<<< HEAD
 //		ret = -5; //tester1
+=======
+>>>>>>> dcbe629954d74f9f5d1d01b09af8c07bd2adf43a
 		if (data->line[0])
 		{
 			if (ret == -1)
