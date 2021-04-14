@@ -12,20 +12,11 @@
 
 #include "../../includes/minishell.h"
 
-void	child_signal_handler(int signr)
+void	handler(int signr)
 {
 	if (signr == SIGINT)
 	{
-//		printf("\n");
-		signal(SIGINT, child_signal_handler);
-	}
-}
-
-void	main_signal_handler(int signr)
-{
-	if (signr == SIGINT)
-	{
-		printf("\n");
+		printf("test\n");
 		ft_print_prompt_2();
 	}
 }

@@ -78,7 +78,7 @@ void			ft_error_data_v_child(t_ls *data, t_v **v);
 void			free_tab(char ***tab);
 int				redir_out(t_v **v, char *line, t_ls *data);
 int				redir_in(t_v **v, char *line, t_ls *data);
-void 		   	child_signal_handler(int signr);
-void			main_signal_handler(int signr);
+void			handler(int signr);
+void    		cmd_substitution(t_ls *data, t_v **v);
 
 #endif

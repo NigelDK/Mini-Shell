@@ -21,7 +21,6 @@ void	lexer(t_v *v, t_ls *data)
 	data->cd = 0;
 	while ((ret = get_next_line(0, &data->line)) >= 0)
 	{
-		signal(SIGINT, main_signal_handler);
 		if (data->line[0])
 		{
 			if (ret == -1)
