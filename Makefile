@@ -84,7 +84,7 @@ all: ${NAME}
 ${NAME}: ${OBJECTS}
 
 	ar rc ${NAME} ${OBJECTS}
-	gcc -g libftminishell.a -o minishell
+	gcc -g libftminishell.a -ltermcap -o minishell
 
 clean:
 
