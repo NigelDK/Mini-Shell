@@ -70,25 +70,24 @@ void	lexer(t_v *v, t_ls *data, char *tester, t_term t)
 	while (strcmp(str, "\4"))
 	{
 		data->line = lexer_2(&t, str);
-		<<<<<<< HEAD
-			//              ret = -5; //tester1
-			=======
-			>>>>>>> dcbe629954d74f9f5d1d01b09af8c07bd2adf43a
-			if (data->line[0] && data->line[0] != '\n')
-			{
-				if (!(data->words = shell_split(data->line, ';'))) // tester0
-					//	if (!(data->words = shell_split(tester, ';'))) // tester1
-					ft_error_data_v(data, v);
-				z = -1;
-				while (data->words[++z])
-					if (!ft_pipe(v, data->words[z], data))
-						infinity_loop(&v, data->words[z], data);
-				z = -1;
-				while (data->words[++z])
-					free(data->words[z]);
-				free(data->words);
-			}
-		free(data->line); //tester0
+		//		<<<<<<< HEAD
+		//              ret = -5; //tester1
+		//			=======
+		//			>>>>>>> dcbe629954d74f9f5d1d01b09af8c07bd2adf43a
+		if (data->line[0] && data->line[0] != '\n')
+		{
+			if (!(data->words = shell_split(data->line, ';'))) // tester0
+				//	if (!(data->words = shell_split(tester, ';'))) // tester1
+				ft_error_data_v(data, v);
+			z = -1;
+			while (data->words[++z])
+				if (!ft_pipe(v, data->words[z], data))
+					infinity_loop(&v, data->words[z], data);
+			z = -1;
+			while (data->words[++z])
+				free(data->words[z]);
+			free(data->words);
+		}
 		ft_print_prompt(data, v); // tester0
 	}
 }

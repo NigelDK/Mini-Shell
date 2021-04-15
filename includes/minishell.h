@@ -82,7 +82,7 @@ char			**shell_split(char *s, char c);
 void			ft_memdel(char *ap);
 void			ft_unset(char **words, t_v *v);
 void			ft_unset2(char **words, t_v **v);
-void			lexer(t_v *v, t_ls *data, char *tester);
+void			lexer(t_v *v, t_ls *data, char *tester, t_term t);
 int				ft_pipe(t_v *v, char *line, t_ls *data);
 void			free_fd(int ***fd, int cmd_cnt);
 int				tab_cnt(char **tab2);
@@ -104,5 +104,6 @@ char			*ft_change_nl(char *s1);
 char			**ft_get_w(int *count, int *i, char *yo);
 char			*ft_del_char(char *yo, int p);
 void			ft_putstr(char *s);
+void			main_signal_handler(int signr);
 
 #endif
