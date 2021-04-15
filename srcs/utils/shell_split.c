@@ -71,13 +71,13 @@ static void		ft_freee(char **s, int j)
 
 char			**shell_split(char *s, char c)
 {
-	char	**tab;
+	char	**tab2;
 	int		i;
 	int		j;
 	int		q;
 	int		dq;
 
-	if (!*s || !(tab = malloc(sizeof(char *) * (cmd_cnt(s, c) + 1))))
+	if (!*s || !(tab2 = malloc(sizeof(char *) * (cmd_cnt(s, c) + 1))))
 		return (NULL);
 	while (*s && *s == c)
 		s++;
@@ -85,9 +85,9 @@ char			**shell_split(char *s, char c)
 	while (*s)
 	{
 		i = 0;
-		if (!(tab[j] = malloc(sizeof(char) * (cmd_len(s, c) + 1))))
+		if (!(tab2[j] = malloc(sizeof(char) * (cmd_len(s, c) + 1))))
 		{
-			ft_freee(tab, j);
+			ft_freee(tab2, j);
 			return (NULL);
 		}
 		q = 0;
@@ -98,13 +98,13 @@ char			**shell_split(char *s, char c)
 				(q == 0 && dq == 0) ? (q = 1) : (q = 0);
 			if (*s == '"')
 				(dq == 0 && q == 0) ? (dq = 1) : (dq = 0);
-			tab[j][i++] = *s++;
+			tab2[j][i++] = *s++;
 		}
-		tab[j][i] = '\0';
+		tab2[j][i] = '\0';
 		while (*s && *s == c)
 			s++;
 		j++;
 	}
-	tab[j] = 0;
-	return (tab);
+	tab2[j] = 0;
+	return (tab2);
 }

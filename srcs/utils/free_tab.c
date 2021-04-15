@@ -12,12 +12,12 @@
 
 #include "../../includes/minishell.h"
 
-void	free_tab(char ***tab)
+void	free_tab(char ***tab2)
 {
 	int	i;
 
 	i = -1;
-	while (tab[0][++i])
-		free(tab[0][i]);
-	free(tab[0]);
+	while (tab2[0][++i])
+		free(tab2[0][i]);
+	free(tab2[0]);
 }

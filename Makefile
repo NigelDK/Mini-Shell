@@ -24,6 +24,7 @@ SRCS = srcs/main.c \
 	srcs/utils/free_tab.c \
 	srcs/utils/ft_pipe_utils.c \
 	srcs/utils/tab_cnt.c \
+	srcs/termcap/print_termcap.c \
 		get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c \
 		libft/ft_lstsize.c \

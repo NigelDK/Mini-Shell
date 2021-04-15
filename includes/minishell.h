@@ -25,6 +25,24 @@
 # include <string.h>
 # include <errno.h>
 # include <signal.h>
+# include <sys/ioctl.h>
+# include <term.h>
+# include <termios.h>
+
+typedef struct s_term
+{
+	struct termios	term;
+	char		*yo;
+	int		count;
+	char		**w;
+	int		i;
+	int		success;
+	int		l;
+	int		mark;
+	int		n;
+	int		a;
+	int		b;
+}			t_term;
 
 typedef struct s_pipe
 {
@@ -67,7 +85,7 @@ void			ft_unset2(char **words, t_v **v);
 void			lexer(t_v *v, t_ls *data, char *tester);
 int				ft_pipe(t_v *v, char *line, t_ls *data);
 void			free_fd(int ***fd, int cmd_cnt);
-int				tab_cnt(char **tab);
+int				tab_cnt(char **tab2);
 void			close_fd(int **fd, int cmd_cnt);
 void			infinity_loop(t_v **v, char *line, t_ls *data);
 void			ft_exit(char **words, t_v **v, char *temp);
@@ -75,10 +93,16 @@ void			ft_error_v(t_v *v);
 void			ft_error_data_v_2(t_ls *data, t_v **v);
 void			ft_error_syscall(t_ls *data, t_v **v, char **path, char *temp);
 void			ft_error_data_v_child(t_ls *data, t_v **v);
-void			free_tab(char ***tab);
+void			free_tab(char ***tab2);
 int				redir_out(t_v **v, char *line, t_ls *data);
 int				redir_in(t_v **v, char *line, t_ls *data);
 void			handler(int signr);
 void    		cmd_substitution(t_ls *data, t_v **v);
+int			ft_print(t_term *t, char *str);
+int			ft_putchar(int c);
+char			*ft_change_nl(char *s1);
+char			**ft_get_w(int *count, int *i, char *yo);
+char			*ft_del_char(char *yo, int p);
+void			ft_putstr(char *s);
 
 #endif

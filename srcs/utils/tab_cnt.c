@@ -12,12 +12,12 @@
 
 #include "../../includes/minishell.h"
 
-int		tab_cnt(char **tab)
+int		tab_cnt(char **tab2)
 {
 	int	i;
 
 	i = 0;
-	while (tab[i])
+	while (tab2[i])
 		i++;
 	return (i);
 }

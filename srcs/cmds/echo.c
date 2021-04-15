@@ -90,13 +90,15 @@ void	ft_echo(t_ls *data, char **words, char *line, t_v *v)
 		i = 1;
 	mark = 0;
 	c = ft_strlen(line);
-	if ((words[o] && words[o][0] == '$' && words[o][1]) ||
+	if (!v)
+		return ;
+/*	if ((words[o] && words[o][0] == '$' && words[o][1]) ||
 	(words[o] && words[o][0] == '"' && line[c - 1] == '"'))
 		ft_echo_3(words, line, c, v);
 	else if (words[o] && (words[o][0] == '"' || line[c - 1] == '"'))
 		mark = ft_echo_2(line, c, ret, line2);
 	else
-	{
+	{*/
 		while (words[++i])
 		{
 			if (!words[i + 1])
@@ -104,7 +106,7 @@ void	ft_echo(t_ls *data, char **words, char *line, t_v *v)
 			else
 				printf("%s ", words[i]);
 		}
-	}
+//	}
 	data->n_c = 0;
 	if (o == 2)
 	{

@@ -54,6 +54,7 @@ void			infinity_loop(t_v **v, char *line, t_ls *data)
 {
 	int		i;
 
+	line = ft_change_nl(line);
 	data->temp = ft_strstr_reverse((*v)->str, "=");
 	if (check_for_redir(v, line, data))
 		return ;
