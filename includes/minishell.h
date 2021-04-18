@@ -104,7 +104,6 @@ int				ft_print(t_term *t, char *str);
 int				ft_putchar(int c);
 char			*ft_change_nl(char *s1);
 char			**ft_get_w(int *count, int *i, char *yo);
-char			*ft_del_char(char *yo, int p);
 void			ft_putstr(char *s);
 void			main_signal_handler(int signr);
 void			backslash_trim(t_ls *data);

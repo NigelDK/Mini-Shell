@@ -86,7 +86,8 @@ int     ft_print(t_term *t, char *str)
 			tputs(cursor_left, 1, ft_putchar);
 			tputs(tgetstr("dc", NULL), 1, ft_putchar);
 			(t->a)--;
-			t->yo = ft_del_char(t->yo, t->a);
+			temp = ft_substr(t->yo, 0, t->a);
+			t->yo = ft_strjoin2(ft_substr(t->yo, t->a + 1, ft_strlen(t->yo)), temp);
 		}
 	}
 	else
@@ -111,33 +112,6 @@ int     ft_print(t_term *t, char *str)
 		}
 	}
 	return (t->i);
-}
-
-char    *ft_del_char(char *yo, int p)
-{
-	int i;
-	int j;
-	char *s;
-
-	i = 0;
-	if (!yo)
-		return (NULL);
-	while (yo[i])
-		i++;
-	if (!(s = (char *)malloc(sizeof(char) * i)))
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (yo[i])
-	{
-		if (i == p)
-			i++;
-		s[j] = yo[i];
-		j++;
-		i++;
-	}
-	s[j] = '\0';
-	return (s);
 }
 
 char    **ft_get_w(int *count, int *i, char *yo)
