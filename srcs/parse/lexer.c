@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 10:36:18 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/14 11:43:48 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/16 11:22:26 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,25 +59,22 @@ char	*lexer_2(t_term *t, char *str)
 
 void	lexer(t_v *v, t_ls *data, char *tester, t_term t)
 {
-	char		str[100000];
+	char	str[100000];
 	int		z;
 
 	tester = NULL; // tester
 	if (tester != NULL)
 		return ;
-	//	ret = 0; // tester1
-	//	while (ret >= 0) // tester1
+//	ret = 0; // tester1
+//	while (ret >= 0) // tester1
 	while (strcmp(str, "\4"))
 	{
 		data->line = lexer_2(&t, str);
-		//		<<<<<<< HEAD
-		//              ret = -5; //tester1
-		//			=======
-		//			>>>>>>> dcbe629954d74f9f5d1d01b09af8c07bd2adf43a
+//		ret = -5; //tester1
 		if (data->line[0] && data->line[0] != '\n')
 		{
 			if (!(data->words = shell_split(data->line, ';'))) // tester0
-				//	if (!(data->words = shell_split(tester, ';'))) // tester1
+		//	if (!(data->words = shell_split(tester, ';'))) // tester1
 				ft_error_data_v(data, v);
 			z = -1;
 			while (data->words[++z])

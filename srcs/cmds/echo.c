@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:35:51 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/08 20:59:23 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/16 10:03:30 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,25 +71,25 @@ int	ft_echo_3(char **words, char *line, int c, t_v *v)
 	return (mark);
 }
 
-void	ft_echo(t_ls *data, char **words, char *line, t_v *v)
+void	ft_echo(t_ls *data, char **words/*, char *line*/, t_v *v)
 {
 	int i;
 	int o;
-	int c;
+//	int c;
 	int mark;
-	int ret;
-	char *line2;
+//	int ret;
+//	char *line2;
 
 	o = 1;
 	if (ft_strcmp_2(words[1], "-n", 1) == 0)
 		o = 2;
-	ret = 0;
-	line2 = NULL;
+//	ret = 0;
+//	line2 = NULL;
 	i = 0;
 	if (o == 2)
 		i = 1;
 	mark = 0;
-	c = ft_strlen(line);
+//	c = ft_strlen(line);
 	if (!v)
 		return ;
 /*	if ((words[o] && words[o][0] == '$' && words[o][1]) ||

@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/14 11:11:34 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/18 11:10:58 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # include <sys/ioctl.h>
 # include <term.h>
 # include <termios.h>
+# include <termcap.h>
+# include <curses.h>
 
 typedef struct s_term
 {
@@ -70,7 +72,7 @@ int				ft_strcmp_2(const char *s1, const char *s2, int a);
 void			ft_exit_success(char **line, char ***words);
 void			ft_error_data_v(t_ls *data, t_v *v);
 void			ft_error(void);
-void			ft_echo(t_ls * data, char **words, char *line, t_v *v);
+void			ft_echo(t_ls * data, char **words,/* char *line,*/ t_v *v);
 void			ft_pwd(char **words);
 void			ft_print_prompt(t_ls *data, t_v *v);
 void			ft_print_prompt_2(void);
@@ -98,12 +100,15 @@ int				redir_out(t_v **v, char *line, t_ls *data);
 int				redir_in(t_v **v, char *line, t_ls *data);
 void			handler(int signr);
 void    		cmd_substitution(t_ls *data, t_v **v);
-int			ft_print(t_term *t, char *str);
-int			ft_putchar(int c);
+int				ft_print(t_term *t, char *str);
+int				ft_putchar(int c);
 char			*ft_change_nl(char *s1);
 char			**ft_get_w(int *count, int *i, char *yo);
 char			*ft_del_char(char *yo, int p);
 void			ft_putstr(char *s);
 void			main_signal_handler(int signr);
+void			backslash_trim(t_ls *data);
+void			quote_dquote_trim(t_ls *data);
+int				prev_bslash(char *s, int k, int q);
 
 #endif

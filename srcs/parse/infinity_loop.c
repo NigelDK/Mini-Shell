@@ -6,40 +6,11 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 16:23:36 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/09 20:35:31 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/18 11:25:52 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-static void		quote_double_quote(t_ls *data, t_v **v)
-{
-	int		i;
-	char	**tmp;
-
-	i = -1;
-	while (data->words2[++i])
-	{
-		if (data->words2[i][0] == 39 /*|| data->words2[i][0] == '"'*/)
-		{
-			if (data->words2[i][0] == 39)
-			{
-				if (!(tmp = ft_split(data->words2[i], 39)))
-					ft_error_data_v_2(data, v);
-			}
-//			else if (data->words2[i][0] == '"')
-//			{
-//				if (!(tmp = ft_split(data->words2[i], '"')))
-//					ft_error_data_v_2(data, v);
-//				printf("%s: %li\n", data->words2[i], ft_strlen(data->words2[i]));
-//			}
-			free(data->words2[i]);
-			data->words2[i] = tmp[0];
-			free(tmp[1]);
-			free(tmp);
-		}
-	}
-}
 
 static int		check_for_redir(t_v **v, char *line, t_ls *data)
 {
@@ -60,10 +31,10 @@ void			infinity_loop(t_v **v, char *line, t_ls *data)
 		return ;
 	if (!(data->words2 = shell_split(line, ' ')))
 		ft_error_data_v_2(data, v);
-//	cmd_substitution(data, v);
-	quote_double_quote(data, v);
+	quote_dquote_trim(data);
+	backslash_trim(data);
 	if (ft_strcmp_2(data->words2[0], "echo", 1) == 0)
-		ft_echo(data, data->words2, line, *v);
+		ft_echo(data, data->words2,/* line,*/ *v);
 	else if (ft_strcmp_2(data->words2[0], "cd", 1) == 0)
 		data->cd = ft_cd(data->words2, data->cd);
 	else if (ft_strcmp_2(data->words2[0], "pwd", 1) == 0)

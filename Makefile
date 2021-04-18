@@ -24,6 +24,9 @@ SRCS = srcs/main.c \
 	srcs/utils/free_tab.c \
 	srcs/utils/ft_pipe_utils.c \
 	srcs/utils/tab_cnt.c \
+	srcs/utils/quote_dquote_trim.c \
+	srcs/utils/backslash_trim.c \
+	srcs/utils/prev_bslash.c \
 	srcs/termcap/print_termcap.c \
 		get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c \
@@ -84,7 +87,7 @@ all: ${NAME}
 ${NAME}: ${OBJECTS}
 
 	ar rc ${NAME} ${OBJECTS}
-	gcc -g libftminishell.a -ltermcap -o minishell
+	gcc -g libftminishell.a -ltermcap -lncurses -o minishell
 
 clean:
 
