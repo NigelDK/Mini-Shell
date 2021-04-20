@@ -12,6 +12,27 @@
 
 #include "../../includes/minishell.h"
 
+int	ft_putchar(int c)
+{
+	return (write(1, &c, 1));
+}
+
+void	ft_putchar_2(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_putstr(char *s)
+{
+	int i;
+
+	if (!s)
+		return ;
+	i = -1;
+	while (s[++i])
+		write(1, &s[i], 1);
+}
+
 char	*ft_strstr_2(const char *s1, const char *s2)
 {
 	unsigned int i;

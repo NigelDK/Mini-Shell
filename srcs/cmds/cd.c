@@ -12,35 +12,6 @@
 
 #include "../../includes/minishell.h"
 
-int	ft_cd_2(char **words, int cd)
-{
-	if (ft_strcmp_2(words[1], "...", 1) == 0)
-	{
-		chdir("../..");
-		if (cd == 0)
-			return (0);
-	}
-	else if (ft_strcmp_2(words[1], "....", 1) == 0)
-	{
-		chdir("../../..");
-		if (cd == 0)
-			return (0);
-	}
-	else if (ft_strcmp_2(words[1], ".....", 1) == 0)
-	{
-		chdir("../../../..");
-		if (cd == 0)
-			return (0);
-	}
-	else if (ft_strcmp_2(words[1], "......", 1) == 0)
-	{
-		chdir("../../../../..");
-		if (cd == 0)
-			return (0);
-	}
-	return (1);
-}
-
 int	ft_cd(char **words, int cd)
 {
 	int i;
@@ -50,18 +21,14 @@ int	ft_cd(char **words, int cd)
 		i++;
 	if (!words[1] || ft_strcmp_2(words[1], "~", 1) == 0)
 	{
-		chdir("/");
+		chdir(getenv("HOME"));
 		return (0);
 	}
 	else if (i > 3)
 		printf("cd: too many arguments\n");
-	else if (!words[2] && (ft_strcmp_2(words[1], "...", 1) == 0 ||
-	ft_strcmp_2(words[1], "....", 1) == 0 || ft_strcmp_2(words[1], ".....", 1) == 0 ||
-	ft_strcmp_2(words[1], "......", 1) == 0))
-		return (ft_cd_2(words, cd));
 	else if (!words[2] && chdir(words[1]) == -1)
 	{
-		printf("cd: %s: %s\n", strerror(errno), words[1]);
+		printf("cd: %s: %s\n", words[1], strerror(errno));
 		if (cd == 0)
 			return (0);
 	}

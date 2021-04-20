@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/19 14:31:19 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/20 18:39:46 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 # include <termcap.h>
 # include <curses.h>
 
+int g_sigint;
+
 typedef struct s_term
 {
 	struct termios	term;
@@ -54,7 +56,6 @@ typedef struct s_pipe
 
 typedef struct	s_ls
 {
-	int		n_c;
 	int		cd;
 	char	**envp;
 	char	**words;
@@ -72,7 +73,7 @@ int				ft_strcmp_2(const char *s1, const char *s2, int a);
 void			ft_exit_success(char **line, char ***words);
 void			ft_error_data_v(t_ls *data, t_v *v);
 void			ft_error(void);
-void			ft_echo(t_ls * data, char **words,/* char *line,*/ t_v *v);
+void			ft_echo(char **words, t_v *v);
 void			ft_pwd(char **words);
 void			ft_print_prompt(t_ls *data, t_v *v);
 void			ft_print_prompt_2(void);
@@ -110,5 +111,6 @@ void			backslash_trim(t_ls *data);
 void			quote_dquote_trim(t_ls *data);
 int				prev_bslash(char *s, int k, int q);
 void			q_dq_index(char *s, int i, int *q, int *dq);
+void			ft_putchar_2(char c);
 
 #endif

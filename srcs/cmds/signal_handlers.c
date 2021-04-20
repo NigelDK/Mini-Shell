@@ -25,7 +25,13 @@ void	main_signal_handler(int signr)
 {
 	if (signr == SIGINT)
 	{
-		printf("test\n");
+		printf("\n");
 		ft_print_prompt_2();
+		g_sigint = 0;
+	}
+	else if (signr == SIGQUIT)
+	{
+		ft_putstr("haha");
+		exit(1);
 	}
 }
