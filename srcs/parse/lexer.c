@@ -44,7 +44,21 @@ char	*lexer_2(t_term *t, char *str)
 	while (t->mark == 0 || (ft_strcmp_2(str, "\n", 1) && ft_strcmp_2(str, "\4", 1)))
 	{
 		t->l = read(0, str, 100000);
+		if ((int)str[0] == 4) // Ctrl + D
+		{
+			printf("exit\n");
+			exit(1);
+		}
 		str[t->l] = '\0';
+		if (g_sigint == 0)
+		{
+			free(t->yo);
+			t->yo = NULL;
+			g_sigint = 1;
+			t->i = 0;
+                        while (t->w[t->i])
+                                t->i++;
+		}
 		if (t->mark == 0)
 		{
 			free(t->yo);
@@ -67,17 +81,17 @@ void	lexer(t_v *v, t_ls *data, char *tester, t_term t)
 	tester = NULL; // tester
 	if (tester != NULL)
 		return ;
-//	ret = 0; // tester1
-//	while (ret >= 0) // tester1
+	//	ret = 0; // tester1
+	//	while (ret >= 0) // tester1
 	while (ft_strcmp_2(str, "\4", 1) || in == 1)
 	{
 		in = 0;
 		data->line = lexer_2(&t, str);
-//		ret = -5; //tester1
+		//		ret = -5; //tester1
 		if (data->line[0] && data->line[0] != '\n')
 		{
 			if (!(data->words = shell_split(data->line, ';'))) // tester0
-		//	if (!(data->words = shell_split(tester, ';'))) // tester1
+				//	if (!(data->words = shell_split(tester, ';'))) // tester1
 				ft_error_data_v(data, v);
 			z = -1;
 			while (data->words[++z])
@@ -88,6 +102,7 @@ void	lexer(t_v *v, t_ls *data, char *tester, t_term t)
 				free(data->words[z]);
 			free(data->words);
 		}
-		ft_print_prompt(data, v); // tester0
+		if (g_sigint == 1)
+			ft_print_prompt(data, v); // tester0
 	}
 }

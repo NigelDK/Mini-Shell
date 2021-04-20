@@ -31,6 +31,8 @@
 # include <termcap.h>
 # include <curses.h>
 
+int g_sigint;
+
 typedef struct s_term
 {
 	struct termios	term;

@@ -38,8 +38,8 @@ char	*path_variable(t_ls *data, int *j, t_v **v)
 		free(cmd);
 	}
 	free(temp);
-/*	i = -1;
-	while (path[++i])
+	/*	i = -1;
+		while (path[++i])
 		free(path[i]);*/
 	free(path);
 	return (cmd);
@@ -50,6 +50,7 @@ void	sys_call(t_ls *data, t_v **v)
 	pid_t	pid;
 	char	*cmd;
 	int j;
+	char	*temp;
 
 	j = 0;
 	cmd = path_variable(data, &j, v);
@@ -61,7 +62,21 @@ void	sys_call(t_ls *data, t_v **v)
 	if (pid == 0)
 	{
 		if (execve(cmd, data->words2, data->envp) < 0)
-			printf("zsh: command not found: %s\n", data->words2[0]);
+		{
+			if (data->words[0][0] == '$')
+			{
+				while ((*v)->next)
+				{
+					temp = ft_strstr_reverse((*v)->str, "=");
+					if (ft_strcmp_2(data->words2[0], temp, 0) == 0)
+						printf("%s: %s\n", ft_strstr_2((*v)->str, "="), strerror(errno));
+					free(temp);
+					*v = (*v)->next;
+				}
+			}
+			else
+				printf("zsh: command not found: %s\n", data->words2[0]);
+		}
 		if (j == 1)
 			free(cmd);
 		ft_error_data_v_child(data, v);

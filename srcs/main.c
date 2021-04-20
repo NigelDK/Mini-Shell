@@ -46,6 +46,7 @@ void	ft_minishell_init(t_term *t, t_ls *data)
 	signal(SIGINT, main_signal_handler);
 	signal(SIGKILL, main_signal_handler);
 	t->mark = 0;
+	g_sigint = 1;
 	t->w = (char **)malloc(sizeof(char *) * (1));
 	t->w[0] = NULL;
 }
