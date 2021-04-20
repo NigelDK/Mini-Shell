@@ -6,19 +6,11 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 21:35:28 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/19 15:50:26 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/18 14:43:39 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-static void	int_init(int *i, int *j, int *q, int *dq)
-{
-	i[0] = 0;
-	j[0] = -1;
-	q[0] = 0;
-	dq[0] = 0;
-}
 
 static int	in_charset(char c)
 {	
@@ -38,7 +30,10 @@ static int	trim_pad_len(char *s)
 	int	q;
 	int	dq;
 
-	int_init(&i, &j, &q, &dq);
+	i = 0;
+	j = -1;
+	q = 0;
+	dq = 0;
 	while (s[++j])
 	{
 		if (s[j] == 39 && q == 0 && (dq == 1 || prev_bslash(s, j, q)))
@@ -61,14 +56,19 @@ static int	trim_pad_len(char *s)
 static char	*trim_pad_str(char *s)
 {
 	char	*rtn;
+	int		len;
 	int		i;
 	int		j;
 	int		q;
 	int		dq;
 
-	if (!(rtn = malloc(sizeof(char) * (trim_pad_len(s) + 1))))
+	len = trim_pad_len(s);
+	if (!(rtn = malloc(sizeof(char) * (len + 1))))
 		ft_error();
-	int_init(&i, &j, &q, &dq);
+	i = 0;
+	j = -1;
+	q = 0;
+	dq = 0;
 	while (s[++j])
 	{
 		if (s[j] == 39 && (dq == 1 || (q == 0 && prev_bslash(s, j, q))))

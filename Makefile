@@ -27,6 +27,7 @@ SRCS = srcs/main.c \
 	srcs/utils/quote_dquote_trim.c \
 	srcs/utils/backslash_trim.c \
 	srcs/utils/prev_bslash.c \
+	srcs/utils/q_dq_index.c \
 	srcs/termcap/print_termcap.c \
 		get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c \

@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/18 11:10:58 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/19 14:31:19 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,6 @@ void			main_signal_handler(int signr);
 void			backslash_trim(t_ls *data);
 void			quote_dquote_trim(t_ls *data);
 int				prev_bslash(char *s, int k, int q);
+void			q_dq_index(char *s, int i, int *q, int *dq);
 
 #endif
