@@ -41,7 +41,7 @@ int	ft_echo_2(char *line, int c, int ret, char *line2)
 	return (mark);
 }
 
-int	ft_echo_3(char **words, char *line, int c, t_v *v)
+int	ft_echo_3(char **words, t_v *v)
 {
 	char *temp;
 	int mark;
@@ -62,43 +62,26 @@ int	ft_echo_3(char **words, char *line, int c, t_v *v)
 			v = v->next;
 		}
 	}
-	else if (words[i] && words[i][0] == '"' && line[c - 1] == '"')
-	{
-		temp = ft_strstr_reverse(ft_strstr_2(line, "\""), "\"");
-		printf("%s", temp);
-		free(temp);
-	}
 	return (mark);
 }
 
-void	ft_echo(t_ls *data, char **words/*, char *line*/, t_v *v)
+void	ft_echo(char **words, t_v *v)
 {
 	int i;
 	int o;
-//	int c;
 	int mark;
-//	int ret;
-//	char *line2;
 
 	o = 1;
 	if (ft_strcmp_2(words[1], "-n", 1) == 0)
 		o = 2;
-//	ret = 0;
-//	line2 = NULL;
 	i = 0;
 	if (o == 2)
 		i = 1;
 	mark = 0;
-//	c = ft_strlen(line);
-	if (!v)
-		return ;
-/*	if ((words[o] && words[o][0] == '$' && words[o][1]) ||
-	(words[o] && words[o][0] == '"' && line[c - 1] == '"'))
-		ft_echo_3(words, line, c, v);
-	else if (words[o] && (words[o][0] == '"' || line[c - 1] == '"'))
-		mark = ft_echo_2(line, c, ret, line2);
+	if ((words[o] && words[o][0] == '$' && words[o][1]))
+		mark = ft_echo_3(words, v);
 	else
-	{*/
+	{
 		while (words[++i])
 		{
 			if (!words[i + 1])
@@ -106,13 +89,8 @@ void	ft_echo(t_ls *data, char **words/*, char *line*/, t_v *v)
 			else
 				printf("%s ", words[i]);
 		}
-//	}
-	data->n_c = 0;
-	if (o == 2)
-	{
-		data->n_c = 1;
-		return ;
 	}
-	if (!mark)
-		printf("\n");
+	if (o == 2)
+		return ;
+	printf("\n");
 }

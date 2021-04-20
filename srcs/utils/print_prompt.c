@@ -27,11 +27,6 @@ void    ft_print_prompt(t_ls *data, t_v *v)
 	char *buf;
 	char *ptr;
 
-	if (data->n_c == 1)
-	{
-		printf("\033[0;7m%%\033[0m\n");
-		data->n_c = 0;
-	}
 	size = pathconf(".", _PC_PATH_MAX);
 	if (!(buf = (char *)malloc((size_t)size)))
 		ft_error_v(v);
@@ -40,13 +35,16 @@ void    ft_print_prompt(t_ls *data, t_v *v)
 		ft_print_prompt_2();
 	else if (data->cd == 1)
 	{
-		if (ft_strcmp_2(ptr, "/", 1) == 0)
+		if (ft_strcmp_2(ptr, getenv("HOME"), 1) == 0)
 			ft_print_prompt_2();
 		else
 		{
 			printf("😎  ");
 			printf("\033[0;31m");
-			printf("%s ", ft_strstr_rev_2(ptr, "/"));
+			if (ft_strcmp_2(ptr, "/", 1) == 0)
+				printf("/ ");
+			else
+				printf("%s ", ft_strstr_rev_2(ptr, "/"));
 			printf("\033[0m");
 			fflush(stdout);
 		}

@@ -34,7 +34,7 @@ void			infinity_loop(t_v **v, char *line, t_ls *data)
 	quote_dquote_trim(data);
 	backslash_trim(data);
 	if (ft_strcmp_2(data->words2[0], "echo", 1) == 0)
-		ft_echo(data, data->words2,/* line,*/ *v);
+		ft_echo(data->words2, *v);
 	else if (ft_strcmp_2(data->words2[0], "cd", 1) == 0)
 		data->cd = ft_cd(data->words2, data->cd);
 	else if (ft_strcmp_2(data->words2[0], "pwd", 1) == 0)

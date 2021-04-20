@@ -18,11 +18,8 @@ void	ft_pwd(char **words)
 	char *buf;
 	char *ptr;
 
-	if (words[1])
-	{
-		printf("pwd: too many arguments\n");
+	if (!words)
 		return ;
-	}
 	size = pathconf(".", _PC_PATH_MAX);
 	if (!(buf = (char *)malloc((size_t)size)))
 		ft_error();

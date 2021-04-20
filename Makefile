@@ -20,6 +20,7 @@ SRCS = srcs/main.c \
 	srcs/utils/error_free.c \
 	srcs/utils/print_prompt.c \
 	srcs/utils/utils.c \
+	srcs/utils/utils2.c \
 	srcs/utils/shell_split.c \
 	srcs/utils/free_tab.c \
 	srcs/utils/ft_pipe_utils.c \
@@ -28,6 +29,7 @@ SRCS = srcs/main.c \
 	srcs/utils/backslash_trim.c \
 	srcs/utils/prev_bslash.c \
 	srcs/termcap/print_termcap.c \
+	srcs/termcap/termcap_utils.c \
 		get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c \
 		libft/ft_lstsize.c \

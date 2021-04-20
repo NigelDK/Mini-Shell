@@ -33,7 +33,7 @@ void	ft_print_export_2(char **words, int count)
 	i = -1;
 	while (words[++i])
 		if (words[i][0] != '_' || words[i][1] != '=')
-			printf("%s\n", words[i]);
+			printf("declare -x %s\n", words[i]);
 }
 
 void	ft_print_export(t_v *v)

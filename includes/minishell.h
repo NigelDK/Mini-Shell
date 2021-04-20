@@ -54,7 +54,6 @@ typedef struct s_pipe
 
 typedef struct	s_ls
 {
-	int		n_c;
 	int		cd;
 	char	**envp;
 	char	**words;
@@ -72,7 +71,7 @@ int				ft_strcmp_2(const char *s1, const char *s2, int a);
 void			ft_exit_success(char **line, char ***words);
 void			ft_error_data_v(t_ls *data, t_v *v);
 void			ft_error(void);
-void			ft_echo(t_ls * data, char **words,/* char *line,*/ t_v *v);
+void			ft_echo(char **words, t_v *v);
 void			ft_pwd(char **words);
 void			ft_print_prompt(t_ls *data, t_v *v);
 void			ft_print_prompt_2(void);
@@ -109,5 +108,6 @@ void			main_signal_handler(int signr);
 void			backslash_trim(t_ls *data);
 void			quote_dquote_trim(t_ls *data);
 int				prev_bslash(char *s, int k, int q);
+void			ft_putchar_2(char c);
 
 #endif

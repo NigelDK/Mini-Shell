@@ -41,7 +41,7 @@ void	lexer_3(t_term *t)
 char	*lexer_2(t_term *t, char *str)
 {
 	lexer_3(t);
-	while (t->mark == 0 || (strcmp(str, "\n") && strcmp(str, "\4")))
+	while (t->mark == 0 || (ft_strcmp_2(str, "\n", 1) && ft_strcmp_2(str, "\4", 1)))
 	{
 		t->l = read(0, str, 100000);
 		str[t->l] = '\0';
@@ -61,14 +61,17 @@ void	lexer(t_v *v, t_ls *data, char *tester, t_term t)
 {
 	char	str[100000];
 	int		z;
+	int		in;
 
+	in = 1;
 	tester = NULL; // tester
 	if (tester != NULL)
 		return ;
 //	ret = 0; // tester1
 //	while (ret >= 0) // tester1
-	while (strcmp(str, "\4"))
+	while (ft_strcmp_2(str, "\4", 1) || in == 1)
 	{
+		in = 0;
 		data->line = lexer_2(&t, str);
 //		ret = -5; //tester1
 		if (data->line[0] && data->line[0] != '\n')

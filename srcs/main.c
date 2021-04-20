@@ -42,7 +42,6 @@ void	ft_minishell_init(t_term *t, t_ls *data)
 		printf("Could not access the termcap data base.\n");
 	if (t->success == 0)
 		printf("Terminal type `%s' is not defined.\n", getenv("TERM"));
-	data->n_c = 0;
 	data->cd = 0;
 	signal(SIGINT, main_signal_handler);
 	signal(SIGKILL, main_signal_handler);
@@ -64,7 +63,7 @@ int	main(int argc, char **argv, char **envp)
 	//	if (argv[1][0] == '-' && argv[1][1] == 'c') // tester1
 	//		tester = argv[2]; // tester1
 	tester = NULL; // tester
-	chdir("/");
+	chdir(getenv("HOME"));
 	data.envp = envp; 
 	if (!(v = ft_lstnew_2(NULL)))
 		ft_error_v(v);
