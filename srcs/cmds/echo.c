@@ -47,9 +47,7 @@ void	ft_echo(char **words, t_v *v, int statuscode)
 	while (words[++i])
 	{
 		ft_echo_3(words[i], v, statuscode);
-		if (!words[i + 1])
-			printf("");
-		else
+		if (words[i + 1])
 			printf(" ");
 	}
 	if (o == 2)
