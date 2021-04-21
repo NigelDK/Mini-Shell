@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 15:55:22 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/19 15:43:18 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/21 09:55:31 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	redir_out(t_v **v, char *line, t_ls *data)
 			ft_error();
 		close(fd);
 		infinity_loop(v, data->words3[0], data);
-		free_tab(&data->words3);
+//		free_tab(&data->words3);
 		free_tab(&filename);
 		exit (1);
 	}
