@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <sysexits.h>
 #include "../../includes/minishell.h"
 
 char	*path_variable(t_ls *data, int *j, t_v **v)
@@ -26,10 +27,7 @@ char	*path_variable(t_ls *data, int *j, t_v **v)
 	while (path[++i])
 	{
 		if (!(cmd = ft_strjoin2(path[i], temp)))
-		{
-			ft_putstr("haha");
 			ft_error_syscall(data, v, path, temp);
-		}
 		if (lstat(cmd, &info) == 0)
 		{
 			*j = 1;
@@ -38,9 +36,6 @@ char	*path_variable(t_ls *data, int *j, t_v **v)
 		free(cmd);
 	}
 	free(temp);
-	/*	i = -1;
-		while (path[++i])
-		free(path[i]);*/
 	free(path);
 	return (cmd);
 }
@@ -51,6 +46,7 @@ void	sys_call(t_ls *data, t_v **v)
 	char	*cmd;
 	int j;
 	char	*temp;
+	int	wstatus;
 
 	j = 0;
 	cmd = path_variable(data, &j, v);
@@ -63,8 +59,10 @@ void	sys_call(t_ls *data, t_v **v)
 	{
 		if (execve(cmd, data->words2, data->envp) < 0)
 		{
-			if (data->words[0][0] == '$')
+			if (data->words2[0][0] == '$')
 			{
+				if (data->words2[0][1] == '?' && ft_isalpha(data->words2[0][2]) == 0)
+					printf("%s: %d\n", strerror(errno), data->statuscode);
 				while ((*v)->next)
 				{
 					temp = ft_strstr_reverse((*v)->str, "=");
@@ -80,9 +78,14 @@ void	sys_call(t_ls *data, t_v **v)
 		if (j == 1)
 			free(cmd);
 		ft_error_data_v_child(data, v);
-		exit (1);
+		exit (127);
 	}
-	if (j == 1)
-		free(cmd);
-	wait(&pid);
+	else
+	{
+		if (j == 1)
+			free(cmd);
+		waitpid(pid, &wstatus, 0);
+		if (WIFEXITED(wstatus))
+			data->statuscode = WEXITSTATUS(wstatus);
+	}
 }

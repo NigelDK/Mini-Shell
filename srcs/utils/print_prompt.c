@@ -12,6 +12,32 @@
 
 #include "../../includes/minishell.h"
 
+void	ft_print_prompt_3(void)
+{
+	long size;
+	char *buf;
+	char *ptr;
+
+	size = pathconf(".", _PC_PATH_MAX);
+	if (!(buf = (char *)malloc((size_t)size)))
+		ft_error();
+	ptr = getcwd(buf, (size_t)size);
+	if (ft_strcmp_2(ptr, getenv("HOME"), 1) == 0)
+		ft_print_prompt_2();
+	else
+	{
+		printf("😎  ");
+		printf("\033[0;31m");
+		if (ft_strcmp_2(ptr, "/", 1) == 0)
+			printf("/ ");
+		else
+			printf("%s ", ft_strstr_rev_2(ptr, "/"));
+		printf("\033[0m");
+		fflush(stdout);
+	}
+	free(ptr);
+}
+
 void    ft_print_prompt_2(void)
 {
 	printf("😎  ");

@@ -24,7 +24,9 @@ static int		check_for_redir(t_v **v, char *line, t_ls *data)
 void			infinity_loop(t_v **v, char *line, t_ls *data)
 {
 	int		i;
+	int		mark;
 
+	mark = 0;
 	line = ft_change_nl(line);
 	data->temp = ft_strstr_reverse((*v)->str, "=");
 	if (check_for_redir(v, line, data))
@@ -34,7 +36,7 @@ void			infinity_loop(t_v **v, char *line, t_ls *data)
 	quote_dquote_trim(data);
 	backslash_trim(data);
 	if (ft_strcmp_2(data->words2[0], "echo", 1) == 0)
-		ft_echo(data->words2, *v);
+		ft_echo(data->words2, *v, data->statuscode);
 	else if (ft_strcmp_2(data->words2[0], "cd", 1) == 0)
 		data->cd = ft_cd(data->words2, data->cd);
 	else if (ft_strcmp_2(data->words2[0], "pwd", 1) == 0)
@@ -51,7 +53,12 @@ void			infinity_loop(t_v **v, char *line, t_ls *data)
 	else if (ft_strcmp_2(data->words2[0], "exit", 1) == 0)
 		ft_exit(data->words2, v, data->temp);
 	else
+	{
+		mark = 1;
 		sys_call(data, v);
+	}
+	if (mark == 0)
+		data->statuscode = 0;
 	i = -1;
 	while (data->words2[++i])
 		free(data->words2[i]);

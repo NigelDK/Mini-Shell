@@ -46,6 +46,7 @@ typedef struct s_term
 	int		n;
 	int		a;
 	int		b;
+	int		errcode;
 }			t_term;
 
 typedef struct s_pipe
@@ -64,6 +65,7 @@ typedef struct	s_ls
 	char	**words3;
 	char	*temp;
 	char	*line;
+	int	statuscode;
 }				t_ls;
 
 char			*ft_strstr_2(const char *s1, const char *s2);
@@ -73,7 +75,7 @@ int				ft_strcmp_2(const char *s1, const char *s2, int a);
 void			ft_exit_success(char **line, char ***words);
 void			ft_error_data_v(t_ls *data, t_v *v);
 void			ft_error(void);
-void			ft_echo(char **words, t_v *v);
+void			ft_echo(char **words, t_v *v, int statuscode);
 void			ft_pwd(char **words);
 void			ft_print_prompt(t_ls *data, t_v *v);
 void			ft_print_prompt_2(void);
@@ -112,5 +114,6 @@ void			quote_dquote_trim(t_ls *data);
 int				prev_bslash(char *s, int k, int q);
 void			q_dq_index(char *s, int i, int *q, int *dq);
 void			ft_putchar_2(char c);
+void			ft_print_prompt_3(void);
 
 #endif

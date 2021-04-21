@@ -41,6 +41,8 @@ void	lexer_3(t_term *t)
 char	*lexer_2(t_term *t, char *str)
 {
 	lexer_3(t);
+	if (t->errcode == 1)
+		t->errcode = 0;
 	while (t->mark == 0 || (ft_strcmp_2(str, "\n", 1) && ft_strcmp_2(str, "\4", 1)))
 	{
 		t->l = read(0, str, 100000);
@@ -52,6 +54,7 @@ char	*lexer_2(t_term *t, char *str)
 		str[t->l] = '\0';
 		if (g_sigint == 0)
 		{
+			t->errcode = 1;
 			free(t->yo);
 			t->yo = NULL;
 			g_sigint = 1;
@@ -87,6 +90,8 @@ void	lexer(t_v *v, t_ls *data, char *tester, t_term t)
 	{
 		in = 0;
 		data->line = lexer_2(&t, str);
+		if (t.errcode == 1)
+			data->statuscode = 1;
 		//		ret = -5; //tester1
 		if (data->line[0] && data->line[0] != '\n')
 		{
