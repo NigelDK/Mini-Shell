@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 09:32:22 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/14 11:44:01 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/22 16:56:11 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 void	ft_envp(t_v *v, char **envp)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (envp[++i])
 	{
-		if (!(v->str = ft_strdup(envp[i])))
+		v->str = ft_strdup(envp[i]);
+		if (!v->str)
 			ft_error_v(v);
-		if (!(v->next = ft_lstnew_2(NULL)))
+		v->next = ft_lstnew_2(NULL);
+		if (!v->next)
 			ft_error_v(v);
 		v = v->next;
 	}
@@ -54,10 +56,10 @@ void	ft_minishell_init(t_term *t, t_ls *data)
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_v 	*v;
+	char	*tester;
+	t_v		*v;
 	t_ls	data;
 	t_term	t;
-	char	*tester; // tester
 
 	ft_minishell_init(&t, &data);
 	if (!argv)
@@ -66,8 +68,9 @@ int	main(int argc, char **argv, char **envp)
 	//		tester = argv[2]; // tester1
 	tester = NULL; // tester
 	chdir(getenv("HOME"));
-	data.envp = envp; 
-	if (!(v = ft_lstnew_2(NULL)))
+	data.envp = envp;
+	v = ft_lstnew_2(NULL);
+	if (!v)
 		ft_error_v(v);
 	argc = (unsigned int)argc;
 	ft_print_prompt_2();
