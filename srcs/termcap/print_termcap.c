@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_termcap.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: minummin </var/mail/minummin>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/22 14:37:42 by minummin          #+#    #+#             */
+/*   Updated: 2021/04/22 14:45:57 by minummin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/minishell.h"
 
 void	ft_upperarrow(t_term *t)
@@ -66,8 +78,8 @@ void	ft_leftrightarrow(t_term *t, char *str)
 
 void	ft_editline(t_term *t, char *str)
 {
-	char *temp;
-	int c;
+	char	*temp;
+	int		c;
 
 	if ((int)str[0] > 31 || (int)str[0] == 10)
 	{
@@ -84,7 +96,8 @@ void	ft_editline(t_term *t, char *str)
 			temp = ft_substr(t->yo, t->a, ft_strlen(t->yo));
 			tputs(str, 1, ft_putchar);
 			tputs(temp, 1, ft_putchar);
-			t->yo = ft_strjoin2(ft_change_nl(ft_strjoin2(ft_substr(t->yo, 0, t->a), str)), temp);
+			t->yo = ft_strjoin2(ft_change_nl(ft_strjoin2(ft_substr(t->yo,
+								0, t->a), str)), temp);
 			while (--c > 0)
 				tputs(cursor_left, 1, ft_putchar);
 			(t->a)++;
@@ -92,9 +105,9 @@ void	ft_editline(t_term *t, char *str)
 	}
 }
 
-int     ft_print(t_term *t, char *str)
+int	ft_print(t_term *t, char *str)
 {
-	char *temp;
+	char	*temp;
 
 	if (!ft_strcmp_2(str, "\e[A", 1))
 		ft_upperarrow(t);
@@ -110,7 +123,8 @@ int     ft_print(t_term *t, char *str)
 			tputs(tgetstr("dc", NULL), 1, ft_putchar);
 			(t->a)--;
 			temp = ft_substr(t->yo, 0, t->a);
-			t->yo = ft_strjoin2(ft_substr(t->yo, t->a + 1, ft_strlen(t->yo)), temp);
+			t->yo = ft_strjoin2(ft_substr(t->yo,
+						t->a + 1, ft_strlen(t->yo)), temp);
 		}
 	}
 	else
