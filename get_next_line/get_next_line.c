@@ -6,7 +6,7 @@
 /*   By: minummin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 16:59:14 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/03 14:43:21 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/22 15:42:16 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_strlen(char *s)
 {
-	int i;
+	int	i;
 
 	if (!s)
 		return (0);
@@ -50,14 +50,15 @@ static void	*ft_memmove(void *dst, void *src, size_t len)
 static char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	if (!s1 && !s2)
 		return (NULL);
 	i = ft_strlen(s1);
 	j = ft_strlen(s2);
-	if (!(str = (char *)malloc(sizeof(char) * (i + j + 1))))
+	str = (char *)malloc(sizeof(char) * (i + j + 1));
+	if (!str)
 		return (NULL);
 	ft_memmove(str, s1, i);
 	ft_memmove(str + i, s2, j);
@@ -68,7 +69,7 @@ static char	*ft_strjoin(char *s1, char *s2)
 
 static char	*ft_strchr(const char *s, int c)
 {
-	char *str;
+	char	*str;
 
 	if (!s)
 		return (NULL);
@@ -84,7 +85,7 @@ static char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static char	*str;
 	char		buff[33];
@@ -95,18 +96,19 @@ int		get_next_line(int fd, char **line)
 	ret = 1;
 	while (ret > 0 && !ft_strchr(str, '\n'))
 	{
-		if ((ret = read(fd, buff, 32)) == -1)
+		ret = read(fd, buff, 32);
+		if (ret == -1)
 			return (ft_free(&str));
 		buff[ret] = '\0';
-		if (!(str = ft_strjoin(str, buff)))
+		str = ft_strjoin(str, buff);
+		if (!str)
 			return (ft_free(&str));
 	}
-	if (!(*line = ft_get_line(str)))
+	*line = ft_get_line(str);
+	if (*line == NULL)
 		return (ft_free(&str));
-	if (!(str = ft_get_rest(str)))
-	{
-		free(*line);
+	str = ft_get_rest(str);
+	if (!str)
 		return (ft_free(&str));
-	}
 	return (ft_return(&str, ret));
 }
