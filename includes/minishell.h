@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/20 18:39:46 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/22 15:03:02 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,23 @@
 # include <termcap.h>
 # include <curses.h>
 
-int g_sigint;
+int	g_sigint;
 
 typedef struct s_term
 {
 	struct termios	term;
-	char		*yo;
-	int		count;
-	char		**w;
-	int		i;
-	int		success;
-	int		l;
-	int		mark;
-	int		n;
-	int		a;
-	int		b;
-	int		errcode;
-}			t_term;
+	char			*yo;
+	int				count;
+	char			**w;
+	int				i;
+	int				success;
+	int				l;
+	int				mark;
+	int				n;
+	int				a;
+	int				b;
+	int				errcode;
+}					t_term;
 
 typedef struct s_pipe
 {
@@ -55,7 +55,7 @@ typedef struct s_pipe
 	int	*pid;
 }		t_pipe;
 
-typedef struct	s_ls
+typedef struct s_ls
 {
 	int		cd;
 	char	**envp;
@@ -65,8 +65,8 @@ typedef struct	s_ls
 	char	**words3;
 	char	*temp;
 	char	*line;
-	int	statuscode;
-}				t_ls;
+	int		statuscode;
+}			t_ls;
 
 char			*ft_strstr_2(const char *s1, const char *s2);
 char			*ft_strjoin2(char *s1, char *s2);
@@ -81,7 +81,7 @@ void			ft_print_prompt(t_ls *data, t_v *v);
 void			ft_print_prompt_2(void);
 void			ft_export(char **words, t_v *v);
 int				ft_cd(char **words, int cd);
-void 			ft_env(char **words, t_v *v);
+void			ft_env(char **words, t_v *v);
 void			sys_call(t_ls *data, t_v **v);
 char			**shell_split(char *s, char c);
 void			ft_memdel(char *ap);
@@ -102,7 +102,7 @@ void			free_tab(char ***tab2);
 int				redir_out(t_v **v, char *line, t_ls *data);
 int				redir_in(t_v **v, char *line, t_ls *data);
 void			handler(int signr);
-void    		cmd_substitution(t_ls *data, t_v **v);
+void			cmd_substitution(t_ls *data, t_v **v);
 int				ft_print(t_term *t, char *str);
 int				ft_putchar(int c);
 char			*ft_change_nl(char *s1);
