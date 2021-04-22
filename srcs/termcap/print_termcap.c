@@ -69,21 +69,14 @@ void	ft_editline(t_term *t, char *str)
 	char *temp;
 	int c;
 
-	if (t->b == 0)
+	if ((int)str[0] > 31 || (int)str[0] == 10)
 	{
-		tputs(str, 1, ft_putchar);
-		t->yo = ft_strjoin2(t->yo, str);
-		t->b = 0;
-		(t->a)++;
-		if ((int)str[0] >= 0 && (int)str[0] <= 31)
-			(t->a)--;
-	}
-	else
-	{
-		if ((int)str[0] < 32)
+		if (t->b == 0)
 		{
 			tputs(str, 1, ft_putchar);
 			t->yo = ft_strjoin2(t->yo, str);
+			t->b = 0;
+			(t->a)++;
 		}
 		else
 		{
