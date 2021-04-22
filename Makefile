@@ -29,6 +29,7 @@ SRCS = srcs/main.c \
 	srcs/utils/backslash_trim.c \
 	srcs/utils/prev_bslash.c \
 	srcs/utils/q_dq_index.c \
+	srcs/utils/redir_out_utils.c \
 	srcs/termcap/print_termcap.c \
 	srcs/termcap/termcap_utils.c \
 		get_next_line/get_next_line.c \

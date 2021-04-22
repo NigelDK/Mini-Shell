@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/22 17:34:38 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/22 17:48:50 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int				prev_bslash(char *s, int k, int q);
 void			q_dq_index(char *s, int i, int *q, int *dq);
 void			ft_putchar_2(char c);
 void			ft_print_prompt_3(void);
-int				redir_at_start(char *s);
-int				too_many_redir(char *s);
+int				redir_out_at_start(char *s);
+int				too_many_redir_out(char *s);
 
 #endif

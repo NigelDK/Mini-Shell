@@ -6,13 +6,13 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 17:32:33 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/22 17:32:55 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/22 17:46:19 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	too_many_redir(char *s)
+int	too_many_redir_out(char *s)
 {
 	int	i;
 	
@@ -37,7 +37,7 @@ int	too_many_redir(char *s)
 	return (0);
 }
 
-int	redir_at_start(char *s)
+int	redir_out_at_start(char *s)
 {
 	int	i;
 
