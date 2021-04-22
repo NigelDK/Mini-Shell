@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 18:22:33 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/22 17:29:28 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/22 22:01:14 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ char	*path_variable(t_ls *data, int *j, t_v **v)
 		}
 		free(cmd);
 	}
-	free(temp);
 	free(path);
+	if (*j == 0)
+		return (temp);
+	free(temp);
 	return (cmd);
 }
 
