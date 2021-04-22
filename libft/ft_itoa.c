@@ -6,7 +6,7 @@
 /*   By: minummin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 09:51:57 by minummin          #+#    #+#             */
-/*   Updated: 2020/10/06 09:51:27 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/22 16:19:13 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static int	ft_words(int n)
 char	*ft_itoa(int n)
 {
 	char	*word;
-	int	i;
-	int	count;
+	int		i;
+	int		count;
 
 	if (n == 0)
 		return (ft_strdup("0"));

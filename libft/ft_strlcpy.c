@@ -6,13 +6,13 @@
 /*   By: minummin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 10:24:01 by minummin          #+#    #+#             */
-/*   Updated: 2020/10/06 09:03:01 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/22 16:22:31 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
 
