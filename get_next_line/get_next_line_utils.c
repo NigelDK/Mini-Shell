@@ -6,7 +6,7 @@
 /*   By: minummin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 17:01:05 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/03 14:44:03 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/22 15:43:35 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,15 @@
 char	*ft_get_line(char *s)
 {
 	char	*str;
-	int	len;
+	int		len;
 
 	len = 0;
 	if (!s)
 		return (NULL);
 	while (s[len] && s[len] != '\n')
 		len++;
-	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
 		return (NULL);
 	str[len] = '\0';
 	while (--len >= 0)
@@ -32,7 +33,7 @@ char	*ft_get_line(char *s)
 
 static int	ft_strlen(char *s)
 {
-	int i;
+	int	i;
 
 	if (!s)
 		return (0);
@@ -45,14 +46,15 @@ static int	ft_strlen(char *s)
 char	*ft_get_rest(char *s)
 {
 	char	*str;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
 	while (s[i] && s[i] != '\n')
 		i++;
-	if (!(str = (char *)malloc(sizeof(char) * ((ft_strlen(s) - i) + 1))))
+	str = (char *)malloc(sizeof(char) * ((ft_strlen(s) - i) + 1));
+	if (!str)
 		return (NULL);
 	i++;
 	while (s[i])
