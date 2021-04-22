@@ -40,6 +40,9 @@ void	lexer_3(t_term *t)
 
 char	*lexer_2(t_term *t, char *str)
 {
+	int mark;
+
+	mark = 0;
 	lexer_3(t);
 	if (t->errcode == 1)
 		t->errcode = 0;

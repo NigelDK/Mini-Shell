@@ -31,7 +31,7 @@ void	main_signal_handler(int signr)
 	}
 	else if (signr == SIGQUIT)
 	{
-		ft_putstr("haha");
-		exit(1);
+		printf("Quit: %d\n", signr);
+		ft_print_prompt_3();
 	}
 }

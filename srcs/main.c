@@ -44,7 +44,7 @@ void	ft_minishell_init(t_term *t, t_ls *data)
 		printf("Terminal type `%s' is not defined.\n", getenv("TERM"));
 	data->cd = 0;
 	signal(SIGINT, main_signal_handler);
-	signal(SIGKILL, main_signal_handler);
+	signal(SIGQUIT, main_signal_handler);
 	t->mark = 0;
 	g_sigint = 1;
 	data->statuscode = 0;

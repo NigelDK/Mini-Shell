@@ -75,17 +75,27 @@ void	ft_editline(t_term *t, char *str)
 		t->yo = ft_strjoin2(t->yo, str);
 		t->b = 0;
 		(t->a)++;
+		if ((int)str[0] >= 0 && (int)str[0] <= 31)
+			(t->a)--;
 	}
 	else
 	{
-		c = ft_strlen(t->yo) - t->a + 1;
-		temp = ft_substr(t->yo, t->a, ft_strlen(t->yo));
-		tputs(str, 1, ft_putchar);
-		tputs(temp, 1, ft_putchar);
-		t->yo = ft_strjoin2(ft_change_nl(ft_strjoin2(ft_substr(t->yo, 0, t->a), str)), temp);
-		while (--c > 0)
-			tputs(cursor_left, 1, ft_putchar);
-		(t->a)++;
+		if ((int)str[0] < 32)
+		{
+			tputs(str, 1, ft_putchar);
+			t->yo = ft_strjoin2(t->yo, str);
+		}
+		else
+		{
+			c = ft_strlen(t->yo) - t->a + 1;
+			temp = ft_substr(t->yo, t->a, ft_strlen(t->yo));
+			tputs(str, 1, ft_putchar);
+			tputs(temp, 1, ft_putchar);
+			t->yo = ft_strjoin2(ft_change_nl(ft_strjoin2(ft_substr(t->yo, 0, t->a), str)), temp);
+			while (--c > 0)
+				tputs(cursor_left, 1, ft_putchar);
+			(t->a)++;
+		}
 	}
 }
 
