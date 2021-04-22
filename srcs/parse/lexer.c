@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 10:36:18 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/16 11:22:26 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/22 21:37:30 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	lexer(t_v *v, t_ls *data, char *tester, t_term t)
 		return ;
 	//	ret = 0; // tester1
 	//	while (ret >= 0) // tester1
+	str[0] = '\0';
 	while (ft_strcmp_2(str, "\4", 1) || in == 1)
 	{
 		in = 0;

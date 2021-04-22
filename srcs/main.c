@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 09:32:22 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/22 16:58:14 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/22 21:38:44 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	ft_minishell_init(t_term *t, t_ls *data)
 	data->statuscode = 0;
 	t->w = (char **)malloc(sizeof(char *) * (1));
 	t->w[0] = NULL;
+	t->errcode = 0;
 }
 
 int	main(int argc, char **argv, char **envp)

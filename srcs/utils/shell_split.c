@@ -6,11 +6,17 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 15:53:02 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/19 18:21:46 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/22 20:02:02 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+static void init_int(int *i, int *j)
+{
+	i[0] = 0;
+	j[0] = 0;
+}
 
 static int		cmd_cnt(char *s, char c)
 {
@@ -28,10 +34,6 @@ static int		cmd_cnt(char *s, char c)
 		while (s[k] && (s[k] != c || (s[k] == c && (q == 1 || dq == 1)) ||
 		(s[k] == c && q == 0 && prev_bslash(s, k, q))))
 		{
-//			if (s[k] == 39 && !prev_bslash(s, k, q))
-//				(q == 0 && dq == 0) ? (q = 1) : (q = 0);
-//			if (s[k] == '"' && !prev_bslash(s, k, q))
-//				(dq == 0 && q == 0) ? (dq = 1) : (dq = 0);
 			q_dq_index(s, k, &q, &dq);
 			k++;
 		}
@@ -54,10 +56,6 @@ static int		cmd_len(char *s, char c, int k)
 	while (s[k] && (s[k] != c || (s[k] == c && (q == 1 || dq == 1)) ||
 	(s[k] == c && q == 0 && prev_bslash(s, k, q))))
 	{
-//		if (s[k] == 39)
-//			(q == 0 && dq == 0) ? (q = 1) : (q = 0);
-//		if (s[k] == '"')
-//			(dq == 0 && q == 0) ? (dq = 1) : (dq = 0);
 		q_dq_index(s, k, &q, &dq);
 		k++;
 		i++;
@@ -88,8 +86,9 @@ char			**shell_split(char *s, char c)
 		return (NULL);
 	while (*s && *s == c)
 		s++;
-	j = 0;
-	k = 0;
+	init_int(&j, &k);
+//	j = 0;
+//	k = 0;
 	while (s[k])
 	{
 		i = 0;
@@ -98,24 +97,18 @@ char			**shell_split(char *s, char c)
 			ft_freee(tab2, j);
 			return (NULL);
 		}
-		q = 0;
-		dq = 0;
+		init_int(&q, &dq);
+//		q = 0;
+//		dq = 0;
 		while (s[k] && (s[k] != c || (s[k] == c && (q == 1 || dq == 1)) ||
 		(s[k] == c && q == 0 && prev_bslash(s, k, q))))
 		{
-//			if (s[k] == 39)
-//				(q == 0 && dq == 0) ? (q = 1) : (q = 0);
-//			if (s[k] == '"')
-//				(dq == 0 && q == 0) ? (dq = 1) : (dq = 0);
-			tab2[j][i] = s[k];
-			q_dq_index(s, k, &q, &dq);
-			i++;
-			k++;
+			tab2[j][i++] = s[k];
+			q_dq_index(s, k++, &q, &dq);
 		}
-		tab2[j][i] = '\0';
+		tab2[j++][i] = '\0';
 		while (s[k] && s[k] == c)
 			k++;
-		j++;
 	}
 	tab2[j] = 0;
 	return (tab2);
