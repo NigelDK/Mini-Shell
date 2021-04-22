@@ -31,7 +31,6 @@ void	main_signal_handler(int signr)
 	}
 	else if (signr == SIGQUIT)
 	{
-		printf("Quit: %d\n", signr);
-		ft_print_prompt_3();
+	//	ft_print_prompt_3();
 	}
 }
