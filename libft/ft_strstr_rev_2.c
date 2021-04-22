@@ -14,8 +14,8 @@
 
 char	*ft_strstr_rev_2(const char *s1, const char *s2)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	if (*s2 == 0 || s2 == 0)
 		return ((char *)s1);

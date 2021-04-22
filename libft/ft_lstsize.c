@@ -14,7 +14,7 @@
 
 int	ft_lstsize_2(t_v *lst)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (lst)

@@ -14,7 +14,7 @@
 
 static int	ft_check(char c, char const *set)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (set[++i])
@@ -25,7 +25,7 @@ static int	ft_check(char c, char const *set)
 
 static char	*ft_yee(char const *s1, char *str, int len, int i)
 {
-	int k;
+	int	k;
 
 	k = 0;
 	while (len > k)
@@ -38,7 +38,7 @@ static char	*ft_yee(char const *s1, char *str, int len, int i)
 	return (str);
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
 	int		i;
@@ -56,7 +56,8 @@ char		*ft_strtrim(char const *s1, char const *set)
 	if (j == 0)
 		j = i;
 	len = j - i + 1;
-	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
 		return (NULL);
 	return (ft_yee(s1, str, len, i));
 }

@@ -14,7 +14,7 @@
 
 static int	ft_words(int n)
 {
-	int count;
+	int	count;
 
 	count = 1;
 	if (n < 0)
@@ -30,30 +30,30 @@ static int	ft_words(int n)
 	return (count);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
-	char    *word;
-	int     i;
-	int     count;
+	char	*word;
+	int	i;
+	int	count;
 
 	if (n == 0)
 		return (ft_strdup("0"));
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
 	count = ft_words(n);
-	if (!(word = malloc(sizeof(char) * count + 1)))
+	word = malloc(sizeof(char) * count + 1);
+	if (!word)
 		return (NULL);
 	if (n < 0)
 	{
 		word[0] = '-';
 		n = n * -1;
 	}
-	i = count - 1;
+	i = count;
 	while (n > 0)
 	{
-		word[i] = n % 10 + '0';
+		word[--i] = n % 10 + '0';
 		n = n / 10;
-		i--;
 	}
 	word[count] = '\0';
 	return (word);

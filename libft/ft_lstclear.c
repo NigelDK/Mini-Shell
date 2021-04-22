@@ -14,7 +14,7 @@
 
 void	ft_lstclear_2(t_v **lst, void (*del)(char *))
 {
-	t_v *temp;
+	t_v	*temp;
 
 	if (!(*lst))
 		return ;

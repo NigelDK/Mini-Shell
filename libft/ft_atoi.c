@@ -14,7 +14,7 @@
 
 static long	ft_check(const char *str, int mark, int i)
 {
-	long res;
+	long	res;
 
 	res = 0;
 	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
@@ -29,11 +29,11 @@ static long	ft_check(const char *str, int mark, int i)
 	return (res);
 }
 
-int			ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int i;
-	int res;
-	int mark;
+	int	i;
+	int	res;
+	int	mark;
 
 	if (!str)
 		return (0);
