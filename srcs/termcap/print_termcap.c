@@ -108,6 +108,7 @@ void	ft_editline(t_term *t, char *str)
 int	ft_print(t_term *t, char *str)
 {
 	char	*temp;
+	char	*temp2;
 
 	if (!ft_strcmp_2(str, "\e[A", 1))
 		ft_upperarrow(t);
@@ -123,7 +124,10 @@ int	ft_print(t_term *t, char *str)
 			tputs(tgetstr("dc", NULL), 1, ft_putchar);
 			(t->a)--;
 			temp = ft_substr(t->yo, 0, t->a);
-			t->yo = ft_strjoin2(temp, ft_substr(t->yo, t->a + 1, ft_strlen(t->yo)));
+			temp2 = ft_substr(t->yo, t->a + 1, ft_strlen(t->yo));
+			free(t->yo);
+			t->yo = ft_strjoin2(temp, temp2);
+			free(temp2);
 		}
 	}
 	else
