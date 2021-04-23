@@ -66,6 +66,9 @@ typedef struct s_ls
 	char	*temp;
 	char	*line;
 	int		statuscode;
+	char	*lol;
+	char	*tmp_begin;
+	int		i;
 }			t_ls;
 
 typedef struct s_it
