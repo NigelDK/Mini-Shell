@@ -6,7 +6,7 @@
 /*   By: minummin </var/mail/minummin>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 17:33:17 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/22 17:37:10 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/23 19:11:38 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strisnum(char *s)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (s[++i])
@@ -23,19 +23,9 @@ int	ft_strisnum(char *s)
 	return (1);
 }
 
-void	ft_exit(char **words, t_v **v, char *temp)
+void	ft_exit_2(char **words, int i)
 {
-	int i;
-
-/*	if (words[1] && words[2])
-	{
-		printf("exit: too many arguments\n");
-		return ;
-	}*/
-	i = -1;
-	free(temp);
-	ft_lstclear_2(v, ft_memdel);
-	if (words[1]  && ft_strisnum(words[1]) == 0)
+	if (words[1] && ft_strisnum(words[1]) == 0)
 	{
 		printf("exit: %s: numeric argument required\n", words[1]);
 		while (words[++i])
@@ -59,4 +49,19 @@ void	ft_exit(char **words, t_v **v, char *temp)
 		free(words);
 		exit(0);
 	}
+}
+
+void	ft_exit(char **words, t_v **v, char *temp)
+{
+	int	i;
+
+	/*	if (words[1] && words[2])
+		{
+		printf("exit: too many arguments\n");
+		return ;
+		}*/
+	i = -1;
+	free(temp);
+	ft_lstclear_2(v, ft_memdel);
+	ft_exit_2(words, i);
 }

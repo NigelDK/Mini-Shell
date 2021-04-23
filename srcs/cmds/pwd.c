@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:37:29 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/08 20:59:06 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/23 19:01:09 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 void	ft_pwd(char **words)
 {
-	long size;
-	char *buf;
-	char *ptr;
+	long	size;
+	char	*buf;
+	char	*ptr;
 
 	if (!words)
 		return ;
 	size = pathconf(".", _PC_PATH_MAX);
-	if (!(buf = (char *)malloc((size_t)size)))
+	buf = (char *)malloc((size_t)size);
+	if (!buf)
 		ft_error();
 	ptr = getcwd(buf, (size_t)size);
 	printf("%s\n", ptr);
