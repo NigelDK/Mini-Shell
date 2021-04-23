@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 16:23:36 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/23 22:13:00 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/23 22:36:34 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_builtins(t_ls *data, t_v **v, int mark)
 	else if (ft_strcmp_2(data->words2[0], "env", 1) == 0)
 		ft_env(data->words2, *v);
 	else if (ft_strcmp_2(data->words2[0], "unset", 1) == 0
-			&& ft_strcmp_2(data->words2[1], data->temp, 1) == 0)
+		&& ft_strcmp_2(data->words2[1], data->temp, 1) == 0)
 		ft_unset2(data->words2, v);
 	else if (ft_strcmp_2(data->words2[0], "unset", 1) == 0)
 		ft_unset(data->words2, *v);
