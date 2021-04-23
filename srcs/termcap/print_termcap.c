@@ -123,8 +123,7 @@ int	ft_print(t_term *t, char *str)
 			tputs(tgetstr("dc", NULL), 1, ft_putchar);
 			(t->a)--;
 			temp = ft_substr(t->yo, 0, t->a);
-			t->yo = ft_strjoin2(ft_substr(t->yo,
-						t->a + 1, ft_strlen(t->yo)), temp);
+			t->yo = ft_strjoin2(temp, ft_substr(t->yo, t->a + 1, ft_strlen(t->yo)));
 		}
 	}
 	else

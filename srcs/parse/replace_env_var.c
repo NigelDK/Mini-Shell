@@ -49,10 +49,13 @@ char	*ft_replace(char *word, t_v *v, int j)
 		v = v->next;
 	}
 	tmp_end = ft_substr(word, j, ft_strlen(word));
+	word = ft_strjoin2(tmp_begin, tmp_middle);
+	word = ft_strjoin2(word, tmp_end);
 //	printf("tmp_begin = %s\n", tmp_begin);
 //	printf("tmp_middle = %s\n", tmp_middle);
 //	printf("tmp_end = %s\n", tmp_end);
-	return (ft_strjoin2(ft_strjoin2(tmp_begin, tmp_middle), tmp_end));
+	return (word);
+//	return (ft_strjoin2(ft_strjoin2(tmp_begin, tmp_middle), tmp_end));
 }
 
 void	replace_env_var(t_ls *data, t_v *v)
@@ -77,6 +80,7 @@ void	replace_env_var(t_ls *data, t_v *v)
 			{
 				tmp = ft_replace(data->words2[i], v, j);
 				free(data->words2[i]);
+				data->words2[i] = NULL;
 				data->words2[i] = tmp;
 		//		printf("tmp = %s\n", tmp);
 		//		printf("words = %s\n", data->words2[i]);
