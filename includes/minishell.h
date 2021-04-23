@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/22 17:48:50 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/23 12:41:26 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int				ft_strcmp_2(const char *s1, const char *s2, int a);
 void			ft_exit_success(char **line, char ***words);
 void			ft_error_data_v(t_ls *data, t_v *v);
 void			ft_error(void);
-void			ft_echo(char **words, t_v *v, int statuscode);
+void			ft_echo(char **words/*, t_v *v, int statuscode*/);
 void			ft_pwd(char **words);
 void			ft_print_prompt(t_ls *data, t_v *v);
 void			ft_print_prompt_2(void);

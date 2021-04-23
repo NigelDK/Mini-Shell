@@ -6,13 +6,13 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 15:53:02 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/22 20:02:02 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/23 11:55:28 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static void init_int(int *i, int *j)
+static void init_zero(int *i, int *j)
 {
 	i[0] = 0;
 	j[0] = 0;
@@ -86,9 +86,7 @@ char			**shell_split(char *s, char c)
 		return (NULL);
 	while (*s && *s == c)
 		s++;
-	init_int(&j, &k);
-//	j = 0;
-//	k = 0;
+	init_zero(&j, &k);
 	while (s[k])
 	{
 		i = 0;
@@ -97,9 +95,7 @@ char			**shell_split(char *s, char c)
 			ft_freee(tab2, j);
 			return (NULL);
 		}
-		init_int(&q, &dq);
-//		q = 0;
-//		dq = 0;
+		init_zero(&q, &dq);
 		while (s[k] && (s[k] != c || (s[k] == c && (q == 1 || dq == 1)) ||
 		(s[k] == c && q == 0 && prev_bslash(s, k, q))))
 		{

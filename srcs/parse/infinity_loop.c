@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 16:23:36 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/22 18:55:27 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/23 12:56:29 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void			infinity_loop(t_v **v, char *line, t_ls *data)
 	quote_dquote_trim(data);
 	backslash_trim(data);
 	if (ft_strcmp_2(data->words2[0], "echo", 1) == 0)
-		ft_echo(data->words2, *v, data->statuscode);
+		ft_echo(data->words2/*, *v, data->statuscode*/);
 	else if (ft_strcmp_2(data->words2[0], "cd", 1) == 0)
 		data->cd = ft_cd(data->words2, data->cd);
 	else if (ft_strcmp_2(data->words2[0], "pwd", 1) == 0)

@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 18:22:33 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/22 22:01:14 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/23 12:41:57 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ void	child_call_exit(t_ls *data, t_v **v, char *cmd, int j)
 
 void	child_call(t_ls *data, t_v **v, char *cmd, int j)
 {
-	char	*temp;
+//	char	*temp;
 
 	if (execve(cmd, data->words2, data->envp) < 0)
 	{
-		if (data->words2[0][0] == '$')
+/*		if (data->words2[0][0] == '$')
 		{
 			if (data->words2[0][1]
 					== '?' && ft_isalpha(data->words2[0][2]) == 0)
@@ -71,7 +71,7 @@ void	child_call(t_ls *data, t_v **v, char *cmd, int j)
 				*v = (*v)->next;
 			}
 		}
-		else
+		else*/
 			printf("zsh: command not found: %s\n", data->words2[0]);
 	}
 	child_call_exit(data, v, cmd, j);

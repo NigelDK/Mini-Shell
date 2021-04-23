@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 19:00:00 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/22 21:30:12 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/23 12:58:26 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,25 +64,25 @@ void	replace_env_var(t_ls *data, t_v *v)
 	char *tmp;
 
 	i = -1;
-	q = 0;
-	dq = 0;
 	if (!v)
 		return ;
 	while (data->words2[++i])
 	{
 		j = -1;
+		q = 0;
+		dq = 0;
 		while (data->words2[i][++j])
 		{
-			if (data->words2[i][j] == '$')
+			if (data->words2[i][j] == '$' && q == 0 && !prev_bslash(data->words2[i], j, q))
 			{
-				tmp = ft_strdup(ft_replace(data->words2[i], v, j));
+				tmp = ft_replace(data->words2[i], v, j);
 				free(data->words2[i]);
 				data->words2[i] = tmp;
 		//		printf("tmp = %s\n", tmp);
 		//		printf("words = %s\n", data->words2[i]);
-				//				q_dq_index(data->words2[i], j, &q, &dq)
 				break ;
 			}
+			q_dq_index(data->words2[i], j, &q, &dq);
 		}
 	}
 }
