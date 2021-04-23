@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 18:22:33 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/23 12:41:57 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/23 17:59:57 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,6 @@ char	*path_variable(t_ls *data, int *j, t_v **v)
 	return (cmd);
 }
 
-void	child_call_exit(t_ls *data, t_v **v, char *cmd, int j)
-{
-	if (j == 1)
-		free(cmd);
-	ft_error_data_v_child(data, v);
-	exit(127);
-}
-
 void	child_call(t_ls *data, t_v **v, char *cmd, int j)
 {
 //	char	*temp;
@@ -72,9 +64,12 @@ void	child_call(t_ls *data, t_v **v, char *cmd, int j)
 			}
 		}
 		else*/
-			printf("zsh: command not found: %s\n", data->words2[0]);
+		printf("zsh: command not found: %s\n", data->words2[0]);
 	}
-	child_call_exit(data, v, cmd, j);
+	if (j == 1)
+		free(cmd);
+	ft_error_data_v_child(data, v);
+	exit(127);
 }
 
 void	sys_call(t_ls *data, t_v **v)

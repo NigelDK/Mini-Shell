@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:35:51 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/23 12:41:37 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/23 17:51:36 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	ft_echo_3(char *words, t_v *v, int statuscode)
 
 void	ft_echo(char **words/*, t_v *v, int statuscode*/)
 {
-	int i;
-	int o;
+	int	i;
+	int	o;
 
 	o = 1;
 	if (ft_strcmp_2(words[1], "-n", 1) == 0)

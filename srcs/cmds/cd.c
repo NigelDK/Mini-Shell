@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:35:38 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/08 20:59:27 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/23 17:42:31 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_cd(char **words, int cd)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (words[i])

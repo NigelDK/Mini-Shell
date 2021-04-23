@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:36:33 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/08 20:59:10 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/23 17:48:34 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_print_export_2(char **words, int count)
 {
-	int i;
-	int j;
-	char *str;
+	int		i;
+	int		j;
+	char	*str;
 
 	i = -1;
 	while (++i < count - 2)
@@ -38,13 +38,14 @@ void	ft_print_export_2(char **words, int count)
 
 void	ft_print_export(t_v *v)
 {
-	char **words;
-	int i;
-	int count;
+	char	**words;
+	int		i;
+	int		count;
 
 	i = 0;
 	count = ft_lstsize_2(v);
-	if (!(words = (char **)malloc(sizeof(char *) * count)))
+	words = (char **)malloc(sizeof(char *) * count);
+	if (!words)
 		ft_error();
 	while (v)
 	{
@@ -63,9 +64,11 @@ void	ft_create_env(t_v *v, char *str)
 {
 	while (v->next)
 		v = v->next;
-	if (!(v->str = ft_strdup(str)))
+	v->str = ft_strdup(str);
+	if (v->str == NULL)
 		ft_error();
-	if (!(v->next = ft_lstnew_2(NULL)))
+	v->next = ft_lstnew_2(NULL);
+	if (v->next == NULL)
 		ft_error();
 }
 
