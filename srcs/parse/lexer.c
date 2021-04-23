@@ -12,68 +12,6 @@
 
 #include "../../includes/minishell.h"
 
-void	lexer_3(t_term *t)
-{
-	if (t->yo && t->yo[0] != '\n')
-	{
-		if (t->w)
-			free(t->w);
-		t->w = ft_get_w(&t->count, &t->i, t->yo);
-	}
-	else
-	{
-		if (t->i != 0)
-		{
-			t->i = 0;
-			while (t->w[t->i])
-				t->i++;
-			t->i--;
-		}
-	}
-	t->n = t->i;
-	t->mark = 0;
-	t->a = 0;
-	t->b = 0;
-	tputs(save_cursor, 1, ft_putchar);
-	tputs(tgetstr("ce", NULL), 1, ft_putchar);
-}
-
-char	*lexer_2(t_term *t, char *str)
-{
-	lexer_3(t);
-	if (t->errcode == 1)
-		t->errcode = 0;
-	while (t->mark == 0 || (ft_strcmp_2(str, "\n", 1) && ft_strcmp_2(str, "\4", 1)))
-	{
-		t->l = read(0, str, 100000);
-		if ((int)str[0] == 4) // Ctrl + D
-		{
-			printf("exit\n");
-			exit(1);
-		}
-		str[t->l] = '\0';
-		if (g_sigint == 0)
-		{
-			t->errcode = 1;
-			free(t->yo);
-			t->yo = NULL;
-			g_sigint = 1;
-			t->i = 0;
-                        while (t->w[t->i])
-                                t->i++;
-		}
-		if (t->mark == 0)
-		{
-			free(t->yo);
-			t->yo = NULL;
-		}
-		t->i = ft_print(t, str);
-		t->mark = 1;
-	}
-	t->mark = 0;
-	return (t->yo);
-}
-
 void	lexer(t_v *v, t_ls *data, char *tester, t_term t)
 {
 	char	str[100000];
@@ -90,7 +28,7 @@ void	lexer(t_v *v, t_ls *data, char *tester, t_term t)
 	while (ft_strcmp_2(str, "\4", 1) || in == 1)
 	{
 		in = 0;
-		data->line = lexer_2(&t, str);
+		data->line = ft_get_string(&t, str);
 		if (t.errcode == 1)
 			data->statuscode = 1;
 		//		ret = -5; //tester1

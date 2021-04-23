@@ -107,9 +107,6 @@ void	ft_editline(t_term *t, char *str)
 
 int	ft_print(t_term *t, char *str)
 {
-	char	*temp;
-	char	*temp2;
-
 	if (!ft_strcmp_2(str, "\e[A", 1))
 		ft_upperarrow(t);
 	else if (!ft_strcmp_2(str, "\e[B", 1))
@@ -117,19 +114,7 @@ int	ft_print(t_term *t, char *str)
 	else if (!ft_strcmp_2(str, "\e[C", 1) || !ft_strcmp_2(str, "\e[D", 1))
 		ft_leftrightarrow(t, str);
 	else if ((int)str[0] == 127)
-	{
-		if (t->a > 0)
-		{
-			tputs(cursor_left, 1, ft_putchar);
-			tputs(tgetstr("dc", NULL), 1, ft_putchar);
-			(t->a)--;
-			temp = ft_substr(t->yo, 0, t->a);
-			temp2 = ft_substr(t->yo, t->a + 1, ft_strlen(t->yo));
-			free(t->yo);
-			t->yo = ft_strjoin2(temp, temp2);
-			free(temp2);
-		}
-	}
+		ft_backspace(t);
 	else
 		ft_editline(t, str);
 	return (t->i);
