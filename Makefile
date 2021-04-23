@@ -18,6 +18,7 @@ SRCS = srcs/main.c \
 	srcs/parse/redir_in.c \
 	srcs/parse/replace_env_var.c \
 	srcs/utils/error_free.c \
+	srcs/utils/error_free_2.c \
 	srcs/utils/print_prompt.c \
 	srcs/utils/utils.c \
 	srcs/utils/utils2.c \

@@ -6,7 +6,7 @@
 /*   By: minummin </var/mail/minummin>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 14:46:14 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/22 14:46:56 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/23 19:35:18 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_get_history(t_term *t)
 char	*ft_get_string_2(t_term *t, char *str)
 {
 	t->l = read(0, str, 100000);
-	if ((int)str[0] == 4) // Ctrl + D
+	if ((int)str[0] == 4)
 	{
 		printf("exit\n");
 		exit(1);
@@ -72,18 +72,17 @@ char	*ft_get_string(t_term *t, char *str)
 	ft_get_history(t);
 	if (t->errcode == 1)
 		t->errcode = 0;
-	while (t->mark == 0 || (ft_strcmp_2(str, "\n", 1) && ft_strcmp_2(str, "\4", 1)))
-	{
+	while (t->mark == 0 || (ft_strcmp_2(str, "\n", 1)
+			&& ft_strcmp_2(str, "\4", 1)))
 		str = ft_get_string_2(t, str);
-	}
 	t->mark = 0;
 	return (t->yo);
 }
 
 void	ft_backspace(t_term *t)
 {
-	char *temp;
-	char *temp2;
+	char	*temp;
+	char	*temp2;
 
 	if (t->a > 0)
 	{
