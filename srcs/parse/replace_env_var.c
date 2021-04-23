@@ -12,6 +12,18 @@
 
 #include "../../includes/minishell.h"
 
+int	check_spechar(char c)
+{
+	if (c == '?' || c == '.' || c == ',' || c == '@' || c == '%'
+	|| c == '/' || c == '=' || c == '+' || c == '^' || c == '~'
+	|| c == '*' || c == '-' || c == ':' || c == '\0')
+		return (1);
+	else if (c == '|')
+		return (4);
+	else 
+		return (0);
+}
+
 char	*ft_replace(char *word, t_v *v, int j)
 {
 	char *tmp_begin;
@@ -21,18 +33,14 @@ char	*ft_replace(char *word, t_v *v, int j)
 	char *lol;
 	int i;
 	int n;
+	int res;
 
 	i = 0;
 	lol = ft_strdup(word);
-	n = j;
-	if (!v)
-		return (NULL);
+	n = j + 1;
 	tmp_begin = ft_substr(word, 0, j);
-	while (n >= 0)
-	{
+	while (--n >= 0)
 		lol++;
-		n--;
-	}
 	if (ft_isalpha(word[++j]) == 1)
 	{
 		i++;
@@ -49,13 +57,21 @@ char	*ft_replace(char *word, t_v *v, int j)
 		v = v->next;
 	}
 	tmp_end = ft_substr(word, j, ft_strlen(word));
-	word = ft_strjoin2(tmp_begin, tmp_middle);
-	word = ft_strjoin2(word, tmp_end);
-//	printf("tmp_begin = %s\n", tmp_begin);
-//	printf("tmp_middle = %s\n", tmp_middle);
-//	printf("tmp_end = %s\n", tmp_end);
-	return (word);
-//	return (ft_strjoin2(ft_strjoin2(tmp_begin, tmp_middle), tmp_end));
+	res = check_spechar(tmp_end[0]);
+	if (res == 1)
+	{
+		word = ft_strjoin2(tmp_begin, tmp_middle);
+		word = ft_strjoin2(word, tmp_end);
+		free(tmp_end);
+		return (word);
+	}
+	else if (res == 4)
+	{
+		tmp_end++;
+		return (tmp_end);
+	}
+	else
+		return (tmp_end);
 }
 
 void	replace_env_var(t_ls *data, t_v *v)
@@ -67,8 +83,6 @@ void	replace_env_var(t_ls *data, t_v *v)
 	char *tmp;
 
 	i = -1;
-	if (!v)
-		return ;
 	while (data->words2[++i])
 	{
 		j = -1;
@@ -82,9 +96,7 @@ void	replace_env_var(t_ls *data, t_v *v)
 				free(data->words2[i]);
 				data->words2[i] = NULL;
 				data->words2[i] = tmp;
-		//		printf("tmp = %s\n", tmp);
-		//		printf("words = %s\n", data->words2[i]);
-				break ;
+				j = 0;
 			}
 			q_dq_index(data->words2[i], j, &q, &dq);
 		}
