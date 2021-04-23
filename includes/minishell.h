@@ -87,7 +87,7 @@ int				ft_strcmp_2(const char *s1, const char *s2, int a);
 void			ft_exit_success(char **line, char ***words);
 void			ft_error_data_v(t_ls *data, t_v *v);
 void			ft_error(void);
-void			ft_echo(char **words/*, t_v *v, int statuscode*/);
+void			ft_echo(char **words);
 void			ft_pwd(char **words);
 void			ft_print_prompt(t_ls *data, t_v *v);
 void			ft_print_prompt_2(void);
@@ -132,5 +132,7 @@ int				too_many_redir_out(char *s);
 void			replace_env_var(t_ls *data, t_v *v);
 void			ft_backspace(t_term *t);
 char			*ft_get_string(t_term *t, char *str);
+void			ft_envp(t_v *v, char **envp);
+void			ft_minishell_init(t_term *t, t_ls *data);
 
 #endif

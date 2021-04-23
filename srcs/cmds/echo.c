@@ -11,29 +11,8 @@
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-/*
-void	ft_echo_3(char *words, t_v *v, int statuscode)
-{
-	char *temp;
 
-	if (words[0] == '$')
-	{
-		if (words[1] == '?' && ft_isalpha(words[2]) == 0)
-			printf("%d", statuscode);
-		while (v->next)
-		{
-			temp = ft_strstr_reverse(v->str, "=");
-			if (ft_strcmp_2(words, temp, 0) == 0)
-				printf("%s", ft_strstr_2(v->str, "="));
-			free(temp);
-			v = v->next;
-		}
-	}
-	else
-		printf("%s", words);
-}*/
-
-void	ft_echo(char **words/*, t_v *v, int statuscode*/)
+void	ft_echo(char **words)
 {
 	int	i;
 	int	o;
@@ -46,7 +25,6 @@ void	ft_echo(char **words/*, t_v *v, int statuscode*/)
 		i = 1;
 	while (words[++i])
 	{
-//		ft_echo_3(words[i], v, statuscode);
 		printf("%s", words[i]);
 		if (words[i + 1])
 			printf(" ");
