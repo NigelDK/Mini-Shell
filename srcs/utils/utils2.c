@@ -12,6 +12,18 @@
 
 #include "../../includes/minishell.h"
 
+int	check_spechar(char c)
+{
+	if (c == '?' || c == '.' || c == ',' || c == '@' || c == '%'
+		|| c == '/' || c == '=' || c == '+' || c == '^' || c == '~'
+		|| c == '*' || c == '-' || c == ':' || c == '\0' || c == '$')
+		return (1);
+	else if (c == '|')
+		return (4);
+	else
+		return (0);
+}
+
 void	ft_envp(t_v *v, char **envp)
 {
 	int	i;

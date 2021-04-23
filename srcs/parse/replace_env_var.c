@@ -12,18 +12,6 @@
 
 #include "../../includes/minishell.h"
 
-int	check_spechar(char c)
-{
-	if (c == '?' || c == '.' || c == ',' || c == '@' || c == '%'
-		|| c == '/' || c == '=' || c == '+' || c == '^' || c == '~'
-		|| c == '*' || c == '-' || c == ':' || c == '\0' || c == '$')
-		return (1);
-	else if (c == '|')
-		return (4);
-	else
-		return (0);
-}
-
 char	*ft_replace_3(char *tmp_end, char *lol,
 		char *tmp_middle, char *tmp_begin)
 {
@@ -93,13 +81,23 @@ char	*ft_replace(char *word, t_v *v, int j, t_ls *data)
 	return (ft_replace_2(word, v, j, data));
 }
 
+int	change_variable(t_ls *data, t_v *v, int j, int i)
+{
+	char	*tmp;
+
+	tmp = ft_replace(data->words2[i], v, j, data);
+	free(data->words2[i]);
+	data->words2[i] = NULL;
+	data->words2[i] = tmp;
+	return (0);
+}
+
 void	replace_env_var(t_ls *data, t_v *v)
 {
 	int		i;
 	int		j;
 	int		q;
 	int		dq;
-	char	*tmp;
 
 	i = -1;
 	while (data->words2[++i])
@@ -110,16 +108,8 @@ void	replace_env_var(t_ls *data, t_v *v)
 		while (data->words2[i][++j])
 		{
 			if (data->words2[i][j] == '$' && q == 0)
-			{
 				if (!prev_bslash(data->words2[i], j, q))
-				{
-					tmp = ft_replace(data->words2[i], v, j, data);
-					free(data->words2[i]);
-					data->words2[i] = NULL;
-					data->words2[i] = tmp;
-					j = 0;
-				}
-			}
+					j = change_variable(data, v, j, i);
 			q_dq_index(data->words2[i], j, &q, &dq);
 		}
 	}
