@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:36:55 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/08 21:02:26 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/23 22:07:10 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,15 @@
 char	*ft_strjoin2(char *s1, char *s2)
 {
 	char	*str;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	if (!s1 && !s2)
 		return (NULL);
 	i = ft_strlen(s1);
 	j = ft_strlen(s2);
-	if (!(str = (char *)malloc(sizeof(char) * (i + j + 1))))
+	str = (char *)malloc(sizeof(char) * (i + j + 1));
+	if (!str)
 		return (NULL);
 	ft_memmove(str, s1, i);
 	ft_memmove(str + i, s2, j);
@@ -33,39 +34,54 @@ char	*ft_strjoin2(char *s1, char *s2)
 
 char	*ft_get_line_2(char *s)
 {
-	char    *str;
-	int     i;
-	int	j;
+	char	*str;
+	int		i;
+	int		j;
 
 	i = 0;
 	if (!s)
 		return (NULL);
 	while (s[i] && s[i] != '\n')
 		i++;
-	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
+	str = (char *)malloc(sizeof(char) * (i + 1));
+	if (!str)
 		return (NULL);
-	i = 0;
+	i = -1;
 	j = 0;
-	while (s[i] && s[i] != '\n')
+	while (s[++i] && s[i] != '\n')
 	{
 		if (s[i] != '"')
 		{
 			str[j] = s[i];
 			j++;
-			i++;
 		}
-		else
-			i++;
 	}
 	str[j] = '\0';
 	return (str);
+}
+
+int	ft_getline_2(char *str, char ***line)
+{
+	if (ft_strchr(str, '"'))
+	{
+		**line = ft_get_line_2(str);
+		if (**line == NULL)
+			return (ft_free(&str));
+		free(str);
+		return (2);
+	}
+	**line = ft_get_line(str);
+	if (**line == NULL)
+		return (ft_free(&str));
+	free(str);
+	return (1);
 }
 
 int	ft_getline(char **line)
 {
 	char	*str;
 	char	buff[33];
-	int	ret;
+	int		ret;
 
 	str = NULL;
 	if (!line)
@@ -73,21 +89,13 @@ int	ft_getline(char **line)
 	ret = 1;
 	while (ret > 0 && !ft_strchr(str, '\n'))
 	{
-		if ((ret = read(0, buff, 32)) == -1)
+		ret = read(0, buff, 32);
+		if (ret == -1)
 			return (ft_free(&str));
 		buff[ret] = '\0';
-		if (!(str = ft_strjoin2(str, buff)))
+		str = ft_strjoin2(str, buff);
+		if (!str)
 			return (ft_free(&str));
 	}
-	if (ft_strchr(str, '"'))
-	{
-		if (!(*line = ft_get_line_2(str)))
-			return (ft_free(&str));
-		free(str);
-		return (2);
-	}
-	if (!(*line = ft_get_line(str)))
-		return (ft_free(&str));
-	free(str);
-	return (1);
+	return (ft_getline_2(str, &line));
 }
