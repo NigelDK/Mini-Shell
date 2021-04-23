@@ -18,7 +18,7 @@ char	*ft_strstr_reverse(const char *s1, const char *s2)
 	unsigned int	j;
 
 	i = 0;
-	if (*s2 == 0 || s2 == 0)
+	if (*s2 == 0 || s2 == 0 || !s1)
 		return ((char *)s1);
 	while (s1[i])
 	{

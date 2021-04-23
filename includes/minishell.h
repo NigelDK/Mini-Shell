@@ -117,5 +117,6 @@ void			ft_putchar_2(char c);
 void			ft_print_prompt_3(void);
 int				redir_out_at_start(char *s);
 int				too_many_redir_out(char *s);
+void			replace_env_var(t_ls *data, t_v *v);
 
 #endif
