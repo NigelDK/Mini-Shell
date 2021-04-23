@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 15:53:02 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/23 11:55:28 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/23 14:38:52 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,39 +73,45 @@ static void		ft_freee(char **s, int j)
 	}
 }
 
+static char		**fill_tab(char *s, char c, char **tab2)
+{
+	t_it	i;
+	
+	init_zero(&i.j, &i.k);
+	while (s[i.k])
+	{
+		i.i = 0;
+		if (!(tab2[i.j] = malloc(sizeof(char) * (cmd_len(s, c, i.k) + 1))))
+		{
+			ft_freee(tab2, i.j);
+			tab2 = NULL;
+			return (tab2);
+		}
+		init_zero(&i.q, &i.dq);
+		while (s[i.k] && (s[i.k] != c || (s[i.k] == c && (i.q == 1 || i.dq ==
+			1)) || (s[i.k] == c && i.q == 0 && prev_bslash(s, i.k, i.q))))
+		{
+			tab2[i.j][i.i++] = s[i.k];
+			q_dq_index(s, i.k++, &i.q, &i.dq);
+		}
+		tab2[i.j++][i.i] = '\0';
+		while (s[i.k] && s[i.k] == c)
+			i.k++;
+	}
+	tab2[i.j] = 0;
+	return (tab2);
+}
+
 char			**shell_split(char *s, char c)
 {
 	char	**tab2;
-	int		i;
-	int		j;
-	int		k;
-	int		q;
-	int		dq;
 
 	if (!*s || !(tab2 = malloc(sizeof(char *) * (cmd_cnt(s, c) + 1))))
 		return (NULL);
 	while (*s && *s == c)
 		s++;
-	init_zero(&j, &k);
-	while (s[k])
-	{
-		i = 0;
-		if (!(tab2[j] = malloc(sizeof(char) * (cmd_len(s, c, k) + 1))))
-		{
-			ft_freee(tab2, j);
-			return (NULL);
-		}
-		init_zero(&q, &dq);
-		while (s[k] && (s[k] != c || (s[k] == c && (q == 1 || dq == 1)) ||
-		(s[k] == c && q == 0 && prev_bslash(s, k, q))))
-		{
-			tab2[j][i++] = s[k];
-			q_dq_index(s, k++, &q, &dq);
-		}
-		tab2[j++][i] = '\0';
-		while (s[k] && s[k] == c)
-			k++;
-	}
-	tab2[j] = 0;
+	tab2 = fill_tab(s, c, tab2);
+	if (tab2 == NULL)
+		return (NULL);
 	return (tab2);
 }

@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/23 12:41:26 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/23 14:35:23 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,15 @@ typedef struct s_ls
 	char	*line;
 	int		statuscode;
 }			t_ls;
+
+typedef struct s_it
+{
+	int	i;
+	int	j;
+	int	k;
+	int	q;
+	int	dq;
+}			t_it;
 
 char			*ft_strstr_2(const char *s1, const char *s2);
 char			*ft_strjoin2(char *s1, char *s2);
