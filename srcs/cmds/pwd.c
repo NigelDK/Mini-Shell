@@ -14,17 +14,16 @@
 
 void	ft_pwd(char **words)
 {
-	long	size;
 	char	*buf;
 	char	*ptr;
 
 	if (!words)
 		return ;
-	size = pathconf(".", _PC_PATH_MAX);
-	buf = (char *)malloc((size_t)size);
+	buf = (char *)malloc(sizeof(char) * 1025);
 	if (!buf)
 		ft_error();
-	ptr = getcwd(buf, (size_t)size);
-	printf("%s\n", ptr);
+	ft_bzero(buf, 1025);
+	ptr = getcwd(buf, 1025);
+	printf("%s\n", buf);
 	free(ptr);
 }

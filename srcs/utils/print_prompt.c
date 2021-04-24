@@ -70,7 +70,7 @@ void	ft_print_prompt(t_ls *data, t_v *v)
 	char	*ptr;
 
 	ptr = ft_prompt_2(v);
-	if (data->cd == 0)
+	if (data->cd == 0 || data->cd == 2)
 		ft_print_prompt_2(data->statuscode);
 	else if (data->cd == 1)
 	{

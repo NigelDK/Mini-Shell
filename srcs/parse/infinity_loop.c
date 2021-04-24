@@ -26,20 +26,20 @@ int	ft_builtins(t_ls *data, t_v **v, int mark)
 	if (ft_strcmp_2(data->words2[0], "echo", 1) == 0)
 		ft_echo(data->words2);
 	else if (ft_strcmp_2(data->words2[0], "cd", 1) == 0)
-		data->cd = ft_cd(data->words2, data->cd);
+		data->cd = ft_cd(data->words2, data->cd, data);
 	else if (ft_strcmp_2(data->words2[0], "pwd", 1) == 0)
 		ft_pwd(data->words2);
 	else if (ft_strcmp_2(data->words2[0], "export", 1) == 0)
 		ft_export(data->words2, *v);
 	else if (ft_strcmp_2(data->words2[0], "env", 1) == 0)
-		ft_env(data->words2, *v);
+		ft_env(data->words2, *v, data);
 	else if (ft_strcmp_2(data->words2[0], "unset", 1) == 0
 		&& ft_strcmp_2(data->words2[1], data->temp, 1) == 0)
 		ft_unset2(data->words2, v);
 	else if (ft_strcmp_2(data->words2[0], "unset", 1) == 0)
 		ft_unset(data->words2, *v);
 	else if (ft_strcmp_2(data->words2[0], "exit", 1) == 0)
-		ft_exit(data->words2, v, data->temp);
+		ft_exit(data->words2, v, data->temp, data);
 	else
 	{
 		mark = 1;
@@ -65,8 +65,10 @@ void	infinity_loop(t_v **v, char *line, t_ls *data)
 	quote_dquote_trim(data);
 	backslash_trim(data);
 	mark = ft_builtins(data, v, mark);
-	if (mark == 0)
+	if (mark == 0 && data->statuscode != 500)
 		data->statuscode = 0;
+	if (data->statuscode == 500)
+		data->statuscode = 127;
 	i = -1;
 	while (data->words2[++i])
 		free(data->words2[i]);

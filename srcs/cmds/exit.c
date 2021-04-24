@@ -25,21 +25,24 @@ int	ft_strisnum(char *s)
 
 void	ft_exit_2(char **words, int i)
 {
+	int	tmp;
+
 	if (words[1] && ft_strisnum(words[1]) == 0)
 	{
-		printf("exit: %s: numeric argument required\n", words[1]);
+		printf("exit\nexit: %s: numeric argument required\n", words[1]);
 		while (words[++i])
 			free(words[i]);
 		free(words);
-		exit(255);
+		exit(128);
 	}
 	else if (words[1] && !words[2])
 	{
+		tmp = ft_atoi(words[1]);
 		printf("exit\n");
-		exit(ft_atoi(words[1]));
 		while (words[++i])
 			free(words[i]);
 		free(words);
+		exit(tmp);
 	}
 	else
 	{
@@ -51,15 +54,16 @@ void	ft_exit_2(char **words, int i)
 	}
 }
 
-void	ft_exit(char **words, t_v **v, char *temp)
+void	ft_exit(char **words, t_v **v, char *temp, t_ls *data)
 {
 	int	i;
 
-	/*	if (words[1] && words[2])
-		{
-		printf("exit: too many arguments\n");
+	if (words[1] && words[2] && ft_strisnum(words[1]) == 1)
+	{
+		data->statuscode = 500;
+		printf("exit\nexit: too many arguments\n");
 		return ;
-		}*/
+	}
 	i = -1;
 	free(temp);
 	ft_lstclear_2(v, ft_memdel);

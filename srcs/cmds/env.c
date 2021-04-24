@@ -32,7 +32,7 @@ void	ft_print_env(t_v *v)
 	}
 }
 
-void	ft_env(char **words, t_v *v)
+void	ft_env(char **words, t_v *v, t_ls *data)
 {
 	if (words[1] == NULL)
 	{
@@ -40,5 +40,8 @@ void	ft_env(char **words, t_v *v)
 		ft_print_env_2(v);
 	}	
 	else
-		ft_error();
+	{
+		printf("env: %s: No such file or directory\n", words[1]);
+		data->statuscode = 500;
+	}
 }
