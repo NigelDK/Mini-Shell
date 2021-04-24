@@ -27,17 +27,11 @@ void	ft_exit_2(char **words, int i)
 {
 	int	tmp;
 
-	if (words[1] && ft_strisnum(words[1]) == 0)
-	{
-		printf("exit\nexit: %s: numeric argument required\n", words[1]);
-		while (words[++i])
-			free(words[i]);
-		free(words);
-		exit(128);
-	}
-	else if (words[1] && !words[2])
+	if (words[1] && !words[2])
 	{
 		tmp = ft_atoi(words[1]);
+		if (tmp > 255)
+			tmp = tmp % 256;
 		printf("exit\n");
 		while (words[++i])
 			free(words[i]);
@@ -67,5 +61,13 @@ void	ft_exit(char **words, t_v **v, char *temp, t_ls *data)
 	i = -1;
 	free(temp);
 	ft_lstclear_2(v, ft_memdel);
+	if (words[1] && ft_strisnum(words[1]) == 0)
+	{
+		printf("exit\nexit: %s: numeric argument required\n", words[1]);
+		while (words[++i])
+			free(words[i]);
+		free(words);
+		exit(128);
+	}
 	ft_exit_2(words, i);
 }
