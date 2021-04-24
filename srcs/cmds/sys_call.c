@@ -44,7 +44,7 @@ char	*path_variable(t_ls *data, int *j, t_v **v)
 void	child_call(t_ls *data, t_v **v, char *cmd, int j)
 {
 	if (execve(cmd, data->words2, data->envp) < 0)
-		printf("zsh: command not found: %s\n", data->words2[0]);
+		printf("%s: command not found\n", data->words2[0]);
 	if (j == 1)
 		free(cmd);
 	ft_error_data_v_child(data, v);
