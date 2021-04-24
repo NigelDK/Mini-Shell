@@ -31,7 +31,7 @@ int	main(int argc, char **argv, char **envp)
 	if (!v)
 		ft_error_v(v);
 	argc = (unsigned int)argc;
-	ft_print_prompt_2();
+	ft_print_prompt_2(data.statuscode);
 	ft_envp(v, envp);
 	lexer(v, &data, tester, t);
 	return (0);

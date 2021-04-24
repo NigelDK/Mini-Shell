@@ -12,23 +12,26 @@
 
 #include "../../includes/minishell.h"
 
-void	ft_print_prompt_3(void)
+void	ft_print_prompt_3(int statuscode)
 {
 	long	size;
 	char	*buf;
 	char	*ptr;
 
+	statuscode = 1;
 	size = pathconf(".", _PC_PATH_MAX);
 	buf = (char *)malloc((size_t)size);
 	if (!buf)
 		ft_error();
 	ptr = getcwd(buf, (size_t)size);
 	if (ft_strcmp_2(ptr, getenv("HOME"), 1) == 0)
-		ft_print_prompt_2();
+		ft_print_prompt_2(statuscode);
 	else
 	{
-		printf("😎  ");
-		printf("\033[0;31m");
+		if (statuscode == 0)
+			printf("😎  \033[0;32m");
+		else
+			printf("😡  \033[0;31m");
 		if (ft_strcmp_2(ptr, "/", 1) == 0)
 			printf("/ ");
 		else
@@ -39,10 +42,12 @@ void	ft_print_prompt_3(void)
 	free(ptr);
 }
 
-void	ft_print_prompt_2(void)
+void	ft_print_prompt_2(int statuscode)
 {
-	printf("😎  ");
-	printf("\033[0;31m");
+	if (statuscode == 0)
+		printf("😎  \033[0;32m");
+	else
+		printf("😡  \033[0;31m");
 	printf("~ ");
 	printf("\033[0m");
 	fflush(stdout);
@@ -66,15 +71,17 @@ void	ft_print_prompt(t_ls *data, t_v *v)
 
 	ptr = ft_prompt_2(v);
 	if (data->cd == 0)
-		ft_print_prompt_2();
+		ft_print_prompt_2(data->statuscode);
 	else if (data->cd == 1)
 	{
 		if (ft_strcmp_2(ptr, getenv("HOME"), 1) == 0)
-			ft_print_prompt_2();
+			ft_print_prompt_2(data->statuscode);
 		else
 		{
-			printf("😎  ");
-			printf("\033[0;31m");
+			if (data->statuscode == 0)
+				printf("😎  \033[0;32m");
+			else
+				printf("😡  \033[0;31m");
 			if (ft_strcmp_2(ptr, "/", 1) == 0)
 				printf("/ ");
 			else
