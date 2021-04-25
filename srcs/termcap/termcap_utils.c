@@ -43,8 +43,8 @@ char	*ft_get_string_2(t_term *t, char *str)
 	t->l = read(0, str, 100000);
 	if ((int)str[0] == 4)
 	{
-		printf("exit\n");
-		exit(1);
+		ft_eof(t);
+		str[0] = '\0';
 	}
 	str[t->l] = '\0';
 	if (g_sigint == 0)

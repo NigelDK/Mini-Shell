@@ -135,5 +135,6 @@ char			*ft_get_string(t_term *t, char *str);
 void			ft_envp(t_v *v, char **envp);
 void			ft_minishell_init(t_term *t, t_ls *data);
 int				check_spechar(char c);
+void			ft_eof(t_term *t);
 
 #endif
