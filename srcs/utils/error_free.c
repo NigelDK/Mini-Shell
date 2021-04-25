@@ -39,8 +39,6 @@ void	ft_error_syscall(t_ls *data, t_v **v, char **path, char *temp)
 		free(data->words2);
 	if (data->line)
 		free(data->line);
-	if (data->temp)
-		free(data->temp);
 	if (temp)
 		free(temp);
 	ft_lstclear_2(v, ft_memdel);
@@ -66,8 +64,6 @@ void	ft_error_data_v_2(t_ls *data, t_v **v)
 		free(data->words2);
 	if (data->line)
 		free(data->line);
-	if (data->temp)
-		free(data->temp);
 	ft_lstclear_2(v, ft_memdel);
 	printf("Error: %s\n", strerror(errno));
 	if (errno == 0)
@@ -91,8 +87,6 @@ void	ft_error_data_v_child(t_ls *data, t_v **v)
 		free(data->words2);
 	if (data->line)
 		free(data->line);
-	if (data->temp)
-		free(data->temp);
 	ft_lstclear_2(v, ft_memdel);
 }
 

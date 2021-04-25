@@ -17,7 +17,7 @@ void	ft_eof(t_term *t)
 	char	*temp;
 	char	*temp2;
 
-	if (ft_strlen(t->yo) == 0)
+	if (ft_strlen(t->yo) == 0 || t->mark == 0)
 	{
 		printf("exit\n");
 		exit(1);
