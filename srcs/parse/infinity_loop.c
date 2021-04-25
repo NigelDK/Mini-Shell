@@ -32,7 +32,7 @@ int	ft_builtins(t_ls *data, t_v **v, int mark)
 	else if (ft_strcmp_2(data->words2[0], "pwd", 1) == 0)
 		ft_pwd(data->words2);
 	else if (ft_strcmp_2(data->words2[0], "export", 1) == 0)
-		ft_export(data->words2, *v);
+		ft_export(data->words2, *v, data->exp_mark);
 	else if (ft_strcmp_2(data->words2[0], "env", 1) == 0)
 		ft_env(data->words2, *v, data);
 	else if (ft_strcmp_2(data->words2[0], "exit", 1) == 0)
@@ -42,6 +42,7 @@ int	ft_builtins(t_ls *data, t_v **v, int mark)
 		mark = 1;
 		sys_call(data, v);
 	}
+	data->exp_mark = 1;
 	return (mark);
 }
 

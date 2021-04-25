@@ -69,6 +69,7 @@ typedef struct s_ls
 	char	*lol;
 	char	*tmp_begin;
 	int		i;
+	int		exp_mark;
 }			t_ls;
 
 typedef struct s_it
@@ -91,7 +92,7 @@ void			ft_echo(char **words);
 void			ft_pwd(char **words);
 void			ft_print_prompt(t_ls *data, t_v *v);
 void			ft_print_prompt_2(int statuscode);
-void			ft_export(char **words, t_v *v);
+void			ft_export(char **words, t_v *v, int mark);
 int				ft_cd(char **words, int cd, t_ls *data);
 void			ft_env(char **words, t_v *v, t_ls *data);
 void			sys_call(t_ls *data, t_v **v);

@@ -65,6 +65,7 @@ void	ft_minishell_init(t_term *t, t_ls *data)
 	t->w = (char **)malloc(sizeof(char *) * (1));
 	t->w[0] = NULL;
 	t->errcode = 0;
+	data->exp_mark = 0;
 }
 
 char	*ft_change_nl(char *s1)
