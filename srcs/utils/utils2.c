@@ -12,6 +12,24 @@
 
 #include "../../includes/minishell.h"
 
+int	ft_check_export(char *s)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (s[i] && s[i] != '=')
+		i++;
+	j = 0;
+	while (i >= j)
+	{
+		if (s[j] == ' ')
+			return (1);
+		j++;
+	}
+	return (0);
+}
+
 int	check_spechar(char c)
 {
 	if (c == '?' || c == '.' || c == ',' || c == '@' || c == '%'

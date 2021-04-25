@@ -12,6 +12,32 @@
 
 #include "../../includes/minishell.h"
 
+void	ft_print_some(char *word)
+{
+	int	i;
+
+	if (!word)
+		return ;
+	ft_putstr("declare -x ");
+	i = -1;
+	while (word[++i] && word[i] != '=')
+		ft_putchar_2(word[i]);
+	if (word[i] != '=')
+	{
+		ft_putchar_2('\n');
+		return ;
+	}
+	ft_putchar_2(word[i++]);
+	ft_putstr("\"");
+	while (word[i])
+	{
+		ft_putchar_2(word[i]);
+		i++;
+	}
+	ft_putstr("\"");
+	ft_putchar_2('\n');
+}	
+
 void	ft_print_export_2(char **words, int count, int mark)
 {
 	int		i;
@@ -33,11 +59,11 @@ void	ft_print_export_2(char **words, int count, int mark)
 	i = -1;
 	if (mark == 0)
 		while (words[++i])
-			printf("declare -x %s\n", words[i]);
+			ft_print_some(words[i]);
 	else
 		while (words[++i])
 			if (words[i][0] != '_' || words[i][1] != '=')
-				printf("declare -x %s\n", words[i]);
+				ft_print_some(words[i]);
 }
 
 void	ft_print_export(t_v *v, int mark)
@@ -78,15 +104,22 @@ void	ft_create_env(t_v *v, char *str)
 
 void	ft_export(char **words, t_v *v, int mark)
 {
-	if (words[1] == NULL)
-		ft_print_export(v, mark);
-	else if (ft_strchr(words[1], '=') && ft_isalpha(words[1][0]))
-		ft_create_env(v, words[1]);
-	else if (ft_isalpha(words[1][0]))
+	int	i;
+	int	set;
+
+	set = 0;
+	i = 0;
+	while (words[++i] || set == 0)
 	{
-		words[1] = ft_strjoin2(words[1], "=''");
-		ft_create_env(v, words[1]);
+		set = 1;
+		if (words[i] == NULL)
+		{
+			ft_print_export(v, mark);
+			return ;
+		}
+		else if (ft_isalpha(words[i][0]) && ft_check_export(words[i]) == 0)
+			ft_create_env(v, words[i]);
+		else
+			printf("export: '%s': not a valid identifier\n", words[i]);
 	}
-	else
-		printf("export: not an identifier: %c\n", words[1][0]);
 }
