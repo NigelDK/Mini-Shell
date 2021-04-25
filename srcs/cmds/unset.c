@@ -27,21 +27,22 @@ void	ft_unset2(char **words, t_v **v)
 	t_v		*t;
 
 	temp = NULL;
-	if (!words[1])
-		printf("unset: not enough arguments\n");
-	else
+	if (*v)
 	{
-		if (*v)
+		temp = ft_strstr_reverse((*v)->str, "=");
+		if (ft_strcmp_2(words[1], temp, 1) == 0)
 		{
-			temp = ft_strstr_reverse((*v)->str, "=");
-			if (ft_strcmp_2(words[1], temp, 1) == 0)
-			{
-				t = *v;
-				*v = (*v)->next;
-				ft_lstdelone_2(t, ft_memdel);
-			}
-			free(temp);
+			t = *v;
+			ft_while_unset(words, *v, NULL);
+			*v = (*v)->next;
+			ft_lstdelone_2(t, ft_memdel);
 		}
+		else
+		{
+			t = *v;
+			ft_while_unset(words, t, NULL);
+		}
+		free(temp);
 	}
 }
 
@@ -70,15 +71,4 @@ void	ft_while_unset(char **words, t_v *v, char *temp)
 		}
 		v = v->next;
 	}
-}
-
-void	ft_unset(char **words, t_v *v)
-{
-	char	*temp;
-
-	temp = NULL;
-	if (!words[1])
-		printf("unset: not enough arguments\n");
-	else
-		ft_while_unset(words, v, temp);
 }

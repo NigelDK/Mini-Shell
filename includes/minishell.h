@@ -136,5 +136,6 @@ void			ft_envp(t_v *v, char **envp);
 void			ft_minishell_init(t_term *t, t_ls *data);
 int				check_spechar(char c);
 void			ft_eof(t_term *t);
+void			ft_while_unset(char **words, t_v *v, char *temp);
 
 #endif

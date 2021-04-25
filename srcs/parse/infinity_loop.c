@@ -23,7 +23,9 @@ static int	check_for_redir(t_v **v, char *line, t_ls *data)
 
 int	ft_builtins(t_ls *data, t_v **v, int mark)
 {
-	if (ft_strcmp_2(data->words2[0], "echo", 1) == 0)
+	if (ft_strcmp_2(data->words2[0], "unset", 1) == 0)
+		ft_unset2(data->words2, v);
+	else if (ft_strcmp_2(data->words2[0], "echo", 1) == 0)
 		ft_echo(data->words2);
 	else if (ft_strcmp_2(data->words2[0], "cd", 1) == 0)
 		data->cd = ft_cd(data->words2, data->cd, data);
@@ -33,11 +35,6 @@ int	ft_builtins(t_ls *data, t_v **v, int mark)
 		ft_export(data->words2, *v);
 	else if (ft_strcmp_2(data->words2[0], "env", 1) == 0)
 		ft_env(data->words2, *v, data);
-	else if (ft_strcmp_2(data->words2[0], "unset", 1) == 0
-		&& ft_strcmp_2(data->words2[1], data->temp, 1) == 0)
-		ft_unset2(data->words2, v);
-	else if (ft_strcmp_2(data->words2[0], "unset", 1) == 0)
-		ft_unset(data->words2, *v);
 	else if (ft_strcmp_2(data->words2[0], "exit", 1) == 0)
 		ft_exit(data->words2, v, data->temp, data);
 	else
@@ -55,7 +52,6 @@ void	infinity_loop(t_v **v, char *line, t_ls *data)
 
 	mark = 0;
 	line = ft_change_nl(line);
-	data->temp = ft_strstr_reverse((*v)->str, "=");
 	if (check_for_redir(v, line, data))
 		return ;
 	data->words2 = shell_split(line, ' ');
@@ -74,5 +70,4 @@ void	infinity_loop(t_v **v, char *line, t_ls *data)
 		free(data->words2[i]);
 	if (data->words2)
 		free(data->words2);
-	free(data->temp);
 }
