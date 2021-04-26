@@ -17,6 +17,8 @@ int	ft_check_echo_flag(char *s)
 	int	i;
 
 	i = 1;
+	if (!s)
+		return (0);
 	while (s[i])
 	{
 		if (s[i] != 'n')
