@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 14:49:09 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/09 10:50:26 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/26 18:47:18 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,14 @@ static void		last_pipe(int ***fd, t_pipe p, t_v *v, t_ls *data)
 	}
 }
 
-int				ft_pipe(t_v *v, char *line, t_ls *data)
+int				ft_pipe(t_v *v, char **line, t_ls *data)
 {
 	int			i;
 	int			**fd;
 	t_pipe		p;
-	
-	if (!(data->words1 = shell_split(line, '|')))
+
+//	double_pipe_trim(line);
+	if (!(data->words1 = shell_split(line[0], '|')))
 		ft_error();
 	if ((p.cmd_cnt = tab_cnt(data->words1)) == 1)
 	{

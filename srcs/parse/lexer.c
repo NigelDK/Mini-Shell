@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 10:36:18 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/26 17:13:27 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/26 18:36:43 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	lexer_2(t_v **v, t_ls *data, t_term t, char *tester)
 			ft_error_data_v(data, *v);
 		z = -1;
 		while (data->words[++z])
-			if (!ft_pipe(*v, data->words[z], data))
+			if (!ft_pipe(*v, &data->words[z], data))
 				infinity_loop(v, data->words[z], data);
 		z = -1;
 		while (data->words[++z])
