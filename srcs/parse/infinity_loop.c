@@ -21,8 +21,30 @@ static int	check_for_redir(t_v **v, char *line, t_ls *data)
 	return (0);
 }
 
+int	ft_check_variable(t_v *v, char *s)
+{
+	while (v->next)
+	{
+		if (ft_strcmp_2(v->str, s, 1) == 0)
+			return (1);
+		v = v->next;
+	}
+	return (0);
+}
+
 int	ft_builtins(t_ls *data, t_v **v, int mark)
 {
+//	int i;
+//
+//	i = 0;
+//	if (ft_strcmp_2(data->words2[0], "export", 1) == 0)
+//	{
+/*		while (data->words2[++i])
+		{
+			if (ft_strcmp_2(data->words2[0], "export", 1) == 0 && ft_check_variable(*v, data->words2[i]) == 1)
+				printf("HHH\n");
+		}*/
+//	}
 	if (ft_strcmp_2(data->words2[0], "unset", 1) == 0)
 		ft_unset2(data->words2, v);
 	else if (ft_strcmp_2(data->words2[0], "echo", 1) == 0)
@@ -36,7 +58,7 @@ int	ft_builtins(t_ls *data, t_v **v, int mark)
 	else if (ft_strcmp_2(data->words2[0], "env", 1) == 0)
 		ft_env(data->words2, *v, data);
 	else if (ft_strcmp_2(data->words2[0], "exit", 1) == 0)
-		ft_exit(data->words2, v, data->temp, data);
+		ft_exit(data->words2, v, data);
 	else
 	{
 		mark = 1;

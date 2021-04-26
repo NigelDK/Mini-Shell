@@ -48,7 +48,7 @@ void	ft_exit_2(char **words, int i)
 	}
 }
 
-void	ft_exit(char **words, t_v **v, char *temp, t_ls *data)
+void	ft_exit(char **words, t_v **v, t_ls *data)
 {
 	int	i;
 
@@ -59,9 +59,8 @@ void	ft_exit(char **words, t_v **v, char *temp, t_ls *data)
 		return ;
 	}
 	i = -1;
-	free(temp);
 	ft_lstclear_2(v, ft_memdel);
-	if (words[1] && ft_strisnum(words[1]) == 0)
+	if (words[1] && ft_strisnum(words[1]) == 0 && words[1][0] != '-' && words[1][0] != '+')
 	{
 		printf("exit\nexit: %s: numeric argument required\n", words[1]);
 		while (words[++i])

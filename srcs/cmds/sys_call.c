@@ -44,9 +44,12 @@ char	*path_variable(t_ls *data, int *j, t_v **v)
 void	child_call(t_ls *data, t_v **v, char *cmd, int j)
 {
 	if (execve(cmd, data->words2, data->envp) < 0)
-		printf("%s: command not found\n", data->words2[0]);
+		if (data->words2[0])
+			printf("%s: command not found\n", data->words2[0]);
 	if (j == 1)
 		free(cmd);
+	if (!data->words2[0])
+		exit(data->statuscode);
 	ft_error_data_v_child(data, v);
 	exit(127);
 }

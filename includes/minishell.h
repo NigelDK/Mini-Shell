@@ -106,7 +106,7 @@ void			free_fd(int ***fd, int cmd_cnt);
 int				tab_cnt(char **tab2);
 void			close_fd(int **fd, int cmd_cnt);
 void			infinity_loop(t_v **v, char *line, t_ls *data);
-void			ft_exit(char **words, t_v **v, char *temp, t_ls *data);
+void			ft_exit(char **words, t_v **v, t_ls *data);
 void			ft_error_v(t_v *v);
 void			ft_error_data_v_2(t_ls *data, t_v **v);
 void			ft_error_syscall(t_ls *data, t_v **v, char **path, char *temp);
