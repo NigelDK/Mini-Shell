@@ -21,35 +21,111 @@ void	ft_memdel(char *ap)
 	}
 }
 
-void	ft_unset2(char **words, t_v **v)
+void	ft_unset2(char **words, t_v **v, t_ls *data)
 {
+	char	*tmp;
 	char	*temp;
 	t_v		*t;
+	int	mark;
 
+	mark = 0;
 	temp = NULL;
 	if (*v)
 	{
-		temp = ft_strstr_reverse((*v)->str, "=");
-		if (ft_strcmp_2(words[1], temp, 1) == 0)
+		if (ft_strcmp_2(words[0], "export", 1) == 0)
 		{
-			t = *v;
-			ft_while_unset(words, *v, NULL);
-			*v = (*v)->next;
-			ft_lstdelone_2(t, ft_memdel);
+			temp = ft_strstr_reverse((*v)->str, "=");
+			tmp = ft_strstr_reverse(words[1], "=");
+			if (ft_strcmp_2(tmp, temp, 1) == 0 && ft_strlen((*v)->str) <= ft_strlen(words[1]))
+			{
+				mark = 1;
+				t = *v;
+				ft_while_unset(words, *v, data);
+				*v = (*v)->next;
+				ft_lstdelone_2(t, ft_memdel);
+			}
+			else
+			{
+				
+				t = *v;
+				ft_while_unset(words, t, data);
+			}
+			if (ft_strcmp_2(tmp, temp, 1) == 0 && mark != 1)
+				data->evm = 1;
+			free(tmp);
+			free(temp);
 		}
 		else
 		{
-			t = *v;
-			ft_while_unset(words, t, NULL);
+			temp = ft_strstr_reverse((*v)->str, "=");
+			if (ft_strcmp_2(words[1], temp, 1) == 0)
+			{
+				t = *v;
+				ft_while_unset(words, *v, data);
+				*v = (*v)->next;
+				ft_lstdelone_2(t, ft_memdel);
+			}
+			else
+			{
+				t = *v;
+				ft_while_unset(words, t, data);
+			}
+			free(temp);
 		}
-		free(temp);
 	}
 }
 
-void	ft_while_unset(char **words, t_v *v, char *temp)
+int	unset_del_1(char *words, t_v *v, int i, t_ls *data)
+{
+	char	*tmp;
+	char	*temp;
+	t_v	*t;
+	int	mark;
+
+	mark = 0;
+	temp = ft_strstr_reverse(v->next->str, "=");
+	if (temp == NULL)
+		temp = ft_strdup(v->next->str);
+	tmp = ft_strstr_reverse(words, "=");
+	if (tmp == NULL)
+		tmp = ft_strdup(words);
+	if (ft_strcmp_2(tmp, temp, 1) == 0 && ft_strlen(v->next->str) <= ft_strlen(words))
+	{
+		mark = 1;
+		i = 0;
+		t = v->next->next;
+		ft_lstdelone_2(v->next, ft_memdel);
+		v->next = t;
+	}
+	if (ft_strcmp_2(tmp, temp, 1) == 0 && mark != 1)
+		data->evm = 1;
+	free(tmp);
+	free(temp);
+	return (i);
+}
+
+int	unset_del_2(char *words, t_v *v, int i)
+{
+	char	*temp;
+	t_v	*t;
+
+	temp = ft_strstr_reverse(v->next->str, "=");
+	if (temp == NULL)
+		temp = ft_strdup(v->next->str);
+	if (ft_strcmp_2(words, temp, 1) == 0)
+	{
+		i = 0;
+		t = v->next->next;
+		ft_lstdelone_2(v->next, ft_memdel);
+		v->next = t;
+	}
+	free(temp);
+	return (i);
+}
+
+void	ft_while_unset(char **words, t_v *v, t_ls *data)
 {
 	int	i;
-	t_v	*t;
 
 	while (v->next && v->next->next)
 	{
@@ -58,15 +134,10 @@ void	ft_while_unset(char **words, t_v *v, char *temp)
 		{
 			if (v->next->str)
 			{
-				temp = ft_strstr_reverse(v->next->str, "=");
-				if (ft_strcmp_2(words[i], temp, 1) == 0)
-				{
-					i = 0;
-					t = v->next->next;
-					ft_lstdelone_2(v->next, ft_memdel);
-					v->next = t;
-				}
-				free(temp);
+				if (ft_strcmp_2(words[0], "export", 1) == 0)
+					i = unset_del_1(words[i], v, i, data);
+				else
+					i = unset_del_2(words[i], v, i);
 			}
 		}
 		v = v->next;

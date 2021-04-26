@@ -70,6 +70,7 @@ typedef struct s_ls
 	char	*tmp_begin;
 	int		i;
 	int		exp_mark;
+	int		evm;
 }			t_ls;
 
 typedef struct s_it
@@ -99,7 +100,7 @@ void			sys_call(t_ls *data, t_v **v);
 char			**shell_split(char *s, char c);
 void			ft_memdel(char *ap);
 void			ft_unset(char **words, t_v *v);
-void			ft_unset2(char **words, t_v **v);
+void			ft_unset2(char **words, t_v **v, t_ls *data);
 void			lexer(t_v *v, t_ls *data, char *tester, t_term t);
 int				ft_pipe(t_v *v, char **line, t_ls *data);
 void			free_fd(int ***fd, int cmd_cnt);
@@ -137,9 +138,10 @@ void			ft_envp(t_v *v, char **envp);
 void			ft_minishell_init(t_term *t, t_ls *data);
 int				check_spechar(char c);
 void			ft_eof(t_term *t);
-void			ft_while_unset(char **words, t_v *v, char *temp);
+void			ft_while_unset(char **words, t_v *v, t_ls *data);
 int				ft_check_export(char *s);
 int				syntax_error_check(t_ls *data);
 int				pipe_comb(t_ls *data);
+
 
 #endif

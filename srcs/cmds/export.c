@@ -48,7 +48,7 @@ void	ft_print_export_2(char **words, int count, int mark)
 	while (++i < count - 2)
 	{
 		j = i + 1;
-		if (ft_strcmp_2(words[i], words[j], 1) >= 0)
+		if (ft_strcmp_2(words[i], words[j], 1) > 0)
 		{
 			str = words[i];
 			words[i] = words[j];
@@ -92,27 +92,12 @@ void	ft_print_export(t_v *v, int mark)
 
 void	ft_create_env(t_v *v, char *str)
 {
-//	int i;
-//	int j;
-//	int k;
-
-//	i = ft_strlen(str);
 	while (v->next)
-	{
-/*		j = ft_strlen(v->str);
-		if (i > j)
-			k = j;
-		else
-			k = i;
-		if (ft_strncmp(v->str, str, k) == 0)
-			printf("HHHH\n");*/
 		v = v->next;
-	}
 	v->str = ft_strdup(str);
 	if (v->str == NULL)
 		ft_error();
 	v->next = ft_lstnew_2(NULL);
-	ft_lstdelone_2(v->next, ft_memdel);
 	if (v->next == NULL)
 		ft_error();
 }

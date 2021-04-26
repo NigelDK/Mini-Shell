@@ -18,8 +18,8 @@ void	lexer_2(t_v **v, t_ls *data, t_term t, char *tester)
 
 	if (tester != NULL)
 		return ;
-	if (t.errcode == 130)
-		data->statuscode = 130;
+	if (t.errcode == 1)
+		data->statuscode = 1;
 	//              ret = -5; //tester1
 	if (data->line[0] && data->line[0] != '\n' && !syntax_error_check(data))
 	{

@@ -46,7 +46,7 @@ int	ft_builtins(t_ls *data, t_v **v, int mark)
 		}*/
 //	}
 	if (ft_strcmp_2(data->words2[0], "unset", 1) == 0)
-		ft_unset2(data->words2, v);
+		ft_unset2(data->words2, v, data);
 	else if (ft_strcmp_2(data->words2[0], "echo", 1) == 0)
 		ft_echo(data->words2);
 	else if (ft_strcmp_2(data->words2[0], "cd", 1) == 0)
@@ -74,6 +74,7 @@ void	infinity_loop(t_v **v, char *line, t_ls *data)
 	int	mark;
 
 	mark = 0;
+	data->evm = 0;
 	line = ft_change_nl(line);
 	if (check_for_redir(v, line, data))
 		return ;
@@ -83,7 +84,10 @@ void	infinity_loop(t_v **v, char *line, t_ls *data)
 	replace_env_var(data, *v);
 	quote_dquote_trim(data);
 	backslash_trim(data);
-	mark = ft_builtins(data, v, mark);
+	if (ft_strcmp_2(data->words2[0], "export", 1) == 0)
+		ft_unset2(data->words2, v, data);
+	if (data->evm != 1)
+		mark = ft_builtins(data, v, mark);
 	if (mark == 0 && data->statuscode != 500)
 		data->statuscode = 0;
 	if (data->statuscode == 500)
