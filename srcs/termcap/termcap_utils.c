@@ -71,7 +71,7 @@ char	*ft_get_string_2(t_term *t, char *str)
 char	*ft_get_string(t_term *t, char *str)
 {
 	ft_get_history(t);
-	if (t->errcode == 1)
+	if (t->errcode == 1 || t->errcode == 130)
 		t->errcode = 0;
 	while (t->mark == 0 || (ft_strcmp_2(str, "\n", 1)
 			&& ft_strcmp_2(str, "\4", 1)))
