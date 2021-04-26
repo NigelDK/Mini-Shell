@@ -1,2 +1,0 @@
-CC = gcc
-	gcc -g libftminishell.a -ltermcap -lncurses -o minishell
