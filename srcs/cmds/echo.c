@@ -36,6 +36,8 @@ void	ft_echo(char **words)
 
 	a = 1;
 	o = 1;
+	if (!words[a])
+		return ;
 	while (words[a][0] == '-' && words[a][1] == 'n')
 	{
 		if (ft_check_echo_flag(words[a]) == 1)
