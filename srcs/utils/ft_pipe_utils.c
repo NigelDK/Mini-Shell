@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 21:11:02 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/26 19:08:15 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/26 19:13:13 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,3 @@ void	close_fd(int **fd, int cmd_cnt)
 		close(fd[i][1]);
 	}
 }
-/*
-void	double_pipe_trim(char **s)
-{
-	int	i;
-
-	i = 0;
-	while (s[0][i])
-	{
-		if (s[0][i] ==
-	}
-}
-*/
