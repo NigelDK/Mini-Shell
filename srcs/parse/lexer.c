@@ -21,7 +21,7 @@ void	lexer_2(t_v **v, t_ls *data, t_term t, char *tester)
 	if (t.errcode == 1)
 		data->statuscode = 1;
 	//              ret = -5; //tester1
-	else if (data->line[0] && data->line[0] != '\n')
+	if (data->line[0] && data->line[0] != '\n')
 	{
 		data->words = shell_split(data->line, ';'); // tester0
 		if (!data->words)
