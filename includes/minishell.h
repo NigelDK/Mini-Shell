@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/23 14:35:23 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/26 17:13:44 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,5 +139,6 @@ int				check_spechar(char c);
 void			ft_eof(t_term *t);
 void			ft_while_unset(char **words, t_v *v, char *temp);
 int				ft_check_export(char *s);
+int				syntax_error_check(t_ls *data);
 
 #endif
