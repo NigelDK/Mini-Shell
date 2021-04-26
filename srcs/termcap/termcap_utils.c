@@ -50,7 +50,7 @@ char	*ft_get_string_2(t_term *t, char *str)
 	if (g_sigint == 0)
 	{
 		t->mark = 1;
-		t->errcode = 1;
+		t->errcode = 130;
 		free(t->yo);
 		t->yo = NULL;
 		g_sigint = 1;
