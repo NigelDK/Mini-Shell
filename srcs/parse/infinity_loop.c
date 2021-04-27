@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 16:23:36 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/23 22:36:34 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/27 15:48:53 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static int	check_for_redir(t_v **v, char *line, t_ls *data)
 		return (1);
 	return (0);
 }
-
-int	ft_check_variable(t_v *v, char *s)
+/*
+static int	ft_check_variable(t_v *v, char *s)
 {
 	while (v->next)
 	{
@@ -30,9 +30,8 @@ int	ft_check_variable(t_v *v, char *s)
 		v = v->next;
 	}
 	return (0);
-}
-
-int	ft_builtins(t_ls *data, t_v **v, int mark)
+}*/
+static int	ft_builtins(t_ls *data, t_v **v, int mark)
 {
 //	int i;
 //

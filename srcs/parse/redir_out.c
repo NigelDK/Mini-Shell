@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 15:55:22 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/27 12:45:43 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/27 16:43:40 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ static void	child_process(t_v **v, char *line, t_ls *data, int cmd_cnt)
 		else
 			open_close_fd(fd, i, filename, 1);
 	}
-	if (!redir_out_at_start(line))
-		infinity_loop(v, data->words3[0], data);
+	redir_trim(data, line);
+	infinity_loop(v, data->words3[0], data);
 	exit (0);
 }
 
@@ -111,16 +111,6 @@ int			redir_out(t_v **v, char *line, t_ls *data)
 	wait(&pid);
 	return (1);
 }
-
-
-
-
-
-
-
-
-
-
 
 /*
 void	check_append(char *line, int *append)
