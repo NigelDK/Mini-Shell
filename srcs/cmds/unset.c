@@ -35,7 +35,11 @@ void	ft_unset2(char **words, t_v **v, t_ls *data)
 		if (ft_strcmp_2(words[0], "export", 1) == 0)
 		{
 			temp = ft_strstr_reverse((*v)->str, "=");
+			if (temp == NULL)
+				temp = ft_strdup((*v)->str);
 			tmp = ft_strstr_reverse(words[1], "=");
+			if (tmp == NULL)
+				tmp = ft_strdup(words[1]);
 			if (ft_strcmp_2(tmp, temp, 1) == 0 && ft_strlen((*v)->str) <= ft_strlen(words[1]))
 			{
 				mark = 1;
