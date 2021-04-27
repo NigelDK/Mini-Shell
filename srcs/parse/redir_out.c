@@ -6,11 +6,23 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 15:55:22 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/22 17:48:11 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/27 12:45:43 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+static void	trim_filename(char **filename)
+{
+	char	*tmp;
+
+	tmp = d_dq_trim_pad_str(filename[0]);
+	free(filename[0]);
+	filename[0] = tmp;
+	tmp = bslash_trim_str(filename[0]);
+	free(filename[0]);
+	filename[0] = tmp;
+}
 
 static int	append(char *s, int *k)
 {
@@ -31,6 +43,7 @@ static int	append(char *s, int *k)
 
 static void	open_close_fd(int *fd, int i, char **filename, int j)
 {
+	trim_filename(filename);
 	if (j)
 		fd[i] = open(filename[0], O_WRONLY | O_CREAT | O_APPEND, 0644);
 	else

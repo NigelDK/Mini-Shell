@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/26 19:01:29 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/27 12:45:33 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,11 @@ void			ft_while_unset(char **words, t_v *v, t_ls *data);
 int				ft_check_export(char *s);
 int				syntax_error_check(t_ls *data);
 int				pipe_comb(t_ls *data);
-
+void			d_dq_int_init(int *i, int *j, int *q, int *dq);
+int				in_charset(char c);
+int				d_dq_trim_pad_len(char *s);
+char			*d_dq_trim_pad_str(char *s);
+char			*bslash_trim_str(char *s);
+int				bslash_trim_len(char *s);
 
 #endif

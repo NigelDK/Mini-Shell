@@ -6,13 +6,13 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 21:35:28 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/19 15:50:26 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/27 12:41:59 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static void	int_init(int *i, int *j, int *q, int *dq)
+void	d_dq_int_init(int *i, int *j, int *q, int *dq)
 {
 	i[0] = 0;
 	j[0] = -1;
@@ -20,7 +20,7 @@ static void	int_init(int *i, int *j, int *q, int *dq)
 	dq[0] = 0;
 }
 
-static int	in_charset(char c)
+int		in_charset(char c)
 {	
 	if (!c)
 		return (0);
@@ -31,14 +31,14 @@ static int	in_charset(char c)
 	return (0);
 }
 
-static int	trim_pad_len(char *s)
+int		trim_pad_len(char *s)
 {
 	int	i;
 	int	j;
 	int	q;
 	int	dq;
 
-	int_init(&i, &j, &q, &dq);
+	d_dq_int_init(&i, &j, &q, &dq);
 	while (s[++j])
 	{
 		if (s[j] == 39 && q == 0 && (dq == 1 || prev_bslash(s, j, q)))
@@ -58,7 +58,7 @@ static int	trim_pad_len(char *s)
 	return (i);
 }
 
-static char	*trim_pad_str(char *s)
+char	*d_dq_trim_pad_str(char *s)
 {
 	char	*rtn;
 	int		i;
@@ -68,7 +68,7 @@ static char	*trim_pad_str(char *s)
 
 	if (!(rtn = malloc(sizeof(char) * (trim_pad_len(s) + 1))))
 		ft_error();
-	int_init(&i, &j, &q, &dq);
+	d_dq_int_init(&i, &j, &q, &dq);
 	while (s[++j])
 	{
 		if (s[j] == 39 && (dq == 1 || (q == 0 && prev_bslash(s, j, q))))
@@ -95,7 +95,7 @@ static char	*trim_pad_str(char *s)
 ** Inefficient coding because of layering a fix on top of a fix.
 */
 
-void		quote_dquote_trim(t_ls *data)
+void	quote_dquote_trim(t_ls *data)
 {
 	int		i;
 	char	*tmp;
@@ -103,7 +103,7 @@ void		quote_dquote_trim(t_ls *data)
 	i = -1;
 	while (data->words2[++i])
 	{
-		tmp = trim_pad_str(data->words2[i]);
+		tmp = d_dq_trim_pad_str(data->words2[i]);
 		free(data->words2[i]);
 		data->words2[i] = tmp;
 	}

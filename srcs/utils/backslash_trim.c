@@ -6,13 +6,13 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 12:19:00 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/19 14:29:15 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/27 12:43:35 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static int		trim_len(char *s)
+int		bslash_trim_len(char *s)
 {
 	int	i;
 	int	j;
@@ -39,13 +39,13 @@ static int		trim_len(char *s)
 	return (i);
 }
 
-static char		*trim_str(char *s)
+char	*bslash_trim_str(char *s)
 {
 	char	*rtn;
 	int		len;
 	int		i;
 	
-	len = trim_len(s);
+	len = bslash_trim_len(s);
 	if (!(rtn = malloc(sizeof(char) * (len + 1))))
 		ft_error();
 	i = 0;
@@ -65,7 +65,7 @@ static char		*trim_str(char *s)
 	return (rtn);
 }
 
-void			backslash_trim(t_ls *data)
+void	backslash_trim(t_ls *data)
 {
 	int		i;
 	char	*tmp;
@@ -73,7 +73,7 @@ void			backslash_trim(t_ls *data)
 	i = -1;
 	while (data->words2[++i])
 	{
-		tmp = trim_str(data->words2[i]);
+		tmp = bslash_trim_str(data->words2[i]);
 		free(data->words2[i]);
 		data->words2[i] = tmp;
 	}
