@@ -23,42 +23,14 @@ void	ft_memdel(char *ap)
 
 void	ft_unset2(char **words, t_v **v, t_ls *data)
 {
-	char	*tmp;
 	char	*temp;
 	t_v		*t;
-	int	mark;
 
-	mark = 0;
 	temp = NULL;
 	if (*v)
 	{
 		if (ft_strcmp_2(words[0], "export", 1) == 0)
-		{
-			temp = ft_strstr_reverse((*v)->str, "=");
-			if (temp == NULL)
-				temp = ft_strdup((*v)->str);
-			tmp = ft_strstr_reverse(words[1], "=");
-			if (tmp == NULL)
-				tmp = ft_strdup(words[1]);
-			if (ft_strcmp_2(tmp, temp, 1) == 0 && ft_strlen((*v)->str) <= ft_strlen(words[1]))
-			{
-				mark = 1;
-				t = *v;
-				ft_while_unset(words, *v, data);
-				*v = (*v)->next;
-				ft_lstdelone_2(t, ft_memdel);
-			}
-			else
-			{
-				
-				t = *v;
-				ft_while_unset(words, t, data);
-			}
-			if (ft_strcmp_2(tmp, temp, 1) == 0 && mark != 1)
-				data->evm = 1;
-			free(tmp);
-			free(temp);
-		}
+			unset_export(words, data, v, temp);
 		else
 		{
 			temp = ft_strstr_reverse((*v)->str, "=");
@@ -83,26 +55,26 @@ int	unset_del_1(char *words, t_v *v, int i, t_ls *data)
 {
 	char	*tmp;
 	char	*temp;
-	t_v	*t;
-	int	mark;
+	t_v		*t;
 
-	mark = 0;
 	temp = ft_strstr_reverse(v->next->str, "=");
 	if (temp == NULL)
 		temp = ft_strdup(v->next->str);
 	tmp = ft_strstr_reverse(words, "=");
 	if (tmp == NULL)
 		tmp = ft_strdup(words);
-	if (ft_strcmp_2(tmp, temp, 1) == 0 && ft_strlen(v->next->str) <= ft_strlen(words))
+	if (ft_strcmp_2(temp, tmp, 1) == 0 && ft_strlen(temp) < ft_strlen(words))
 	{
-		mark = 1;
+		data->c_e[i] = 'a';
 		i = 0;
 		t = v->next->next;
 		ft_lstdelone_2(v->next, ft_memdel);
 		v->next = t;
 	}
-	if (ft_strcmp_2(tmp, temp, 1) == 0 && mark != 1)
-		data->evm = 1;
+	else if (ft_strcmp_2(tmp, temp, 1) == 0  && ft_strlen(temp) == ft_strlen(words))
+		data->c_e[i] = 'b';
+	else if (data->c_e[i] != 'b')
+		data->c_e[i] = 'a';
 	free(tmp);
 	free(temp);
 	return (i);
@@ -111,7 +83,7 @@ int	unset_del_1(char *words, t_v *v, int i, t_ls *data)
 int	unset_del_2(char *words, t_v *v, int i)
 {
 	char	*temp;
-	t_v	*t;
+	t_v		*t;
 
 	temp = ft_strstr_reverse(v->next->str, "=");
 	if (temp == NULL)

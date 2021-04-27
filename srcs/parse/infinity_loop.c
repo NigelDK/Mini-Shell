@@ -20,30 +20,9 @@ static int	check_for_redir(t_v **v, char *line, t_ls *data)
 		return (1);
 	return (0);
 }
-/*
-static int	ft_check_variable(t_v *v, char *s)
-{
-	while (v->next)
-	{
-		if (ft_strcmp_2(v->str, s, 1) == 0)
-			return (1);
-		v = v->next;
-	}
-	return (0);
-}*/
+
 static int	ft_builtins(t_ls *data, t_v **v, int mark)
 {
-//	int i;
-//
-//	i = 0;
-//	if (ft_strcmp_2(data->words2[0], "export", 1) == 0)
-//	{
-/*		while (data->words2[++i])
-		{
-			if (ft_strcmp_2(data->words2[0], "export", 1) == 0 && ft_check_variable(*v, data->words2[i]) == 1)
-				printf("HHH\n");
-		}*/
-//	}
 	if (ft_strcmp_2(data->words2[0], "unset", 1) == 0)
 		ft_unset2(data->words2, v, data);
 	else if (ft_strcmp_2(data->words2[0], "echo", 1) == 0)
@@ -53,7 +32,7 @@ static int	ft_builtins(t_ls *data, t_v **v, int mark)
 	else if (ft_strcmp_2(data->words2[0], "pwd", 1) == 0)
 		ft_pwd(data->words2);
 	else if (ft_strcmp_2(data->words2[0], "export", 1) == 0)
-		ft_export(data->words2, *v, data->exp_mark);
+		ft_export(data->words2, *v, data->exp_mark, data);
 	else if (ft_strcmp_2(data->words2[0], "env", 1) == 0)
 		ft_env(data->words2, *v, data);
 	else if (ft_strcmp_2(data->words2[0], "exit", 1) == 0)
@@ -72,6 +51,7 @@ void	infinity_loop(t_v **v, char *line, t_ls *data)
 	int	i;
 	int	mark;
 
+	data->c_e = NULL;
 	mark = 0;
 	data->evm = 0;
 	line = ft_change_nl(line);
@@ -83,10 +63,9 @@ void	infinity_loop(t_v **v, char *line, t_ls *data)
 	replace_env_var(data, *v);
 	quote_dquote_trim(data);
 	backslash_trim(data);
-	if (ft_strcmp_2(data->words2[0], "export", 1) == 0)
+	if (ft_strcmp_2(data->words2[0], "export", 1) == 0 && data->words2[1])
 		ft_unset2(data->words2, v, data);
-	if (data->evm != 1)
-		mark = ft_builtins(data, v, mark);
+	mark = ft_builtins(data, v, mark);
 	if (mark == 0 && data->statuscode != 500)
 		data->statuscode = 0;
 	if (data->statuscode == 500)

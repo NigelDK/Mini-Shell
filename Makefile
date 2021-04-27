@@ -5,6 +5,7 @@ SRCS = srcs/main.c \
 	srcs/cmds/cd.c \
 	srcs/cmds/exit.c \
 	srcs/cmds/unset.c \
+	srcs/cmds/unset2.c \
 	srcs/cmds/pwd.c \
 	srcs/cmds/export.c \
 	srcs/cmds/env.c \
