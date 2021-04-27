@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 15:48:07 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/26 19:01:09 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/27 16:56:34 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,17 @@ static int	semicolon_comb(t_ls *data)
 	return (0);
 }
 
+static int	newline_err(t_ls *data, int i)
+{	
+	if (data->line[i] && data->line[i] == '\n')
+	{
+		printf("bash: syntax error near unexpected token `newline'\n");
+		data->statuscode = 2;
+		return (1);
+	}
+	return (0);
+}
+
 static int	big_small_than_comb(t_ls *data)
 {
 	int	i;
@@ -68,13 +79,14 @@ static int	big_small_than_comb(t_ls *data)
 		i++;
 	while (data->line[i] && data->line[i] == ' ')
 		i++;
+	if (newline_err(data, i))
+		return (1);
 	if (data->line[i] && (data->line[i] == '&' || data->line[i] == ';' ||
 		data->line[i] == '<' || data->line[i] == '>' || data->line[i] == '|'))
 	{
 		printf("bash: syntax error near unexpected token `%c'\n",
 				data->line[i]);
 		data->statuscode = 2;
-		free(data->line);
 		return (1);
 	}
 	return (0);
