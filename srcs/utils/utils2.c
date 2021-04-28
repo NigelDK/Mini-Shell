@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minummin </var/mail/minummin>              +#+  +:+       +#+        */
+/*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 21:47:05 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/23 21:47:38 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/28 14:04:43 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	ft_check_export(char *s)
+int		ft_check_export(char *s)
 {
 	int	i;
 	int	j;
@@ -30,7 +30,7 @@ int	ft_check_export(char *s)
 	return (0);
 }
 
-int	check_spechar(char c)
+int		check_spechar(char c)
 {
 	if (c == '?' || c == '.' || c == ',' || c == '@' || c == '%'
 		|| c == '/' || c == '=' || c == '+' || c == '^' || c == '~'

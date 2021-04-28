@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 21:35:28 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/27 12:41:59 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/28 13:59:32 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	d_dq_int_init(int *i, int *j, int *q, int *dq)
 }
 
 int		in_charset(char c)
-{	
+{
 	if (!c)
 		return (0);
 	if (c == '$')
@@ -91,7 +91,7 @@ char	*d_dq_trim_pad_str(char *s)
 ** The quotes and double quotes get trimmed from the string.
 ** Simultaneously the backslashes that aren't escape characters
 ** get padded with extra backslash so backslash_trim doesn't
-** trim them. 
+** trim them.
 ** Inefficient coding because of layering a fix on top of a fix.
 */
 

@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 15:48:07 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/27 16:56:34 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/28 14:06:03 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	start_check(t_ls *data)
 {
 	int i;
-	
+
 	i = 0;
 	while (data->line[i] && data->line[i] == ' ')
 		i++;
@@ -43,7 +43,7 @@ static int	semicolon_comb(t_ls *data)
 		printf("bash: syntax error near unexpected token `;;'\n");
 		data->statuscode = 2;
 		return (1);
-	}	
+	}
 	while (data->line[i] && data->line[i] == ' ')
 		i++;
 	if (data->line[i] && (data->line[i] == '&' || data->line[i] == '|' ||
@@ -58,7 +58,7 @@ static int	semicolon_comb(t_ls *data)
 }
 
 static int	newline_err(t_ls *data, int i)
-{	
+{
 	if (data->line[i] && data->line[i] == '\n')
 	{
 		printf("bash: syntax error near unexpected token `newline'\n");
@@ -92,7 +92,7 @@ static int	big_small_than_comb(t_ls *data)
 	return (0);
 }
 
-int	syntax_error_check(t_ls *data)
+int			syntax_error_check(t_ls *data)
 {
 	if (start_check(data))
 		return (1);
