@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 15:53:02 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/28 17:46:03 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/28 17:46:41 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	ft_freee(char **s, int j)
 static void	fill_str(char *s, char c, char **tab2, t_it *i)
 {
 	while (s[i->k] && (s[i->k] != c || (s[i->k] == c && (i->q == 1 || i->dq
-				== 1)) || (s[i->k] == c && i->q == 0
+					== 1)) || (s[i->k] == c && i->q == 0
 				&& prev_bslash(s, i->k, i->q))))
 	{
 		tab2[i->j][i->i++] = s[i->k];
