@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 12:19:00 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/28 14:55:49 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/28 14:59:04 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ char	*bslash_trim_str(char *s)
 	char	*rtn;
 	int		len;
 	int		i;
-	
+
 	len = bslash_trim_len(s);
 	rtn = malloc(sizeof(char) * (len + 1));
-	if (!rtn)	
+	if (!rtn)
 		ft_error();
 	i = 0;
 	while (*s)
