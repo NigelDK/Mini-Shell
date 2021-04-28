@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 17:32:33 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/28 14:53:15 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/28 18:12:36 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,16 @@ int	redir_out_at_start(char *s)
 	if (s[i] == '>')
 		return (1);
 	return (0);
+}
+
+void	trim_filename(char **filename)
+{
+	char	*tmp;
+
+	tmp = d_dq_trim_pad_str(filename[0]);
+	free(filename[0]);
+	filename[0] = tmp;
+	tmp = bslash_trim_str(filename[0]);
+	free(filename[0]);
+	filename[0] = tmp;
 }

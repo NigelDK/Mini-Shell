@@ -6,23 +6,11 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 15:55:22 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/28 18:06:07 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/28 18:27:23 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-static void	trim_filename(char **filename)
-{
-	char	*tmp;
-
-	tmp = d_dq_trim_pad_str(filename[0]);
-	free(filename[0]);
-	filename[0] = tmp;
-	tmp = bslash_trim_str(filename[0]);
-	free(filename[0]);
-	filename[0] = tmp;
-}
 
 static int	append(char *s, int *k)
 {
@@ -60,6 +48,18 @@ static void	open_close_fd(int *fd, int i, char **filename, int j)
 	free_tab(&filename);
 }
 
+static void	init_val(int *i, char *line, int *j, int *cmd_cnt)
+{
+	i[0] = -1;
+	if (redir_out_at_start(line))
+	{
+		j[0] = 0;
+		cmd_cnt[0]++;
+	}
+	else
+		(j[0] = 1);
+}
+
 static void	child_process(t_v **v, char *line, t_ls *data, int cmd_cnt)
 {
 	int		i;
@@ -68,14 +68,7 @@ static void	child_process(t_v **v, char *line, t_ls *data, int cmd_cnt)
 	int		*fd;
 	char	**filename;
 
-	i = -1;
-	if (redir_out_at_start(line))
-	{
-		j = 0;
-		cmd_cnt++;
-	}
-	else
-		(j = 1);
+	init_val(&i, line, &j, &cmd_cnt);
 	k = 0;
 	fd = malloc(sizeof(int) * (cmd_cnt - 1));
 	if (!fd)

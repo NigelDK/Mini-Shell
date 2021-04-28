@@ -6,13 +6,13 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 12:19:00 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/18 14:14:45 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/28 18:28:45 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static int		trim_len(char *s)
+static int	trim_len(char *s)
 {
 	int	i;
 	int	j;
@@ -27,8 +27,6 @@ static int		trim_len(char *s)
 	{
 		if (s[j] && s[j] != '\\')
 			i++;
-/*		else if (s[j] == '\\' && (s[j + 1] != '\\' || !s[j + 1]))
-			j++;*/
 		else if (*s == '\\' && s[j + 1] && s[j + 1] == '\\')
 		{
 			i++;
@@ -39,14 +37,15 @@ static int		trim_len(char *s)
 	return (i);
 }
 
-static char		*trim_str(char *s)
+static char	*trim_str(char *s)
 {
 	char	*rtn;
 	int		len;
 	int		i;
-	
+
 	len = trim_len(s);
-	if (!(rtn = malloc(sizeof(char) * (len + 1))))
+	rtn = malloc(sizeof(char) * (len + 1));
+	if (!rtn)
 		ft_error();
 	i = 0;
 	while (*s)
@@ -65,7 +64,7 @@ static char		*trim_str(char *s)
 	return (rtn);
 }
 
-void			backslash_trim(t_ls *data)
+void	backslash_trim(t_ls *data)
 {
 	int		i;
 	char	*tmp;
