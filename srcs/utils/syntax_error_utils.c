@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 19:00:35 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/28 14:43:21 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/28 14:51:59 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	pipe_comb(t_ls *data)
 	if (data->line[i] && (data->line[i] == '&' || data->line[i] == ';'))
 	{
 		printf("bash: syntax error near unexpected token `%c'\n",
-		data->line[i]);
+			data->line[i]);
 		data->statuscode = 2;
 		return (1);
 	}
