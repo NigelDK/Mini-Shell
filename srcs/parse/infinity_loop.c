@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 16:23:36 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/27 15:48:53 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/28 16:38:21 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,19 @@ static int	ft_builtins(t_ls *data, t_v **v, int mark)
 	return (mark);
 }
 
+int	inf_init(t_ls *data)
+{
+	data->c_e = NULL;
+	data->evm = 0;
+	return (0);
+}
+
 void	infinity_loop(t_v **v, char *line, t_ls *data)
 {
 	int	i;
 	int	mark;
 
-	data->c_e = NULL;
-	mark = 0;
-	data->evm = 0;
+	mark = inf_init(data);
 	line = ft_change_nl(line);
 	if (check_for_redir(v, line, data))
 		return ;

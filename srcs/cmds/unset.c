@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:35:12 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/22 17:07:56 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/28 16:32:04 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,10 @@ void	ft_unset2(char **words, t_v **v, t_ls *data)
 	char	*temp;
 	t_v		*t;
 
-	temp = NULL;
 	if (*v)
 	{
 		if (ft_strcmp_2(words[0], "export", 1) == 0)
-			unset_export(words, data, v, temp);
+			unset_export(words, data, v, NULL);
 		else
 		{
 			temp = ft_strstr_reverse((*v)->str, "=");
@@ -71,7 +70,7 @@ int	unset_del_1(char *words, t_v *v, int i, t_ls *data)
 		ft_lstdelone_2(v->next, ft_memdel);
 		v->next = t;
 	}
-	else if (ft_strcmp_2(tmp, temp, 1) == 0  && ft_strlen(temp) == ft_strlen(words))
+	else if (!ft_strcmp_2(tmp, temp, 1) && ft_strlen(temp) == ft_strlen(words))
 		data->c_e[i] = 'b';
 	else if (data->c_e[i] != 'b')
 		data->c_e[i] = 'a';
