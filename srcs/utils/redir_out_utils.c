@@ -6,13 +6,13 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 17:32:33 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/28 14:02:23 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/28 14:47:21 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	too_many_redir_out(char *s)
+int		too_many_redir_out(char *s)
 {
 	int	i;
 
@@ -32,12 +32,13 @@ int	too_many_redir_out(char *s)
 			printf("'\n");
 			return (1);
 		}
-		(i == 0) ? (s++) : (0);
+		if (i == 0)
+			s++;
 	}
 	return (0);
 }
 
-int	redir_out_at_start(char *s)
+int		redir_out_at_start(char *s)
 {
 	int	i;
 
