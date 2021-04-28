@@ -6,13 +6,13 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 15:53:02 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/28 17:28:57 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/28 17:44:14 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static int		cmd_len(char *s, char c, int k)
+static int	cmd_len(char *s, char c, int k)
 {
 	int	i;
 	int	q;
@@ -41,6 +41,18 @@ static void	ft_freee(char **s, int j)
 	}
 }
 
+static void	fill_str(char *s, char c, char **tab2, t_it *i)
+{
+	while (s[i->k] && (s[i->k] != c || (s[i->k] == c && (i->q == 1 || i->dq
+			== 1)) || (s[i->k] == c && i->q == 0
+			&& prev_bslash(s, i->k, i->q))))
+	{
+		tab2[i->j][i->i++] = s[i->k];
+		q_dq_index(s, i->k++, &i->q, &i->dq);
+	}
+	tab2[i->j++][i->i] = '\0';
+}
+
 static char	**fill_tab(char *s, char c, char **tab2)
 {
 	t_it	i;
@@ -57,13 +69,7 @@ static char	**fill_tab(char *s, char c, char **tab2)
 			return (tab2);
 		}
 		init_zero(&i.q, &i.dq);
-		while (s[i.k] && (s[i.k] != c || (s[i.k] == c && (i.q == 1 || i.dq ==
-			1)) || (s[i.k] == c && i.q == 0 && prev_bslash(s, i.k, i.q))))
-		{
-			tab2[i.j][i.i++] = s[i.k];
-			q_dq_index(s, i.k++, &i.q, &i.dq);
-		}
-		tab2[i.j++][i.i] = '\0';
+		fill_str(s, c, tab2, &i);
 		while (s[i.k] && s[i.k] == c)
 			i.k++;
 	}
