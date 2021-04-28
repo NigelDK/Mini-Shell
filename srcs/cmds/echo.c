@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:35:51 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/28 15:30:11 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/28 15:36:27 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ int	ft_check_echo_flag(char *s)
 		i++;
 	}
 	return (0);
+}
+
+void	ft_echo_2(int o)
+{
+	if (o >= 2)
+		return ;
+	printf("\n");
 }
 
 void	ft_echo(char **words)
@@ -54,7 +61,5 @@ void	ft_echo(char **words)
 		if (words[i + 1])
 			printf(" ");
 	}
-	if (o >= 2)
-		return ;
-	printf("\n");
+	ft_echo_2(o);
 }
