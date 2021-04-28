@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:37:15 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/23 19:57:13 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/28 15:24:31 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,15 @@
 
 void	ft_print_prompt_3(int statuscode)
 {
-	long	size;
 	char	*buf;
 	char	*ptr;
 
 	statuscode = 1;
-	size = pathconf(".", _PC_PATH_MAX);
-	buf = (char *)malloc((size_t)size);
+	buf = (char *)malloc(sizeof(char) * 1025);
 	if (!buf)
 		ft_error();
-	ptr = getcwd(buf, (size_t)size);
+	ft_bzero(buf, 1025);
+	ptr = getcwd(buf, 1025);
 	if (ft_strcmp_2(ptr, getenv("HOME"), 1) == 0)
 		ft_print_prompt_2(statuscode);
 	else
@@ -55,13 +54,12 @@ void	ft_print_prompt_2(int statuscode)
 
 char	*ft_prompt_2(t_v *v)
 {
-	long	size;
 	char	*buf;
 
-	size = pathconf(".", _PC_PATH_MAX);
-	buf = (char *)malloc((size_t)size);
+	buf = (char *)malloc(sizeof(char) * 1025);
 	if (!buf)
 		ft_error_v(v);
+	ft_bzero(buf, 1025);
 	return (getcwd(buf, (size_t)size));
 }
 

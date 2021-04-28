@@ -6,7 +6,7 @@
 /*   By: minummin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 16:08:41 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/28 13:36:06 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/28 15:03:19 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,8 @@ char	*ft_itoa_d(int n)
 	i = count - 1;
 	while (n > 0)
 	{
-		word[i] = n % 10 + '0';
+		word[i--] = n % 10 + '0';
 		n = n / 10;
-		i--;
 	}
 	word[count] = '\0';
 	return (word);
@@ -126,9 +125,8 @@ char	*ft_itoa_x(unsigned int n, int count)
 		if (n % 16 > 9 && n % 16 < 16)
 			word[i] = hexa[n % 16];
 		else
-			word[i] = n % 16 + '0';
+			word[i--] = n % 16 + '0';
 		n = n / 16;
-		i--;
 	}
 	word[count] = '\0';
 	return (word);

@@ -6,7 +6,7 @@
 /*   By: minummin </var/mail/minummin>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 14:46:14 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/23 19:35:18 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/28 15:17:13 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,9 @@ char	*ft_get_string_2(t_term *t, char *str)
 {
 	t->l = read(0, str, 100000);
 	if ((int)str[0] == 4)
-	{
 		ft_eof(t);
+	if ((int)str[0] == 4)
 		str[0] = '\0';
-	}
 	str[t->l] = '\0';
 	if (g_sigint == 0)
 	{
