@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 21:35:28 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/28 15:44:01 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/28 17:18:22 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,30 +61,29 @@ int	trim_pad_len(char *s)
 char	*d_dq_trim_pad_str(char *s)
 {
 	char	*rtn;
-	int		i;
-	int		j;
-	int		q;
-	int		dq;
+	t_it	l;
 
 	rtn = malloc(sizeof(char) * (trim_pad_len(s) + 1));
 	if (!rtn)
 		ft_error();
-	d_dq_int_init(&i, &j, &q, &dq);
-	while (s[++j])
+	d_dq_int_init(&l.i, &l.j, &l.q, &l.dq);
+	while (s[++l.j])
 	{
-		if (s[j] == 39 && (dq == 1 || (q == 0 && prev_bslash(s, j, q))))
-			rtn[i++] = s[j];
-		else if (s[j] == '"' && q == 1)
-			rtn[i++] = s[j];
-		else if (s[j] == '"' && q == 0 && prev_bslash(s, j, q))
-			rtn[i++] = s[j];
-		else if (s[j] != 39 && s[j] != '"')
-			rtn[i++] = s[j];
-		if (s[j] == '\\' && (q == 1 || (dq == 1 && !in_charset(s[j + 1]))))
-			rtn[i++] = s[j];
-		q_dq_index(s, j, &q, &dq);
+		if (s[l.j] == 39 && (l.dq == 1
+				|| (l.q == 0 && prev_bslash(s, l.j, l.q))))
+			rtn[l.i++] = s[l.j];
+		else if (s[l.j] == '"' && l.q == 1)
+			rtn[l.i++] = s[l.j];
+		else if (s[l.j] == '"' && l.q == 0 && prev_bslash(s, l.j, l.q))
+			rtn[l.i++] = s[l.j];
+		else if (s[l.j] != 39 && s[l.j] != '"')
+			rtn[l.i++] = s[l.j];
+		if (s[l.j] == '\\' && (l.q == 1
+				|| (l.dq == 1 && !in_charset(s[l.j + 1]))))
+			rtn[l.i++] = s[l.j];
+		q_dq_index(s, l.j, &l.q, &l.dq);
 	}
-	rtn[i] = '\0';
+	rtn[l.i] = '\0';
 	return (rtn);
 }
 
