@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 15:13:50 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/27 16:44:11 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/28 15:07:15 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	trim_len(char *s)
 	int	j;
 	int	q;
 	int	dq;
-	
+
 	init_int(&i, &j, &q, &dq);
 	while (s[j])
 	{
@@ -59,9 +59,10 @@ void	redir_trim(t_ls *data, char *line)
 	int		j;
 	int		q;
 	int		dq;
-	
+
 	init_int(&i, &j, &q, &dq);
-	if (!(tmp = malloc(sizeof(char) * (trim_len(line) + 1))))
+	tmp = malloc(sizeof(char) * (trim_len(line) + 1));
+	if (!tmp)
 		ft_error();
 	while (line[j])
 	{
