@@ -155,5 +155,6 @@ void			unset_export(char **words, t_ls *data, t_v **v, char *temp);
 int				shell_split_cmd_cnt(char *s, char c);
 void			init_zero(int *i, int *j);
 void			trim_filename(char **filename);
+void			tester_lexer(t_v *v, t_ls *data, t_term t, char **argv);
 
 #endif

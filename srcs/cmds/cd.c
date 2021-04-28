@@ -31,7 +31,7 @@ int	ft_cd(char **words, int cd, t_ls *data)
 	{
 		mark = 1;
 		data->statuscode = 500;
-		printf("cd: %s: %s\n", words[1], strerror(errno));
+		printf("minishell: cd: %s: %s\n", words[1], strerror(errno));
 		if (cd == 0)
 			return (2);
 	}

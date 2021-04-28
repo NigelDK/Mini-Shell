@@ -121,7 +121,7 @@ void	ft_export(char **words, t_v *v, int mark, t_ls *data)
 				&& ft_check_export(words[i]) == 0 && data->c_e[i] == 'a')
 			ft_create_env(v, words[i]);
 		else if (!ft_isalpha(words[i][0]) || ft_check_export(words[i]) != 0)
-			printf("export: '%s': not a valid identifier\n", words[i]);
+			printf("minishell: export: `%s': not a valid identifier\n", words[i]);
 	}
 	free(data->c_e);
 }
