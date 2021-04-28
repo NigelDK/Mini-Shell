@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 21:35:28 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/28 13:59:32 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/28 15:44:01 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	d_dq_int_init(int *i, int *j, int *q, int *dq)
 	dq[0] = 0;
 }
 
-int		in_charset(char c)
+int	in_charset(char c)
 {
 	if (!c)
 		return (0);
@@ -31,7 +31,7 @@ int		in_charset(char c)
 	return (0);
 }
 
-int		trim_pad_len(char *s)
+int	trim_pad_len(char *s)
 {
 	int	i;
 	int	j;
@@ -66,7 +66,8 @@ char	*d_dq_trim_pad_str(char *s)
 	int		q;
 	int		dq;
 
-	if (!(rtn = malloc(sizeof(char) * (trim_pad_len(s) + 1))))
+	rtn = malloc(sizeof(char) * (trim_pad_len(s) + 1));
+	if (!rtn)
 		ft_error();
 	d_dq_int_init(&i, &j, &q, &dq);
 	while (s[++j])
