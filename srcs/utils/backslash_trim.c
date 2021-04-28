@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 12:19:00 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/27 12:43:35 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/28 14:55:49 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int		bslash_trim_len(char *s)
 	{
 		if (s[j] && s[j] != '\\')
 			i++;
-/*		else if (s[j] == '\\' && (s[j + 1] != '\\' || !s[j + 1]))
-			j++;*/
 		else if (*s == '\\' && s[j + 1] && s[j + 1] == '\\')
 		{
 			i++;
@@ -46,7 +44,8 @@ char	*bslash_trim_str(char *s)
 	int		i;
 	
 	len = bslash_trim_len(s);
-	if (!(rtn = malloc(sizeof(char) * (len + 1))))
+	rtn = malloc(sizeof(char) * (len + 1));
+	if (!rtn)	
 		ft_error();
 	i = 0;
 	while (*s)
