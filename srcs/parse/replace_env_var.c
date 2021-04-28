@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   replace_env_var.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minummin </var/mail/minummin>              +#+  +:+       +#+        */
+/*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 22:47:48 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/23 23:01:57 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/28 17:49:03 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,8 @@ void	replace_env_var(t_ls *data, t_v *v)
 		dq = 0;
 		while (data->words2[i][++j])
 		{
-			if (data->words2[i][j] == '$' && data->words2[i][j + 1] != '\0' && q == 0)
+			if (data->words2[i][j] == '$' && data->words2[i][j + 1] != '\0'
+					&& q == 0)
 				if (!prev_bslash(data->words2[i], j, q))
 					j = change_variable(data, v, j, i);
 			q_dq_index(data->words2[i], j, &q, &dq);
