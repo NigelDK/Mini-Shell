@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:37:15 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/28 15:24:31 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/28 15:32:15 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*ft_prompt_2(t_v *v)
 	if (!buf)
 		ft_error_v(v);
 	ft_bzero(buf, 1025);
-	return (getcwd(buf, (size_t)size));
+	return (getcwd(buf, 1025));
 }
 
 void	ft_print_prompt(t_ls *data, t_v *v)
