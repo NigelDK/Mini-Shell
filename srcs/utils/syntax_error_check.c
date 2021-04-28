@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 15:48:07 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/28 14:06:03 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/28 15:14:24 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	start_check(t_ls *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (data->line[i] && data->line[i] == ' ')
@@ -22,7 +22,7 @@ static int	start_check(t_ls *data)
 	if (data->line[i] && (data->line[i] == '|' || data->line[i] == ';'))
 	{
 		printf("bash: syntax error near unexpected token `%c'\n",
-				data->line[i]);
+			data->line[i]);
 		data->statuscode = 2;
 		return (1);
 	}
@@ -46,11 +46,11 @@ static int	semicolon_comb(t_ls *data)
 	}
 	while (data->line[i] && data->line[i] == ' ')
 		i++;
-	if (data->line[i] && (data->line[i] == '&' || data->line[i] == '|' ||
-		data->line[i] == ';'))
+	if (data->line[i] && (data->line[i] == '&' || data->line[i] == '|'
+		|| data->line[i] == ';'))
 	{
 		printf("bash: syntax error near unexpected token `%c'\n",
-				data->line[i]);
+			data->line[i]);
 		data->statuscode = 2;
 		return (1);
 	}
@@ -81,8 +81,9 @@ static int	big_small_than_comb(t_ls *data)
 		i++;
 	if (newline_err(data, i))
 		return (1);
-	if (data->line[i] && (data->line[i] == '&' || data->line[i] == ';' ||
-		data->line[i] == '<' || data->line[i] == '>' || data->line[i] == '|'))
+	if (data->line[i] && (data->line[i] == '&' || data->line[i] == ';'
+		|| data->line[i] == '<' || data->line[i] == '>'
+		|| data->line[i] == '|'))
 	{
 		printf("bash: syntax error near unexpected token `%c'\n",
 				data->line[i]);

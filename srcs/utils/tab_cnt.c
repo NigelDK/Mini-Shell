@@ -6,13 +6,13 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 21:16:07 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/08 21:16:35 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/28 15:12:05 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int		tab_cnt(char **tab2)
+int	tab_cnt(char **tab2)
 {
 	int	i;
 

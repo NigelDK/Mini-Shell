@@ -6,13 +6,13 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 19:25:51 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/20 13:59:36 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/28 15:12:20 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int		prev_bslash(char *s, int k, int q)
+int	prev_bslash(char *s, int k, int q)
 {
 	int	i;
 
