@@ -38,6 +38,17 @@ SRCS = srcs/main.c \
 	srcs/termcap/print_termcap.c \
 	srcs/termcap/termcap_utils.c \
 	srcs/termcap/print_termcap2.c \
+	ft_printf_err/ft_add_struct.c \
+	ft_printf_err/ft_itoa.c \
+	ft_printf_err/ft_output.c \
+	ft_printf_err/ft_print_cux_and_add_struct2.c \
+	ft_printf_err/ft_print_d.c \
+	ft_printf_err/ft_print_d2.c \
+	ft_printf_err/ft_print_p.c \
+	ft_printf_err/ft_print_p2.c \
+	ft_printf_err/ft_print_s.c \
+	ft_printf_err/ft_print_s2.c \
+	ft_printf_err/ft_printf.c \
 		get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c \
 		libft/ft_lstsize.c \
