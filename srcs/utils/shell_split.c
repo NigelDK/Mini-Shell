@@ -6,43 +6,11 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 15:53:02 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/23 14:38:52 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/28 17:28:57 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-static void init_zero(int *i, int *j)
-{
-	i[0] = 0;
-	j[0] = 0;
-}
-
-static int		cmd_cnt(char *s, char c)
-{
-	int	i;
-	int	k;
-	int	q;
-	int	dq;
-
-	i = 0;
-	q = 0;
-	k = 0;
-	dq = 0;
-	while (s[k])
-	{
-		while (s[k] && (s[k] != c || (s[k] == c && (q == 1 || dq == 1)) ||
-		(s[k] == c && q == 0 && prev_bslash(s, k, q))))
-		{
-			q_dq_index(s, k, &q, &dq);
-			k++;
-		}
-		while (s[k] && s[k] == c)
-			k++;
-		i++;
-	}
-	return (i);
-}
 
 static int		cmd_len(char *s, char c, int k)
 {
@@ -53,8 +21,8 @@ static int		cmd_len(char *s, char c, int k)
 	i = 0;
 	q = 0;
 	dq = 0;
-	while (s[k] && (s[k] != c || (s[k] == c && (q == 1 || dq == 1)) ||
-	(s[k] == c && q == 0 && prev_bslash(s, k, q))))
+	while (s[k] && (s[k] != c || (s[k] == c && (q == 1 || dq == 1))
+			|| (s[k] == c && q == 0 && prev_bslash(s, k, q))))
 	{
 		q_dq_index(s, k, &q, &dq);
 		k++;
@@ -63,25 +31,26 @@ static int		cmd_len(char *s, char c, int k)
 	return (i);
 }
 
-static void		ft_freee(char **s, int j)
+static void	ft_freee(char **s, int j)
 {
 	if (j > 0)
 	{
 		while (j >= 0)
 			free(s[j--]);
-		free(s); 
+		free(s);
 	}
 }
 
-static char		**fill_tab(char *s, char c, char **tab2)
+static char	**fill_tab(char *s, char c, char **tab2)
 {
 	t_it	i;
-	
+
 	init_zero(&i.j, &i.k);
 	while (s[i.k])
 	{
 		i.i = 0;
-		if (!(tab2[i.j] = malloc(sizeof(char) * (cmd_len(s, c, i.k) + 1))))
+		tab2[i.j] = malloc(sizeof(char) * (cmd_len(s, c, i.k) + 1));
+		if (!tab2[i.j])
 		{
 			ft_freee(tab2, i.j);
 			tab2 = NULL;
@@ -102,11 +71,12 @@ static char		**fill_tab(char *s, char c, char **tab2)
 	return (tab2);
 }
 
-char			**shell_split(char *s, char c)
+char	**shell_split(char *s, char c)
 {
 	char	**tab2;
 
-	if (!*s || !(tab2 = malloc(sizeof(char *) * (cmd_cnt(s, c) + 1))))
+	tab2 = malloc(sizeof(char *) * (shell_split_cmd_cnt(s, c) + 1));
+	if (!*s || !tab2)
 		return (NULL);
 	while (*s && *s == c)
 		s++;
