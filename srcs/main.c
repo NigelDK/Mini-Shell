@@ -19,7 +19,6 @@ int	main(int argc, char **argv, char **envp)
 	t_ls	data;
 	t_term	t;
 
-	ft_printf("HHHHH\n");
 	ft_minishell_init(&t, &data);
 	if (!argv)
 		return (0);
