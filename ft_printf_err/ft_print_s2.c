@@ -21,7 +21,7 @@ void	ft_putstr_len(char *s, t_con *con, int len)
 	i = 0;
 	while (len > i && s[i])
 	{
-		write(2, &s[i], 1);
+		write(con->fd, &s[i], 1);
 		i++;
 		con->char_count++;
 	}

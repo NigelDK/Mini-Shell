@@ -14,7 +14,7 @@
 
 void	ft_putchar_3(char c, t_con *con)
 {
-	write(2, &c, 1);
+	write(con->fd, &c, 1);
 	con->char_count++;
 }
 
@@ -22,7 +22,7 @@ void	ft_zero(int a, t_con *con)
 {
 	while (a > 0)
 	{
-		write(2, "0", 1);
+		write(con->fd, "0", 1);
 		con->char_count++;
 		a--;
 	}
@@ -32,7 +32,7 @@ void	ft_space(int b, t_con *con)
 {
 	while (b > 0)
 	{
-		write(2, " ", 1);
+		write(con->fd, " ", 1);
 		con->char_count++;
 		b--;
 	}
@@ -47,7 +47,7 @@ void	ft_putstr_3(char *s, t_con *con)
 	i = 0;
 	while (s[i])
 	{
-		write(2, &s[i], 1);
+		write(con->fd, &s[i], 1);
 		con->char_count++;
 		i++;
 	}

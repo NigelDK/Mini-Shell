@@ -12,11 +12,12 @@
 
 #include "printf.h"
 
-int	ft_printf(const char *format, ...)
+int	ft_printf_fd(int fd, const char *format, ...)
 {
 	t_con	con;
 	va_list	valist;
 
+	con.fd = fd;
 	con.char_count = 0;
 	va_start(valist, format);
 	con.str = (char *)format;
@@ -33,7 +34,7 @@ void	ft_while(t_con *con, va_list valist)
 			ft_add_cons(con, valist);
 		else
 		{
-			write(1, &*con->str, 1);
+			write(con->fd, &*con->str, 1);
 			con->str++;
 			con->char_count++;
 		}

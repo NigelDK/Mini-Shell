@@ -13,12 +13,14 @@
 #ifndef PRINTF_H
 # define PRINTF_H
 
+# include <stdio.h>
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdlib.h>
 
 typedef struct s_con
 {
+	int					fd;
 	int					flag_checker2;
 	int					flag_checker;
 	int					integer;
@@ -68,7 +70,7 @@ int						ft_counter(unsigned long int n, unsigned long int size);
 char					*ft_itoa_x(unsigned int n, int count);
 void					ft_x_conversion(t_con *con, va_list valist);
 char					ft_check_conversion(char *str);
-int						ft_printf(const char *format, ...);
+int						ft_printf_fd(int fd, const char *format, ...);
 void					ft_i_d_conversion(t_con *con, va_list valist);
 void					ft_check(va_list valist, t_con *con);
 void					ft_add_cons(t_con *con, va_list valist);
