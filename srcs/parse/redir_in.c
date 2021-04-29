@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 20:19:57 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/29 10:16:10 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/29 10:19:13 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,12 @@ static void	child_process(t_v **v, char *line, t_ls *data, int cmd_cnt)
 	char	**filename;
 
 	i = -1;
+	j = 1;
 	if (redir_at_start(line))
 	{
 		j = 0;
 		cmd_cnt++;
 	}
-	else
-		j = 1;
 	fd = malloc(sizeof(int) * (cmd_cnt - 1));
 	if (!fd)
 		ft_error();
@@ -96,7 +95,7 @@ static void	child_process(t_v **v, char *line, t_ls *data, int cmd_cnt)
 	exit (0);
 }
 
-int			redir_in(t_v **v, char *line, t_ls *data)
+int	redir_in(t_v **v, char *line, t_ls *data)
 {
 	int		cmd_cnt;
 	int		pid;
