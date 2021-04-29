@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 14:49:09 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/29 09:37:57 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/29 09:40:01 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	pipes_and_pids(int ***fd, int **pid, int cmd_cnt)
 		ft_error();
 }
 
-static void		first_pipe(int ***fd, t_pipe p, t_v *v, t_ls *data)
+static void	first_pipe(int ***fd, t_pipe p, t_v *v, t_ls *data)
 {
 	p.pid[0] = fork();
 	if (p.pid[0] == -1)
@@ -57,7 +57,7 @@ static void		first_pipe(int ***fd, t_pipe p, t_v *v, t_ls *data)
 static void	mid_pipes(int ***fd, t_pipe p, t_v *v, t_ls *data)
 {
 	int	i;
-	
+
 	i = 0;
 	while (++i < p.cmd_cnt - 1)
 	{	
@@ -85,7 +85,7 @@ static void	mid_pipes(int ***fd, t_pipe p, t_v *v, t_ls *data)
 static void	last_pipe(int ***fd, t_pipe p, t_v *v, t_ls *data)
 {
 	int	i;
-	
+
 	i = p.cmd_cnt - 1;
 	p.pid[i] = fork();
 	if (p.pid[i] == -1)
