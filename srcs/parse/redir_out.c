@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 15:55:22 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/28 18:27:23 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/29 12:43:44 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ static void	open_close_fd(int *fd, int i, char **filename, int j)
 		fd[i] = open(filename[0], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd[i] == -1)
 	{
-		printf("bash: %s: No such file or directory\n", filename[0]);
+		ft_printf_fd(2,
+			"minishell: %s: No such file or directory\n", filename[0]);
 		free_tab(&filename);
 		exit (1);
 	}
@@ -84,6 +85,7 @@ static void	child_process(t_v **v, char *line, t_ls *data, int cmd_cnt)
 			open_close_fd(fd, i, filename, 1);
 	}
 	redir_trim(data, line);
+	printf("%s\n", data->words3[0]);
 	infinity_loop(v, data->words3[0], data);
 	exit (0);
 }

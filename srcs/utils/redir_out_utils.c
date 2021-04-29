@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 17:32:33 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/28 18:12:36 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/29 12:25:12 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	too_many_redir_out(char *s)
 		}
 		if (i > 2)
 		{
-			printf("bash:  syntax error near unexpected token `");
+			ft_printf_fd(2, "bash:  syntax error near unexpected token `");
 			while (i-- > 2)
 				printf(">");
 			printf("'\n");

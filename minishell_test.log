@@ -126,9 +126,9 @@ $
 /home/nigeldk/.cache/minishell_test/sandbox$
 /home/nigeldk/.cache/minishell_test/sandbox$
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: : No such file or directory$
+$
+$
 /home/nigeldk/.cache/minishell_test/sandbox$
 $
 $
@@ -143,9 +143,9 @@ minishell: cd:  : No such file or directory$
 /home/nigeldk/.cache/minishell_test/sandbox$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd:  : No such file or directory$
+$
+$
 /home/nigeldk/.cache/minishell_test/sandbox$
 $
 $
@@ -320,9 +320,9 @@ minishell: cd:  /: No such file or directory$
 /home/nigeldk/.cache/minishell_test/sandbox$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd:  /: No such file or directory$
+$
+$
 /home/nigeldk/.cache/minishell_test/sandbox$
 $
 $
@@ -337,9 +337,9 @@ minishell: cd:  / : No such file or directory$
 /home/nigeldk/.cache/minishell_test/sandbox$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd:  / : No such file or directory$
+$
+$
 /home/nigeldk/.cache/minishell_test/sandbox$
 $
 $
@@ -354,9 +354,9 @@ minishell: cd:                   /: No such file or directory$
 /home/nigeldk/.cache/minishell_test/sandbox$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd:                   /: No such file or directory$
+$
+$
 /home/nigeldk/.cache/minishell_test/sandbox$
 $
 $
@@ -371,9 +371,9 @@ minishell: cd:                   /              : No such file or directory$
 /home/nigeldk/.cache/minishell_test/sandbox$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd:                   /              : No such file or directory$
+$
+$
 /home/nigeldk/.cache/minishell_test/sandbox$
 $
 $
@@ -388,9 +388,9 @@ minishell: cd:  // : No such file or directory$
 /home/nigeldk/.cache/minishell_test/sandbox$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd:  // : No such file or directory$
+$
+$
 /home/nigeldk/.cache/minishell_test/sandbox$
 $
 $
@@ -420,9 +420,9 @@ minishell: cd:  //home: No such file or directory$
 /home/nigeldk/.cache/minishell_test/sandbox$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd:  //home: No such file or directory$
+$
+$
 /home/nigeldk/.cache/minishell_test/sandbox$
 $
 $
@@ -437,9 +437,9 @@ minishell: cd:      //home    : No such file or directory$
 /home/nigeldk/.cache/minishell_test/sandbox$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd:      //home    : No such file or directory$
+$
+$
 /home/nigeldk/.cache/minishell_test/sandbox$
 $
 $
@@ -452,9 +452,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -465,9 +465,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -478,9 +478,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -491,9 +491,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -504,9 +504,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -517,9 +517,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -530,9 +530,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -543,9 +543,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -556,9 +556,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -569,9 +569,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -582,9 +582,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -595,9 +595,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -608,9 +608,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -621,9 +621,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -634,9 +634,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -658,9 +658,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -682,9 +682,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -706,9 +706,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -741,9 +741,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -776,9 +776,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -811,9 +811,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -824,9 +824,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -837,9 +837,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -850,9 +850,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -863,9 +863,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -876,9 +876,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -889,9 +889,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -979,9 +979,9 @@ $
 minishell: cd: d: Permission denied$
 $
 |---------------------------------------ACTUAL----------------------------------
-$
-$
 minishell: cd: d: Permission denied$
+$
+$
 $
 ================================================================================
 
@@ -2104,24 +2104,24 @@ _nJq123o__1ju_je3234sui__a$
 |---------------------------------------EXPECTED--------------------------------
 a$
 |---------------------------------------ACTUAL----------------------------------
-__________________________minishell: export: `__________________________=a': not a valid identifier$
-$
+minishell: export: `__________________________=a': not a valid identifier$
+__________________________$
 ================================================================================
 
 |> WITH export _bonjour_=a; echo $_bonjour_\n
 |---------------------------------------EXPECTED--------------------------------
 a$
 |---------------------------------------ACTUAL----------------------------------
-_bonjour_minishell: export: `_bonjour_=a': not a valid identifier$
-$
+minishell: export: `_bonjour_=a': not a valid identifier$
+_bonjour_$
 ================================================================================
 
 |> WITH export _=a; echo $_a\n
 |---------------------------------------EXPECTED--------------------------------
 $
 |---------------------------------------ACTUAL----------------------------------
-_aminishell: export: `_=a': not a valid identifier$
-$
+minishell: export: `_=a': not a valid identifier$
+_a$
 ================================================================================
 
 |> WITH export 1=a\n
@@ -2202,6 +2202,11 @@ minishell: export: `': not a valid identifier$
 minishell: export: `asdf ': not a valid identifier$
 $
 |---------------------------------------ACTUAL----------------------------------
+minishell: export: `asdf ': not a valid identifier$
+minishell: export: ` asdf asdf asd f': not a valid identifier$
+minishell: export: ` asdf ': not a valid identifier$
+minishell: export: `': not a valid identifier$
+minishell: export: `asdf ': not a valid identifier$
 ================================================================================
 
 |> WITH export 'asdf ' B ' asdf asdf asd f' ' asdf ' '' 'asdf ' C; echo $A$B$C\n
@@ -2214,6 +2219,11 @@ minishell: export: `': not a valid identifier$
 minishell: export: `asdf ': not a valid identifier$
 $
 |---------------------------------------ACTUAL----------------------------------
+minishell: export: `asdf ': not a valid identifier$
+minishell: export: ` asdf asdf asd f': not a valid identifier$
+minishell: export: ` asdf ': not a valid identifier$
+minishell: export: `': not a valid identifier$
+minishell: export: `asdf ': not a valid identifier$
 ================================================================================
 
 |> WITH export A 'asdf ' B ' asdf asdf asd f' ' asdf ' '' 'asdf '; echo $A$B$C\n
@@ -2226,6 +2236,11 @@ minishell: export: `': not a valid identifier$
 minishell: export: `asdf ': not a valid identifier$
 $
 |---------------------------------------ACTUAL----------------------------------
+minishell: export: `asdf ': not a valid identifier$
+minishell: export: ` asdf asdf asd f': not a valid identifier$
+minishell: export: ` asdf ': not a valid identifier$
+minishell: export: `': not a valid identifier$
+minishell: export: `asdf ': not a valid identifier$
 ================================================================================
 
 |> WITH export A B C; echo $A$B$C\n
@@ -2703,10 +2718,10 @@ c$
 |> WITH [SETUP touch a b c; cp /usr/bin/ls bonjour] ./bonjour -l\n
 |---------------------------------------EXPECTED--------------------------------
 total 140$
--rw-rw-r-- 1 nigeldk nigeldk      0 Apr 29 11:56 a$
--rw-rw-r-- 1 nigeldk nigeldk      0 Apr 29 11:56 b$
--rwxr-xr-x 1 nigeldk nigeldk 142144 Apr 29 11:56 bonjour$
--rw-rw-r-- 1 nigeldk nigeldk      0 Apr 29 11:56 c$
+-rw-rw-r-- 1 nigeldk nigeldk      0 Apr 29 12:26 a$
+-rw-rw-r-- 1 nigeldk nigeldk      0 Apr 29 12:26 b$
+-rwxr-xr-x 1 nigeldk nigeldk 142144 Apr 29 12:26 bonjour$
+-rw-rw-r-- 1 nigeldk nigeldk      0 Apr 29 12:26 c$
 |---------------------------------------ACTUAL----------------------------------
 ./bonjour: command not found$
 ================================================================================
@@ -2714,10 +2729,10 @@ total 140$
 |> WITH [SETUP mkdir somedir; touch a b c; touch somedir/d somedir/e;cp /usr/bin/ls somedir/bonjour] ./somedir/bonjour -l\n
 |---------------------------------------EXPECTED--------------------------------
 total 4$
--rw-rw-r-- 1 nigeldk nigeldk    0 Apr 29 11:56 a$
--rw-rw-r-- 1 nigeldk nigeldk    0 Apr 29 11:56 b$
--rw-rw-r-- 1 nigeldk nigeldk    0 Apr 29 11:56 c$
-drwxrwxr-x 2 nigeldk nigeldk 4096 Apr 29 11:56 somedir$
+-rw-rw-r-- 1 nigeldk nigeldk    0 Apr 29 12:26 a$
+-rw-rw-r-- 1 nigeldk nigeldk    0 Apr 29 12:26 b$
+-rw-rw-r-- 1 nigeldk nigeldk    0 Apr 29 12:26 c$
+drwxrwxr-x 2 nigeldk nigeldk 4096 Apr 29 12:26 somedir$
 |---------------------------------------ACTUAL----------------------------------
 ./somedir/bonjour: command not found$
 ================================================================================
@@ -4113,8 +4128,8 @@ asdf: command not found$
 minishell: asdf: command not found$
 bonjour$
 |---------------------------------------ACTUAL----------------------------------
-bonjourasdf: command not$
- found$
+bonjour$
+asdf: command not found$
 ================================================================================
 
 |> WITH echo a ||| echo b\n
@@ -5800,9 +5815,9 @@ Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem
 |> WITH [SETUP touch a b c] [EXPORTS LS='ls -l'] $LS\n
 |---------------------------------------EXPECTED--------------------------------
 total 0$
--rw-rw-r-- 1 nigeldk nigeldk 0 Apr 29 11:56 a$
--rw-rw-r-- 1 nigeldk nigeldk 0 Apr 29 11:56 b$
--rw-rw-r-- 1 nigeldk nigeldk 0 Apr 29 11:56 c$
+-rw-rw-r-- 1 nigeldk nigeldk 0 Apr 29 12:26 a$
+-rw-rw-r-- 1 nigeldk nigeldk 0 Apr 29 12:26 b$
+-rw-rw-r-- 1 nigeldk nigeldk 0 Apr 29 12:26 c$
 |---------------------------------------ACTUAL----------------------------------
 ls -l: command not found$
 ================================================================================

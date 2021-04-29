@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 15:48:07 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/29 11:40:47 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/29 12:39:24 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ static int	big_small_than_comb(t_ls *data)
 	if (newline_err(data, i))
 		return (1);
 	if (data->line[i] && (data->line[i] == '&' || data->line[i] == ';'
-			|| data->line[i] == '<' || data->line[i] == '>'
-			|| data->line[i] == '|'))
+			|| data->line[i] == '<' || (data->line[i] == '>'
+			&& data->line[i - 1] != '>') || data->line[i] == '|'))
 	{
 		ft_printf_fd(2, "minishell: syntax error near unexpected token `%c'\n",
 			data->line[i]);
