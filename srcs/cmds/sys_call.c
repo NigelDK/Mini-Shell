@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 18:22:33 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/29 11:55:18 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/29 13:32:22 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	child_call(t_ls *data, t_v **v, char *cmd, int j)
 {
 	if (execve(cmd, data->words2, data->envp) < 0)
 		if (data->words2[0])
-			ft_printf_fd(2, "%s: command not found\n", data->words2[0]);
+			ft_printf_fd(2,
+				"minishell: %s: command not found\n", data->words2[0]);
 	if (j == 1)
 		free(cmd);
 	if (!data->words2[0])
