@@ -68,7 +68,7 @@ void	ft_print_prompt(t_ls *data, t_v *v)
 {
 	char	*ptr;
 
-	if (data->cd != 3)
+	if (data->cd != 3 && data->cd != 0)
 		ft_oldpwd(v);
 	ptr = ft_prompt_2(v);
 	if (data->cd != 3)

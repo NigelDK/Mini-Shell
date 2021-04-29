@@ -32,29 +32,11 @@ void    ft_print_env_3(t_v *v)
         }
 }
 
-void	ft_print_env(t_v *v)
-{
-	char *temp;
-
-	while (v)
-	{
-		temp = ft_strstr_reverse(v->str, "=");
-		if (v->str && ft_strcmp_2("OLDPWD", temp, 1))
-			if (v->str && (v->str[0] != '_' || v->str[1] != '='))
-				printf("%s\n", v->str);
-		v = v->next;
-		free(temp);
-	}
-}
-
 void	ft_env(char **words, t_v *v, t_ls *data)
 {
 	if (words[1] == NULL)
 	{
-		if (data->oldpwd == 1)
-			ft_print_env_3(v);
-		else
-			ft_print_env(v);
+		ft_print_env_3(v);
 		ft_print_env_2(v);
 	}	
 	else

@@ -92,6 +92,21 @@ int	change_variable(t_ls *data, t_v *v, int j, int i)
 	return (0);
 }
 
+int	change_home(t_ls *data, int i)
+{
+	char	*tmp;
+
+	if (data->words2[i][1] == '\0')
+		tmp = ft_strdup(getenv("HOME"));
+	else
+		tmp = ft_strjoin(getenv("HOME"),
+			ft_substr(data->words2[i], 1, ft_strlen(data->words2[i])));
+	free(data->words2[i]);
+	data->words2[i] = NULL;
+        data->words2[i] = tmp;
+        return (0);
+}
+
 void	replace_env_var(t_ls *data, t_v *v)
 {
 	int		i;
@@ -107,6 +122,9 @@ void	replace_env_var(t_ls *data, t_v *v)
 		dq = 0;
 		while (data->words2[i][++j])
 		{
+			if (data->words2[i][0] == '~' && (data->words2[i][1] == '/'
+				|| data->words2[i][1] == '\0'))
+					j = change_home(data, i);
 			if (data->words2[i][j] == '$' && data->words2[i][j + 1] != '\0'
 					&& q == 0)
 				if (!prev_bslash(data->words2[i], j, q))
