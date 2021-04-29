@@ -48,7 +48,7 @@ void	tester_lexer(t_v *v, t_ls *data, t_term t, char **argv)
 	if (ft_strcmp_2(str, "\4", 1) || in == 1)
 	{
 		in = 0;
-		data->line = ft_strdup(argv[1]);
+		data->line = ft_strdup(argv[2]);
 		tester_lexer_2(&v, data, t);
 	}
 }
