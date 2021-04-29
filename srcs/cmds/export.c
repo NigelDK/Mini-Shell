@@ -124,6 +124,7 @@ void	ft_export(char **words, t_v *v, int mark, t_ls *data)
 		{
 			ft_printf_fd(2,
 				"minishell: export: `%s': not a valid identifier\n", words[i]);
+			data->statuscode = 400;
 		}
 	}
 	free(data->c_e);
