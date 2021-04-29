@@ -39,7 +39,7 @@ void	ft_echo_while(char **words, int i)
 {
 	while (words[++i])
 	{
-		ft_printf_fd(1, "%s", words[i]);
+		printf("%s", words[i]);
 		if (words[i + 1])
 			printf(" ");
 	}
