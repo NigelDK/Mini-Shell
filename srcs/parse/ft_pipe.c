@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 14:49:09 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/29 12:22:23 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/29 15:04:36 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ static void	last_pipe(int ***fd, t_pipe p, t_v *v, t_ls *data)
 
 int	ft_pipe(t_v *v, char **line, t_ls *data)
 {
-	int			i;
 	int			**fd;
 	t_pipe		p;
 
@@ -117,14 +116,15 @@ int	ft_pipe(t_v *v, char **line, t_ls *data)
 	}
 	pipes_and_pids(&fd, &p.pid, p.cmd_cnt);
 	first_pipe(&fd, p, v, data);
+	wait(&p.pid[0]);
 	mid_pipes(&fd, p, v, data);
 	last_pipe(&fd, p, v, data);
 	close_fd(fd, p.cmd_cnt);
 	free_tab(&data->words1);
 	free_fd(&fd, p.cmd_cnt);
-	i = -1;
-	while (++i < p.cmd_cnt)
-		wait(&p.pid[i]);
+	p.i = 0;
+	while (++p.i < p.cmd_cnt)
+		wait(&p.pid[p.i]);
 	free(p.pid);
 	return (1);
 }

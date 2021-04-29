@@ -1220,7 +1220,8 @@ exit: 	3: numeric argument required$
 |---------------------------------------EXPECTED--------------------------------
 |---------------------------------------ACTUAL----------------------------------
 exit$
-exit: 	 3: numeric argument required$
+exit: 	
+ 3: numeric argument required$
 ================================================================================
 
 |> WITH exit '3 '\n
@@ -1242,19 +1243,23 @@ exit: 3	: numeric argument required$
 |> WITH exit '3\r'\n
 |  STATUS: expected 255 actual 128
 |---------------------------------------EXPECTED--------------------------------
-minishell: exit: 3: numeric argument required$
+minishell: exit: 3
+: numeric argument required$
 |---------------------------------------ACTUAL----------------------------------
 exit$
-exit: 3: numeric argument required$
+exit: 3
+: numeric argument required$
 ================================================================================
 
 |> WITH exit '3\t\f\r '\n
 |  STATUS: expected 255 actual 128
 |---------------------------------------EXPECTED--------------------------------
-minishell: exit: 3	 : numeric argument required$
+minishell: exit: 3	
+ : numeric argument required$
 |---------------------------------------ACTUAL----------------------------------
 exit$
-exit: 3	 : numeric argument required$
+exit: 3	
+ : numeric argument required$
 ================================================================================
 
 |> WITH exit '3     a'\n
@@ -2367,12 +2372,15 @@ minishell: unset: `AH\=nop': not a valid identifier$
 |> WITH echo \t\v\f\r !#$%*+,-./0123456789:;=?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_abcdefghijklmnopqrstuvwxyz{}~\n
 |  STATUS: expected 127 actual 0
 |---------------------------------------EXPECTED--------------------------------
-  !#$%*+,-./0123456789:$
+ 
+ !#$%*+,-./0123456789:$
 minishell: =?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_abcdefghijklmnopqrstuvwxyz{}~: command not found$
 |---------------------------------------ACTUAL----------------------------------
 minishell: =?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_abcdefghijklmnopqrstuvwxyz{}~: command not found$
-	 !#%*+,-./0123456789:$
-	 !#%*+,-./0123456789:$
+	
+ !#%*+,-./0123456789:$
+	
+ !#%*+,-./0123456789:$
 ================================================================================
 
 |> WITH [SETUP touch a b c; cp /usr/bin/ls bonjour] ./bonjour\n
@@ -2388,10 +2396,10 @@ minishell: ./bonjour: command not found$
 |> WITH [SETUP touch a b c; cp /usr/bin/ls bonjour] ./bonjour -l\n
 |---------------------------------------EXPECTED--------------------------------
 total 140$
--rw-rw-r-- 1 nigeldk nigeldk      0 Apr 29 13:47 a$
--rw-rw-r-- 1 nigeldk nigeldk      0 Apr 29 13:47 b$
--rwxr-xr-x 1 nigeldk nigeldk 142144 Apr 29 13:47 bonjour$
--rw-rw-r-- 1 nigeldk nigeldk      0 Apr 29 13:47 c$
+-rw-rw-r-- 1 nigeldk nigeldk      0 Apr 29 14:46 a$
+-rw-rw-r-- 1 nigeldk nigeldk      0 Apr 29 14:46 b$
+-rwxr-xr-x 1 nigeldk nigeldk 142144 Apr 29 14:46 bonjour$
+-rw-rw-r-- 1 nigeldk nigeldk      0 Apr 29 14:46 c$
 |---------------------------------------ACTUAL----------------------------------
 minishell: ./bonjour: command not found$
 ================================================================================
@@ -2399,10 +2407,10 @@ minishell: ./bonjour: command not found$
 |> WITH [SETUP mkdir somedir; touch a b c; touch somedir/d somedir/e;cp /usr/bin/ls somedir/bonjour] ./somedir/bonjour -l\n
 |---------------------------------------EXPECTED--------------------------------
 total 4$
--rw-rw-r-- 1 nigeldk nigeldk    0 Apr 29 13:47 a$
--rw-rw-r-- 1 nigeldk nigeldk    0 Apr 29 13:47 b$
--rw-rw-r-- 1 nigeldk nigeldk    0 Apr 29 13:47 c$
-drwxrwxr-x 2 nigeldk nigeldk 4096 Apr 29 13:47 somedir$
+-rw-rw-r-- 1 nigeldk nigeldk    0 Apr 29 14:46 a$
+-rw-rw-r-- 1 nigeldk nigeldk    0 Apr 29 14:46 b$
+-rw-rw-r-- 1 nigeldk nigeldk    0 Apr 29 14:46 c$
+drwxrwxr-x 2 nigeldk nigeldk 4096 Apr 29 14:46 somedir$
 |---------------------------------------ACTUAL----------------------------------
 minishell: ./somedir/bonjour: command not found$
 ================================================================================
@@ -4513,9 +4521,9 @@ Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem
 |> WITH [SETUP touch a b c] [EXPORTS LS='ls -l'] $LS\n
 |---------------------------------------EXPECTED--------------------------------
 total 0$
--rw-rw-r-- 1 nigeldk nigeldk 0 Apr 29 13:47 a$
--rw-rw-r-- 1 nigeldk nigeldk 0 Apr 29 13:47 b$
--rw-rw-r-- 1 nigeldk nigeldk 0 Apr 29 13:47 c$
+-rw-rw-r-- 1 nigeldk nigeldk 0 Apr 29 14:46 a$
+-rw-rw-r-- 1 nigeldk nigeldk 0 Apr 29 14:46 b$
+-rw-rw-r-- 1 nigeldk nigeldk 0 Apr 29 14:46 c$
 |---------------------------------------ACTUAL----------------------------------
 minishell: ls -l: command not found$
 ================================================================================
@@ -4792,22 +4800,6 @@ minishell: unexpected EOF while looking for matching `''$
 minishell: unexpected EOF while looking for matching `"'$
 |---------------------------------------ACTUAL----------------------------------
 \$
-================================================================================
-
-|> WITH echo bonjour > "fi le"\n
-|# FILE fi le
-|---------------------------------------EXPECTED--------------------------------
-bonjour$
-|---------------------------------------ACTUAL----------------------------------
-bonjour le$
-================================================================================
-
-|> WITH echo bonjour > 'fi le'\n
-|# FILE fi le
-|---------------------------------------EXPECTED--------------------------------
-bonjour$
-|---------------------------------------ACTUAL----------------------------------
-bonjour le$
 ================================================================================
 
 |> WITH echo\t\t\t\t\t\t\t\t\t\tfoo\n
