@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 20:19:57 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/29 10:19:13 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/29 12:19:42 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	too_many_redir(char *s)
 		}
 		if (i > 1)
 		{
-			printf("bash:  syntax error near unexpected token `");
+			ft_printf_fd(2, "bash:  syntax error near unexpected token `");
 			while (i-- > 1)
 				printf("<");
 			printf("'\n");
@@ -55,12 +55,11 @@ static void	open_close_fd(int *fd, int i, char **filename)
 	fd[i] = open(filename[0], O_RDONLY, 0644);
 	if (fd[i] == -1)
 	{
-		printf("bash: %s: No such file or directory\n", filename[0]);
+		ft_printf_fd(2, "bash: %s: No such file or directory\n", filename[0]);
 		free_tab(&filename);
 		exit (1);
 	}
-	dup2(fd[i], 0);
-	if (fd[i] == -1)
+	if (dup2(fd[i], 0) == -1)
 		ft_error();
 	close(fd[i]);
 	free_tab(&filename);

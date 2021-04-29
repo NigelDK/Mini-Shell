@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 14:49:09 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/29 09:40:01 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/29 12:22:23 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ static void	first_pipe(int ***fd, t_pipe p, t_v *v, t_ls *data)
 		ft_error();
 	if (p.pid[0] == 0)
 	{
-		dup2(fd[0][0][1], 1);
-		if (fd[0][0][1] == -1)
+		if (dup2(fd[0][0][1], 1) == -1)
 			ft_error();
 		close_fd(fd[0], p.cmd_cnt);
 		infinity_loop(&v, data->words1[0], data);
@@ -66,11 +65,9 @@ static void	mid_pipes(int ***fd, t_pipe p, t_v *v, t_ls *data)
 			ft_error();
 		if (p.pid[i] == 0)
 		{
-			dup2(fd[0][i - 1][0], 0);
-			if (fd[0][i - 1][0] == -1)
+			if (dup2(fd[0][i - 1][0], 0) == -1)
 				ft_error();
-			dup2(fd[0][i][1], 1);
-			if (fd[0][i][1] == -1)
+			if (dup2(fd[0][i][1], 1) == -1)
 				ft_error();
 			close_fd(fd[0], p.cmd_cnt);
 			infinity_loop(&v, data->words1[i], data);
@@ -92,8 +89,7 @@ static void	last_pipe(int ***fd, t_pipe p, t_v *v, t_ls *data)
 		ft_error();
 	if (p.pid[i] == 0)
 	{
-		dup2(fd[0][i - 1][0], 0);
-		if (fd[0][i - 1][0] == -1)
+		if (dup2(fd[0][i - 1][0], 0) == -1)
 			ft_error();
 		close_fd(fd[0], p.cmd_cnt);
 		infinity_loop(&v, data->words1[i], data);

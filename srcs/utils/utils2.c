@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 21:47:05 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/28 15:25:43 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/29 12:23:59 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ void	ft_minishell_init(t_term *t, t_ls *data)
 	tcsetattr(0, TCSANOW, &t->term);
 	t->success = tgetent(NULL, getenv("TERM"));
 	if (t->success < 0)
-		printf("Could not access the termcap data base.\n");
+		ft_printf_fd(2, "Could not access the termcap data base.\n");
 	if (t->success == 0)
-		printf("Terminal type `%s' is not defined.\n", getenv("TERM"));
+		ft_printf_fd(2, "Terminal type `%s' is not defined.\n", getenv("TERM"));
 	data->cd = 0;
 	signal(SIGINT, main_signal_handler);
 	signal(SIGQUIT, main_signal_handler);
