@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 17:47:16 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/23 17:44:05 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/29 12:11:48 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_env(char **words, t_v *v, t_ls *data)
 	}	
 	else
 	{
-		printf("env: %s: No such file or directory\n", words[1]);
+		ft_printf_fd(2, "env: %s: No such file or directory\n", words[1]);
 		data->statuscode = 500;
 	}
 }

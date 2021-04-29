@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_free_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minummin </var/mail/minummin>              +#+  +:+       +#+        */
+/*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 19:39:59 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/28 15:25:03 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/29 11:45:54 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_error(void)
 {
-	printf("Error: %s\n", strerror(errno));
+	ft_printf_fd(2, "Error: %s\n", strerror(errno));
 	if (errno == 0)
 		exit(EXIT_SUCCESS);
 	exit(EXIT_FAILURE);
