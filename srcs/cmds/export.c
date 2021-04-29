@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:36:33 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/28 15:37:35 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/29 12:09:37 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,10 @@ void	ft_export(char **words, t_v *v, int mark, t_ls *data)
 				&& ft_check_export(words[i]) == 0 && data->c_e[i] == 'a')
 			ft_create_env(v, words[i]);
 		else if (!ft_isalpha(words[i][0]) || ft_check_export(words[i]) != 0)
-			printf("minishell: export: `%s': not a valid identifier\n", words[i]);
+		{
+			ft_printf_fd(2,
+				"minishell: export: `%s': not a valid identifier\n", words[i]);
+		}
 	}
 	free(data->c_e);
 }

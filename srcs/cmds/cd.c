@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:35:38 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/23 17:42:31 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/29 12:01:43 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_cd(char **words, int cd, t_ls *data)
 	{
 		mark = 1;
 		data->statuscode = 500;
-		printf("minishell: cd: %s: %s\n", words[1], strerror(errno));
+		ft_printf_fd(2, "minishell: cd: %s: %s\n", words[1], strerror(errno));
 		if (cd == 0)
 			return (2);
 	}

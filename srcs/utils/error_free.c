@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:36:14 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/23 19:42:58 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/29 11:46:58 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_error_v(t_v *v)
 {
 	ft_lstclear_2(&v, ft_memdel);
-	printf("Error: %s\n", strerror(errno));
+	ft_printf_fd(2, "Error: %s\n", strerror(errno));
 	if (errno == 0)
 		exit(EXIT_SUCCESS);
 	exit(EXIT_FAILURE);
@@ -42,7 +42,7 @@ void	ft_error_syscall(t_ls *data, t_v **v, char **path, char *temp)
 	if (temp)
 		free(temp);
 	ft_lstclear_2(v, ft_memdel);
-	printf("Error: %s\n", strerror(errno));
+	ft_printf_fd(2, "Error: %s\n", strerror(errno));
 	if (errno == 0)
 		exit(EXIT_SUCCESS);
 	exit(EXIT_FAILURE);
@@ -65,7 +65,7 @@ void	ft_error_data_v_2(t_ls *data, t_v **v)
 	if (data->line)
 		free(data->line);
 	ft_lstclear_2(v, ft_memdel);
-	printf("Error: %s\n", strerror(errno));
+	ft_printf_fd(2, "Error: %s\n", strerror(errno));
 	if (errno == 0)
 		exit(EXIT_SUCCESS);
 	exit(EXIT_FAILURE);
@@ -102,7 +102,7 @@ void	ft_error_data_v(t_ls *data, t_v *v)
 	if (data->line)
 		free(data->line);
 	ft_lstclear_2(&v, ft_memdel);
-	printf("Error: %s\n", strerror(errno));
+	ft_printf_fd(2, "Error: %s\n", strerror(errno));
 	if (errno == 0)
 		exit(EXIT_SUCCESS);
 	exit(EXIT_FAILURE);

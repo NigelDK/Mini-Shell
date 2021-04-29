@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 15:48:07 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/28 15:16:55 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/29 11:40:47 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	start_check(t_ls *data)
 		i++;
 	if (data->line[i] && (data->line[i] == '|' || data->line[i] == ';'))
 	{
-		printf("bash: syntax error near unexpected token `%c'\n",
+		ft_printf_fd(2, "minishell: syntax error near unexpected token `%c'\n",
 			data->line[i]);
 		data->statuscode = 2;
 		return (1);
@@ -40,7 +40,7 @@ static int	semicolon_comb(t_ls *data)
 		i++;
 	if (data->line[i] && data->line[i] == ';')
 	{
-		printf("bash: syntax error near unexpected token `;;'\n");
+		ft_printf_fd(2, "minishell: syntax error near unexpected token `;;'\n");
 		data->statuscode = 2;
 		return (1);
 	}
@@ -49,7 +49,7 @@ static int	semicolon_comb(t_ls *data)
 	if (data->line[i] && (data->line[i] == '&' || data->line[i] == '|'
 			|| data->line[i] == ';'))
 	{
-		printf("bash: syntax error near unexpected token `%c'\n",
+		ft_printf_fd(2, "minishell: syntax error near unexpected token `%c'\n",
 			data->line[i]);
 		data->statuscode = 2;
 		return (1);
@@ -61,7 +61,7 @@ static int	newline_err(t_ls *data, int i)
 {
 	if (data->line[i] && data->line[i] == '\n')
 	{
-		printf("bash: syntax error near unexpected token `newline'\n");
+		ft_printf_fd(2, "bash: syntax error near unexpected token `newline'\n");
 		data->statuscode = 2;
 		return (1);
 	}
@@ -85,7 +85,7 @@ static int	big_small_than_comb(t_ls *data)
 			|| data->line[i] == '<' || data->line[i] == '>'
 			|| data->line[i] == '|'))
 	{
-		printf("bash: syntax error near unexpected token `%c'\n",
+		ft_printf_fd(2, "minishell: syntax error near unexpected token `%c'\n",
 			data->line[i]);
 		data->statuscode = 2;
 		return (1);

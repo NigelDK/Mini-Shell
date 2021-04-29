@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: minummin </var/mail/minummin>              +#+  +:+       +#+        */
+/*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 15:46:47 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/28 15:48:31 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/29 12:03:21 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	unset_export(char **words, t_ls *data, t_v **v, char *temp)
 	count = 1;
 	while (words[count])
 		count++;
-	data->c_e = (char *)malloc(sizeof(char) * count);
+	data->c_e = (char *)malloc(sizeof(char) * count); // malloc not protected
 	data->c_e[0] = 'm';
 	temp = ft_strstr_reverse((*v)->str, "=");
 	if (temp == NULL)

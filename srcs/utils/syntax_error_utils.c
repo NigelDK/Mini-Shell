@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 19:00:35 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/28 14:51:59 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/29 11:44:17 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static int	second_pipe_check(t_ls *data, int i)
 			j++;
 		if (data->line[i + j] && data->line[i + j] == '|')
 		{
-			printf("bash: syntax error near unexpected token `|'\n");
+			ft_printf_fd
+				(2, "minishell: syntax error near unexpected token `|'\n");
 			data->statuscode = 2;
 			return (1);
 		}
@@ -47,7 +48,7 @@ int	pipe_comb(t_ls *data)
 		i++;
 	if (data->line[i] && (data->line[i] == '&' || data->line[i] == ';'))
 	{
-		printf("bash: syntax error near unexpected token `%c'\n",
+		ft_printf_fd(2, "minishell: syntax error near unexpected token `%c'\n",
 			data->line[i]);
 		data->statuscode = 2;
 		return (1);
