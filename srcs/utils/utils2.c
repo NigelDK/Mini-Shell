@@ -35,7 +35,7 @@ int	check_spechar(char c)
 	if (c == '?' || c == '.' || c == ',' || c == '@' || c == '%'
 			|| c == '/' || c == '=' || c == '+' || c == '^' || c == '~'
 			|| c == '*' || c == '-' || c == ':' || c == '\0' || c == '$'
-			|| c == '"')
+			|| c == '"' || c == '\\' || c == '\'')
 		return (1);
 	else if (c == '|')
 		return (4);
@@ -47,6 +47,7 @@ void	ft_envp(t_v *v, char **envp)
 {
 	int	i;
 	int	process;
+	char	*s;
 
 	process = 0;
 	i = -1;
@@ -55,7 +56,9 @@ void	ft_envp(t_v *v, char **envp)
 		if (ft_strncmp(envp[i], "SHLVL", 5) == 0)
 		{
 			process = ft_atoi(ft_strstr_2(envp[i], "=")) + 1;
-			v->str = ft_strjoin("SHLVL=", ft_itoa(process));
+			s = ft_itoa(process);
+			v->str = ft_strjoin("SHLVL=", s);
+			free(s);
 		}
 		else
 			v->str = ft_strdup(envp[i]);
@@ -88,6 +91,7 @@ void	ft_minishell_init(t_term *t, t_ls *data)
 	signal(SIGQUIT, main_signal_handler);
 	t->mark = 0;
 	g_sigint = 1;
+	data->oldpwd = 0;
 	data->statuscode = 0;
 	t->w = (char **)malloc(sizeof(char *) * (1));
 	t->w[0] = NULL;

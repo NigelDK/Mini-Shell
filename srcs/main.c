@@ -26,9 +26,9 @@ int	main(int argc, char **argv, char **envp)
 	if (!v)
 		ft_error_v(v);
 	argc = (unsigned int)argc;
-	if (argc < 2)
-		ft_print_prompt_2(data.statuscode);
 	ft_envp(v, envp);
+	if (argc < 2)
+		ft_print_prompt_3(300);
 	if (argc >= 2)
 		tester_lexer(v, &data, t, argv);
 	else

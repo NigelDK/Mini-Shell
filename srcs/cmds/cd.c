@@ -41,6 +41,7 @@ int	ft_cd(char **words, int cd, t_ls *data, t_v **v)
 	int	i;
 	int	mark;
 
+	data->oldpwd = 1;
 	mark = 0;
 	i = 0;
 	while (words[i])

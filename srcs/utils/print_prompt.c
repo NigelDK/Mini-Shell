@@ -17,7 +17,8 @@ void	ft_print_prompt_3(int statuscode)
 	char	*buf;
 	char	*ptr;
 
-	statuscode = 1;
+	if (statuscode != 300)
+		statuscode = 1;
 	buf = (char *)malloc(sizeof(char) * 1025);
 	if (!buf)
 		ft_error();
@@ -27,7 +28,7 @@ void	ft_print_prompt_3(int statuscode)
 		ft_print_prompt_2(statuscode);
 	else
 	{
-		if (statuscode == 0)
+		if (statuscode == 0 || statuscode == 300)
 			printf("😎  \033[0;32m");
 		else
 			printf("😡  \033[0;31m");

@@ -74,6 +74,7 @@ typedef struct s_ls
 	int		exp_mark;
 	int		evm;
 	char	*c_e;
+	int		oldpwd;
 }			t_ls;
 
 typedef struct s_it
