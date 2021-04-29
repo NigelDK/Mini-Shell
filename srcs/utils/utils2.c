@@ -33,9 +33,9 @@ int	ft_check_export(char *s)
 int	check_spechar(char c)
 {
 	if (c == '?' || c == '.' || c == ',' || c == '@' || c == '%'
-		|| c == '/' || c == '=' || c == '+' || c == '^' || c == '~'
-		|| c == '*' || c == '-' || c == ':' || c == '\0' || c == '$'
-		|| c == '"')
+			|| c == '/' || c == '=' || c == '+' || c == '^' || c == '~'
+			|| c == '*' || c == '-' || c == ':' || c == '\0' || c == '$'
+			|| c == '"')
 		return (1);
 	else if (c == '|')
 		return (4);
@@ -46,11 +46,19 @@ int	check_spechar(char c)
 void	ft_envp(t_v *v, char **envp)
 {
 	int	i;
+	int	process;
 
+	process = 0;
 	i = -1;
 	while (envp[++i])
 	{
-		v->str = ft_strdup(envp[i]);
+		if (ft_strncmp(envp[i], "SHLVL", 5) == 0)
+		{
+			process = ft_atoi(ft_strstr_2(envp[i], "=")) + 1;
+			v->str = ft_strjoin("SHLVL=", ft_itoa(process));
+		}
+		else
+			v->str = ft_strdup(envp[i]);
 		if (!v->str)
 			ft_error_v(v);
 		v->next = ft_lstnew_2(NULL);
