@@ -28,7 +28,7 @@ static int	ft_builtins(t_ls *data, t_v **v, int mark)
 	else if (ft_strcmp_2(data->words2[0], "echo", 1) == 0)
 		ft_echo(data->words2);
 	else if (ft_strcmp_2(data->words2[0], "cd", 1) == 0)
-		data->cd = ft_cd(data->words2, data->cd, data);
+		data->cd = ft_cd(data->words2, data->cd, data, v);
 	else if (ft_strcmp_2(data->words2[0], "pwd", 1) == 0)
 		ft_pwd(data->words2);
 	else if (ft_strcmp_2(data->words2[0], "export", 1) == 0)
@@ -42,12 +42,15 @@ static int	ft_builtins(t_ls *data, t_v **v, int mark)
 		mark = 1;
 		sys_call(data, v);
 	}
+	if (data->cd != 0 && data->cd != 1 && data->cd != 2)
+		data->cd = 3;
 	data->exp_mark = 1;
 	return (mark);
 }
 
 int	inf_init(t_ls *data)
 {
+	data->cd = 3;
 	data->c_e = NULL;
 	data->evm = 0;
 	return (0);

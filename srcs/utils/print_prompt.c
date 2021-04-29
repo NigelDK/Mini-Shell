@@ -67,10 +67,14 @@ void	ft_print_prompt(t_ls *data, t_v *v)
 {
 	char	*ptr;
 
+	if (data->cd != 3)
+		ft_oldpwd(v);
 	ptr = ft_prompt_2(v);
+	if (data->cd != 3)
+		ft_newpwd(v, ptr);
 	if (data->cd == 0 || data->cd == 2)
 		ft_print_prompt_2(data->statuscode);
-	else if (data->cd == 1)
+	else if (data->cd == 1 || data->cd == 3)
 	{
 		if (ft_strcmp_2(ptr, getenv("HOME"), 1) == 0)
 			ft_print_prompt_2(data->statuscode);

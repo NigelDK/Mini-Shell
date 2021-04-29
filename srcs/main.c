@@ -21,7 +21,6 @@ int	main(int argc, char **argv, char **envp)
 	ft_minishell_init(&t, &data);
 	if (!argv)
 		return (0);
-	chdir(getenv("HOME"));
 	data.envp = envp;
 	v = ft_lstnew_2(NULL);
 	if (!v)

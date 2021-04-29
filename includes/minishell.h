@@ -84,6 +84,8 @@ typedef struct s_it
 	int	dq;
 }			t_it;
 
+void			ft_newpwd(t_v *v, char *str);
+void			ft_oldpwd(t_v *v);
 char			*ft_strstr_2(const char *s1, const char *s2);
 char			*ft_strjoin2(char *s1, char *s2);
 int				ft_getline(char **line);
@@ -96,7 +98,7 @@ void			ft_pwd(char **words);
 void			ft_print_prompt(t_ls *data, t_v *v);
 void			ft_print_prompt_2(int statuscode);
 void			ft_export(char **words, t_v *v, int mark, t_ls *data);
-int				ft_cd(char **words, int cd, t_ls *data);
+int				ft_cd(char **words, int cd, t_ls *data, t_v **v);
 void			ft_env(char **words, t_v *v, t_ls *data);
 void			sys_call(t_ls *data, t_v **v);
 char			**shell_split(char *s, char c);
