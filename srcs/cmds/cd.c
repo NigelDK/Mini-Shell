@@ -17,7 +17,11 @@ void	ft_newpwd(t_v *v, char *str)
 	while (v)
 	{
 		if (ft_strncmp(v->str, "PWD", 3) == 0)
+		{
+			free(v->str);
+			v->str = NULL;
 			v->str = ft_strjoin("PWD=", str);
+		}
 		v = v->next;
 	}
 }
@@ -26,13 +30,23 @@ void	ft_oldpwd(t_v *v)
 {
 	char	*s;
 
+	s = NULL;
 	while (v)
 	{
 		if (ft_strncmp(v->str, "PWD", 3) == 0)
 			s = ft_strdup(ft_strstr_2(v->str, "="));
 		if (ft_strncmp(v->str, "OLDPWD", 6) == 0)
+		{
+			free(v->str);
+			v->str = NULL;
 			v->str = ft_strjoin("OLDPWD=", s);
+		}
 		v = v->next;
+		if (s)
+		{
+			free(s);
+			s = NULL;
+		}
 	}
 }
 
