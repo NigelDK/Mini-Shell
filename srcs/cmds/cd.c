@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:35:38 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/29 12:01:43 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/30 11:00:15 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_newpwd(t_v *v, char *str)
 
 void	ft_oldpwd(t_v *v)
 {
-	char *s;
+	char	*s;
 
 	while (v)
 	{
@@ -36,14 +36,19 @@ void	ft_oldpwd(t_v *v)
 	}
 }
 
+void	ft_cd_init(t_ls *data, int *mark, int *i)
+{
+	data->oldpwd = 1;
+	*mark = 0;
+	*i = 0;
+}
+
 int	ft_cd(char **words, int cd, t_ls *data, t_v **v)
 {
 	int	i;
 	int	mark;
 
-	data->oldpwd = 1;
-	mark = 0;
-	i = 0;
+	ft_cd_init(data, &mark, &i);
 	while (words[i])
 		i++;
 	if (!words[1] || ft_strcmp_2(words[1], "~", 1) == 0)

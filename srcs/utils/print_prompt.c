@@ -6,11 +6,21 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:37:15 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/28 15:32:15 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/30 11:09:30 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+void	ft_print_prompt_4(char *ptr)
+{
+	if (ft_strcmp_2(ptr, "/", 1) == 0)
+		printf("/ ");
+	else
+		printf("%s ", ft_strstr_rev_2(ptr, "/"));
+	printf("\033[0m");
+	fflush(stdout);
+}
 
 void	ft_print_prompt_3(int statuscode)
 {
@@ -32,12 +42,7 @@ void	ft_print_prompt_3(int statuscode)
 			printf("😎  \033[0;32m");
 		else
 			printf("😡  \033[0;31m");
-		if (ft_strcmp_2(ptr, "/", 1) == 0)
-			printf("/ ");
-		else
-			printf("%s ", ft_strstr_rev_2(ptr, "/"));
-		printf("\033[0m");
-		fflush(stdout);
+		ft_print_prompt_4(ptr);
 	}
 	free(ptr);
 }
@@ -85,12 +90,7 @@ void	ft_print_prompt(t_ls *data, t_v *v)
 				printf("😎  \033[0;32m");
 			else
 				printf("😡  \033[0;31m");
-			if (ft_strcmp_2(ptr, "/", 1) == 0)
-				printf("/ ");
-			else
-				printf("%s ", ft_strstr_rev_2(ptr, "/"));
-			printf("\033[0m");
-			fflush(stdout);
+			ft_print_prompt_4(ptr);
 		}
 	}
 	free(ptr);

@@ -6,15 +6,27 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 18:22:33 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/29 13:32:22 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/30 10:49:30 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-char	*path_variable(t_ls *data, int *j, t_v **v)
+int	get_lstat(char *cmd, int *j)
 {
 	struct stat	info;
+
+	if (lstat(cmd, &info) == 0)
+	{
+		*j = 1;
+		return (0);
+	}
+	else
+		return (1);
+}
+
+char	*path_variable(t_ls *data, int *j, t_v **v)
+{
 	char		**path;
 	char		*temp;
 	char		*cmd;
@@ -27,11 +39,8 @@ char	*path_variable(t_ls *data, int *j, t_v **v)
 		cmd = ft_strjoin(path[data->i], temp);
 		if (!cmd)
 			ft_error_syscall(data, v, path, temp);
-		if (lstat(cmd, &info) == 0)
-		{
-			*j = 1;
+		if (get_lstat(cmd, j) == 0)
 			break ;
-		}
 		free(cmd);
 	}
 	data->i = -1;

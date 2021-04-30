@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 21:47:05 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/29 12:23:59 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/30 11:01:22 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int	ft_check_export(char *s)
 int	check_spechar(char c)
 {
 	if (c == '?' || c == '.' || c == ',' || c == '@' || c == '%'
-			|| c == '/' || c == '=' || c == '+' || c == '^' || c == '~'
-			|| c == '*' || c == '-' || c == ':' || c == '\0' || c == '$'
-			|| c == '"' || c == '\\' || c == '\'')
+		|| c == '/' || c == '=' || c == '+' || c == '^' || c == '~'
+		|| c == '*' || c == '-' || c == ':' || c == '\0' || c == '$'
+		|| c == '"' || c == '\\' || c == '\'')
 		return (1);
 	else if (c == '|')
 		return (4);
@@ -45,8 +45,8 @@ int	check_spechar(char c)
 
 void	ft_envp(t_v *v, char **envp)
 {
-	int	i;
-	int	process;
+	int		i;
+	int		process;
 	char	*s;
 
 	process = 0;

@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 15:13:50 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/29 14:45:47 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/30 11:02:41 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	incre_str(char *s, int *j)
 	{
 		j[0]++;
 		while (s[*j] && (s[*j] != '\"' || (s[*j] == '\"'
-				&& prev_bslash(s, *j, 0))))
+					&& prev_bslash(s, *j, 0))))
 			j[0]++;
 	}
 	while (s[*j] && s[*j] != ' ')

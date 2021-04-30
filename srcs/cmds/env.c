@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 17:47:16 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/29 12:11:48 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/30 10:49:56 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_print_env_2(t_v *v)
 	}
 }
 
-void    ft_print_env_3(t_v *v)
+void	ft_print_env_3(t_v *v)
 {
 	while (v)
 	{
