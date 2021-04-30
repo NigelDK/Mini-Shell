@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 22:47:48 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/28 17:49:03 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/30 10:39:22 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,11 @@ int	change_home(t_ls *data, int i)
 		tmp = ft_strdup(getenv("HOME"));
 	else
 		tmp = ft_strjoin(getenv("HOME"),
-			ft_substr(data->words2[i], 1, ft_strlen(data->words2[i])));
+				ft_substr(data->words2[i], 1, ft_strlen(data->words2[i])));
 	free(data->words2[i]);
 	data->words2[i] = NULL;
-        data->words2[i] = tmp;
-        return (0);
+	data->words2[i] = tmp;
+	return (0);
 }
 
 void	replace_env_var(t_ls *data, t_v *v)
@@ -124,7 +124,7 @@ void	replace_env_var(t_ls *data, t_v *v)
 		{
 			if (data->words2[i][0] == '~' && (data->words2[i][1] == '/'
 				|| data->words2[i][1] == '\0'))
-					j = change_home(data, i);
+				j = change_home(data, i);
 			if (data->words2[i][j] == '$' && data->words2[i][j + 1] != '\0'
 					&& q == 0)
 				if (!prev_bslash(data->words2[i], j, q))

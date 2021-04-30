@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 16:23:36 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/28 16:38:21 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/30 10:36:35 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,17 @@ int	inf_init(t_ls *data)
 	return (0);
 }
 
+void	get_statuscode(t_ls *data, int mark)
+{
+	if (mark == 0 && data->statuscode != 500
+		&& data->statuscode != 400)
+		data->statuscode = 0;
+	if (data->statuscode == 500)
+		data->statuscode = 127;
+	if (data->statuscode == 400)
+		  data->statuscode = 1;
+}
+
 void	infinity_loop(t_v **v, char *line, t_ls *data)
 {
 	int	i;
@@ -74,13 +85,7 @@ void	infinity_loop(t_v **v, char *line, t_ls *data)
 	if (ft_strcmp_2(data->words2[0], "export", 1) == 0 && data->words2[1])
 		ft_unset2(data->words2, v, data);
 	mark = ft_builtins(data, v, mark);
-	if (mark == 0 && data->statuscode != 500
-		&& data->statuscode != 400)
-		data->statuscode = 0;
-	if (data->statuscode == 500)
-		data->statuscode = 127;
-	if (data->statuscode == 400)
-		data->statuscode = 1;
+	get_statuscode(data, mark);
 	i = -1;
 	while (data->words2[++i])
 		free(data->words2[i]);
