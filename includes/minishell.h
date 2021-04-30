@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/29 15:04:11 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/04/30 14:02:25 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,24 @@ typedef struct s_pipe
 	int	i;
 }		t_pipe;
 
+typedef struct s_ro
+{
+	int		*fd;
+	char	**filename;
+}			t_ro;
+
+typedef struct s_ri
+{
+	int		*fd;
+	char	**filename;
+}			t_ri;
+
+typedef struct	s_bt
+{
+	char	*tmp;
+	char	*rtn;
+}				t_bt;
+
 typedef struct s_ls
 {
 	int		cd;
@@ -75,6 +93,10 @@ typedef struct s_ls
 	int		evm;
 	char	*c_e;
 	int		oldpwd;
+	t_ro	ro;
+	t_pipe	p;
+	t_ri	ri;
+	t_bt	bt;
 }			t_ls;
 
 typedef struct s_it
