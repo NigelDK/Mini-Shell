@@ -24,7 +24,7 @@ char	*path_variable(t_ls *data, int *j, t_v **v)
 	path = shell_split(getenv("PATH"), ':');
 	while (path[++data->i])
 	{
-		cmd = ft_strjoin2(path[data->i], temp);
+		cmd = ft_strjoin(path[data->i], temp);
 		if (!cmd)
 			ft_error_syscall(data, v, path, temp);
 		if (lstat(cmd, &info) == 0)
@@ -34,9 +34,10 @@ char	*path_variable(t_ls *data, int *j, t_v **v)
 		}
 		free(cmd);
 	}
+	data->i = -1;
+	while (path[++data->i])
+		free(path[data->i]);
 	free(path);
-	if (*j == 0)
-		return (temp);
 	free(temp);
 	return (cmd);
 }
