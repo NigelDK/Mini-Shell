@@ -75,6 +75,33 @@ typedef struct	s_bt
 	char	*rtn;
 }				t_bt;
 
+typedef struct	s_exp
+{
+	char	**words;
+}		t_exp;
+
+typedef struct	s_pwd
+{
+	char	*buf;
+}		t_pwd;
+
+typedef struct	s_sys
+{
+	char	**path;
+	char	*temp;
+	char	*cmd;
+}		t_sys;
+
+typedef struct	s_un
+{
+	char	*temp;
+}		t_un;
+
+typedef struct	s_un2
+{
+	char	*tmp;
+}		t_un2;
+
 typedef struct s_ls
 {
 	int		cd;
@@ -97,6 +124,13 @@ typedef struct s_ls
 	t_pipe	p;
 	t_ri	ri;
 	t_bt	bt;
+	t_exp	exp;
+	t_pwd	pwd;
+	t_sys	sys;
+	t_un	un;
+	t_un2	un2;
+	t_v	v;
+	t_term	term;
 }			t_ls;
 
 typedef struct s_it

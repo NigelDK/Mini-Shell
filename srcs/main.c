@@ -12,7 +12,7 @@
 
 #include "../includes/minishell.h"
 
-void	ft_init(t_ls *data, t_v *v, t_term *t)
+void	ft_init(t_ls *data, t_term *t)
 {
 	t->yo = NULL;
 	t->w = NULL;
@@ -26,7 +26,6 @@ void	ft_init(t_ls *data, t_v *v, t_term *t)
 	data->lol = NULL;
 	data->tmp_begin = NULL;
 	data->c_e = NULL;
-	v = NULL;
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -35,7 +34,7 @@ int	main(int argc, char **argv, char **envp)
 	t_ls	data;
 	t_term	t;
 
-	ft_init
+	ft_init(&data, &t);
 	ft_minishell_init(&t, &data);
 	if (!argv)
 		return (0);
