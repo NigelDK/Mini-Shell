@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 15:48:07 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/30 11:02:19 by minummin         ###   ########.fr       */
+/*   Updated: 2021/04/30 12:12:12 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int	newline_err(t_ls *data, int i)
 {
 	if (data->line[i] && data->line[i] == '\n')
 	{
-		ft_printf_fd(2, "bash: syntax error near unexpected token `newline'\n");
+		ft_printf_fd(2, "minishell: syntax error near unexpected token `newline'\n");
 		data->statuscode = 2;
 		return (1);
 	}
