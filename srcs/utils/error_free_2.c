@@ -19,3 +19,12 @@ void	ft_error(void)
 		exit(EXIT_SUCCESS);
 	exit(EXIT_FAILURE);
 }
+
+void	free_string(char **s)
+{
+	if (*s)
+	{
+		free(*s);
+		*s = NULL;
+	}
+}

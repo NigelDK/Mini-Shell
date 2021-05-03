@@ -219,5 +219,6 @@ void			trim_filename(char **filename);
 void			tester_lexer(t_v *v, t_ls *data, t_term t, char **argv);
 void			ft_create_env(t_v *v, char *str);
 int				change_home(t_ls *data, int i);
+void			free_string(char **s);
 
 #endif
