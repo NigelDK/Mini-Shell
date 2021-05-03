@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quote_dquote_trim.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
+/*   By: nde-koni <nde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 21:35:28 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/28 17:18:22 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 17:31:55 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	*d_dq_trim_pad_str(char *s)
 
 	rtn = malloc(sizeof(char) * (trim_pad_len(s) + 1));
 	if (!rtn)
-		ft_error();
+		return (NULL);
 	d_dq_int_init(&l.i, &l.j, &l.q, &l.dq);
 	while (s[++l.j])
 	{
@@ -104,6 +104,8 @@ void	quote_dquote_trim(t_ls *data)
 	while (data->words2[++i])
 	{
 		tmp = d_dq_trim_pad_str(data->words2[i]);
+		if (!tmp)
+			ft_error();
 		free(data->words2[i]);
 		data->words2[i] = tmp;
 	}

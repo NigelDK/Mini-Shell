@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 15:55:22 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/03 17:05:55 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 17:39:23 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,24 @@ static int	append(char *s, int *k)
 	return (0);
 }
 
-static void	open_close_fd(int *fd, int i, char **filename, int j)
+static void	open_close_fd(t_ls *data, int i, int j)
 {
-	trim_filename(filename);
+	trim_filename(data);
 	if (j)
-		fd[i] = open(filename[0], O_WRONLY | O_CREAT | O_APPEND, 0644);
+		data->ro.fd[i] = open(data->ro.filename[0], O_WRONLY | O_CREAT | O_APPEND, 0644);
 	else
-		fd[i] = open(filename[0], O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (fd[i] == -1)
+		data->ro.fd[i] = open(data->ro.filename[0], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (data->ro.fd[i] == -1)
 	{
 		ft_printf_fd(2,
-			"minishell: %s: No such file or directory\n", filename[0]);
-		free_tab(&filename);
+			"minishell: %s: No such file or directory\n", data->ro.filename[0]);
+		ft_error();
 		exit (1);
 	}
-	if (dup2(fd[i], 1) == -1)
+	if (dup2(data->ro.fd[i], 1) == -1)
 		ft_error();
-	close(fd[i]);
-	free_tab(&filename);
+	close(data->ro.fd[i]);
+	free_tab(&data->ro.filename);
 }
 
 static void	init_val(int *i, char *line, int *j, int *cmd_cnt)
@@ -80,9 +80,9 @@ static void	child_process(t_v **v, char *line, t_ls *data, int cmd_cnt)
 		if (!data->ro.filename)
 			ft_error();
 		if (!append(line, &k))
-			open_close_fd(data->ro.fd, i, data->ro.filename, 0);
+			open_close_fd(data, i, 0);
 		else
-			open_close_fd(data->ro.fd, i, data->ro.filename, 1);
+			open_close_fd(data, i, 1);
 	}
 	redir_trim(data, line);
 	infinity_loop(v, data->words3[0], data);

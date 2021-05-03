@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   backslash_trim.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
+/*   By: nde-koni <nde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 12:19:00 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/28 14:59:52 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 17:28:10 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*bslash_trim_str(char *s)
 	len = bslash_trim_len(s);
 	rtn = malloc(sizeof(char) * (len + 1));
 	if (!rtn)
-		ft_error();
+		return (NULL);
 	i = 0;
 	while (*s)
 	{
@@ -73,6 +73,8 @@ void	backslash_trim(t_ls *data)
 	while (data->words2[++i])
 	{
 		tmp = bslash_trim_str(data->words2[i]);
+		if (!tmp)
+			ft_error();
 		free(data->words2[i]);
 		data->words2[i] = tmp;
 	}

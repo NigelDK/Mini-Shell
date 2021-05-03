@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_trim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
+/*   By: nde-koni <nde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 15:13:50 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/30 11:02:41 by minummin         ###   ########.fr       */
+/*   Updated: 2021/05/03 17:18:14 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,3 +89,5 @@ void	redir_trim(t_ls *data, char *line)
 	free(data->words3[0]);
 	data->words3[0] = tmp;
 }
+
+//all in data

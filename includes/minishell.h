@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
+/*   By: nde-koni <nde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/05/03 17:08:18 by minummin         ###   ########.fr       */
+/*   Updated: 2021/05/03 17:40:12 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,7 +211,7 @@ void			redir_trim(t_ls *data, char *line);
 void			unset_export(char **words, t_ls *data, t_v **v);
 int				shell_split_cmd_cnt(char *s, char c);
 void			init_zero(int *i, int *j);
-void			trim_filename(char **filename);
+void			trim_filename(t_ls *data);
 void			tester_lexer(t_v *v, t_ls *data, t_term t, char **argv);
 void			ft_create_env(t_v *v, char *str, t_ls *data);
 int				change_home(t_ls *data, int i, t_v *v);
