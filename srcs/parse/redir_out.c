@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_out.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
+/*   By: nde-koni <nde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 15:55:22 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/03 11:50:03 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 17:05:55 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	redir_out(t_v **v, char *line, t_ls *data)
 	int		pid;
 
 	if (too_many_redir_out(line))
-		exit (2);
+		return (1);
 	data->words3 = shell_split(line, '>');
 	if (!data->words3)
 		ft_error();

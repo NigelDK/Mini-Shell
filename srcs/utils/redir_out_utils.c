@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_out_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
+/*   By: nde-koni <nde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 17:32:33 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/29 13:25:29 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 17:07:12 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	too_many_redir_out(char *s)
 		{
 			ft_printf_fd(2, "minishell:  syntax error near unexpected token `");
 			while (i-- > 2)
-				printf(">");
+				ft_printf_fd(2, ">");
 			ft_printf_fd(2, "'\n");
 			return (1);
 		}
