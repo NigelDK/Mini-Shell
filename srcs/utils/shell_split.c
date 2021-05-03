@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_split.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
+/*   By: nde-koni <nde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 15:53:02 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/28 17:46:41 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 18:28:12 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,12 @@ static void	ft_freee(char **s, int j)
 	if (j > 0)
 	{
 		while (j >= 0)
-			free(s[j--]);
+		{
+			free(s[j]);
+			s[j--] = NULL;
+		}
 		free(s);
+		s = NULL;
 	}
 }
 

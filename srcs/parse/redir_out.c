@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 15:55:22 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/03 17:39:23 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 18:25:58 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ static void	child_process(t_v **v, char *line, t_ls *data, int cmd_cnt)
 	int		i;
 	int		j;
 	int		k;
-//	int		*fd;
-//	char	**filename;
 
 	init_val(&i, line, &j, &cmd_cnt);
 	k = 0;

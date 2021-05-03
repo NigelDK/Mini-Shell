@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 21:11:02 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/03 18:21:37 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 18:24:28 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,3 +34,5 @@ void	close_fd(int **fd, int cmd_cnt)
 		close(fd[i][1]);
 	}
 }
+
+// free fix done

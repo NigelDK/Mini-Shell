@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_in.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
+/*   By: nde-koni <nde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 20:19:57 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/03 13:48:22 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 18:25:34 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ static void	child_process(t_v **v, char *line, t_ls *data, int cmd_cnt)
 {
 	int		i;
 	int		j;
-//	int		*fd;
-//	char	**filename;
 
 	i = -1;
 	j = 1;
