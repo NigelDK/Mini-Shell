@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/05/03 20:38:41 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 21:01:02 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,5 +216,6 @@ int				change_home(t_ls *data, int i, t_v *v);
 void			free_string(char **s);
 void			free_2d_string(char ***s);
 void    		free_int(int **i);
+void			free_tab_int(int ***i);
 
 #endif

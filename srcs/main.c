@@ -6,11 +6,22 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 09:32:22 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/03 20:39:37 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 21:06:41 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+static void	init_a(t_ls *data)
+{
+	data->sys.path = NULL;
+	data->sys.temp = NULL;
+	data->sys.cmd = NULL;
+	data->un.tmp = NULL;
+	data->un.temp = NULL;
+	data->un2.tmp = NULL;
+	data->un2.temp = NULL;
+}
 
 void	ft_init(t_ls *data)
 {
@@ -33,11 +44,7 @@ void	ft_init(t_ls *data)
 	data->bt.tmp = NULL;
 	data->bt.rtn = NULL;
 	data->exp.words = NULL;
-	data->sys.path = NULL;
-	data->sys.temp = NULL;
-	data->sys.cmd = NULL;
-	data->un2.tmp = NULL;
-	data->un2.temp = NULL;
+	init_a(data);
 }
 
 int	main(int argc, char **argv, char **envp)
