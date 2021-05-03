@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 12:19:00 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/28 18:28:45 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 13:54:41 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static char	*trim_str(char *s)
 	len = trim_len(s);
 	rtn = malloc(sizeof(char) * (len + 1));
 	if (!rtn)
-		ft_error();
+		return (NULL);
 	i = 0;
 	while (*s)
 	{
@@ -67,13 +67,15 @@ static char	*trim_str(char *s)
 void	backslash_trim(t_ls *data)
 {
 	int		i;
-	char	*tmp;
+//	char	*tmp;
 
 	i = -1;
 	while (data->words2[++i])
 	{
-		tmp = trim_str(data->words2[i]);
+		data->bt.tmp = trim_str(data->words2[i]);
+		if (!data->bt.tmp)
+			ft_error();
 		free(data->words2[i]);
-		data->words2[i] = tmp;
+		data->words2[i] = data->bt.tmp;
 	}
 }

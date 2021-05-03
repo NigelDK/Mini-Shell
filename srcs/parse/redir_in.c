@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 20:19:57 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/29 12:19:42 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 13:48:22 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,28 @@ static int	redir_at_start(char *s)
 	return (0);
 }
 
-static void	open_close_fd(int *fd, int i, char **filename)
+static void	open_close_fd(t_ls *data, int i)
 {
-	fd[i] = open(filename[0], O_RDONLY, 0644);
-	if (fd[i] == -1)
+	data->ri.fd[i] = open(data->ri.filename[0], O_RDONLY, 0644);
+	if (data->ri.fd[i] == -1)
 	{
-		ft_printf_fd(2, "bash: %s: No such file or directory\n", filename[0]);
-		free_tab(&filename);
+		ft_printf_fd(2,
+			"bash: %s: No such file or directory\n", data->ri.filename[0]);
+		free_tab(&data->ri.filename);
 		exit (1);
 	}
-	if (dup2(fd[i], 0) == -1)
+	if (dup2(data->ri.fd[i], 0) == -1)
 		ft_error();
-	close(fd[i]);
-	free_tab(&filename);
+	close(data->ri.fd[i]);
+	free_tab(&data->ri.filename);
 }
 
 static void	child_process(t_v **v, char *line, t_ls *data, int cmd_cnt)
 {
 	int		i;
 	int		j;
-	int		*fd;
-	char	**filename;
+//	int		*fd;
+//	char	**filename;
 
 	i = -1;
 	j = 1;
@@ -79,15 +80,15 @@ static void	child_process(t_v **v, char *line, t_ls *data, int cmd_cnt)
 		j = 0;
 		cmd_cnt++;
 	}
-	fd = malloc(sizeof(int) * (cmd_cnt - 1));
-	if (!fd)
+	data->ri.fd = malloc(sizeof(int) * (cmd_cnt - 1));
+	if (!data->ri.fd)
 		ft_error();
 	while (++i < cmd_cnt - 1)
 	{
-		filename = shell_split(data->words3[j++], ' ');
-		if (!filename)
+		data->ri.filename = shell_split(data->words3[j++], ' ');
+		if (!data->ri.filename)
 			ft_error();
-		open_close_fd(fd, i, filename);
+		open_close_fd(data, i);
 	}
 	if (!redir_at_start(line))
 		infinity_loop(v, data->words3[0], data);

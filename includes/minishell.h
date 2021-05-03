@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/30 14:02:25 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 12:58:32 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_pipe
 	int	cmd_cnt;
 	int	*pid;
 	int	i;
+	int	**fd; ////////////////////////////
 }		t_pipe;
 
 typedef struct s_ro

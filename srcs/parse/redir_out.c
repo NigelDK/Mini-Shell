@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 15:55:22 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/30 13:55:41 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 11:50:03 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,23 +66,23 @@ static void	child_process(t_v **v, char *line, t_ls *data, int cmd_cnt)
 	int		i;
 	int		j;
 	int		k;
-	int		*fd;
-	char	**filename;
+//	int		*fd;
+//	char	**filename;
 
 	init_val(&i, line, &j, &cmd_cnt);
 	k = 0;
-	fd = malloc(sizeof(int) * (cmd_cnt - 1));
-	if (!fd)
+	data->ro.fd = malloc(sizeof(int) * (cmd_cnt - 1));
+	if (!data->ro.fd)
 		ft_error();
 	while (++i < cmd_cnt - 1)
 	{
-		filename = shell_split(data->words3[j++], ' ');
-		if (!filename)
+		data->ro.filename = shell_split(data->words3[j++], ' ');
+		if (!data->ro.filename)
 			ft_error();
 		if (!append(line, &k))
-			open_close_fd(fd, i, filename, 0);
+			open_close_fd(data->ro.fd, i, data->ro.filename, 0);
 		else
-			open_close_fd(fd, i, filename, 1);
+			open_close_fd(data->ro.fd, i, data->ro.filename, 1);
 	}
 	redir_trim(data, line);
 	infinity_loop(v, data->words3[0], data);
