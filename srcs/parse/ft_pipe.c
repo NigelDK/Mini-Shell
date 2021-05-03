@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 14:49:09 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/03 17:51:53 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 18:21:12 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	first_pipe(t_v *v, t_ls *data)
 		infinity_loop(&v, data->words1[0], data);
 		free_tab(&data->words1);
 		free_fd(&data->p.fd, data->p.cmd_cnt);
-		free(data->p.pid);
+		free_int(&data->p.pid);
 		exit (1);
 	}	
 }
@@ -71,7 +71,7 @@ static void	mid_pipes(t_v *v, t_ls *data)
 			infinity_loop(&v, data->words1[i], data);
 			free_tab(&data->words1);
 			free_fd(&data->p.fd, data->p.cmd_cnt);
-			free(data->p.pid);
+			free_int(&data->p.pid);
 			exit (1);
 		}
 	}	
@@ -93,7 +93,7 @@ static void	last_pipe(t_v *v, t_ls *data)
 		infinity_loop(&v, data->words1[i], data);
 		free_tab(&data->words1);
 		free_fd(&data->p.fd, data->p.cmd_cnt);
-		free(data->p.pid);
+		free_int(&data->p.pid);
 		exit (1);
 	}
 }
@@ -120,6 +120,6 @@ int	ft_pipe(t_v *v, char **line, t_ls *data)
 	data->p.i = 0;
 	while (++data->p.i < data->p.cmd_cnt)
 		wait(&data->p.pid[data->p.i]);
-	free(data->p.pid);
+	free_int(&data->p.pid);
 	return (1);
 }
