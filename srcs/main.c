@@ -6,16 +6,14 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 09:32:22 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/28 16:48:49 by minummin         ###   ########.fr       */
+/*   Updated: 2021/05/03 20:39:37 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	ft_init(t_ls *data, t_term *t)
+void	ft_init(t_ls *data)
 {
-	t->yo = NULL;
-	t->w = NULL;
 	data->envp = NULL;
 	data->words = NULL;
 	data->words1 = NULL;
@@ -26,6 +24,20 @@ void	ft_init(t_ls *data, t_term *t)
 	data->lol = NULL;
 	data->tmp_begin = NULL;
 	data->c_e = NULL;
+	data->p.pid = NULL;
+	data->p.fd = NULL;
+	data->ro.fd = NULL;
+	data->ro.filename = NULL;
+	data->ri.fd = NULL;
+	data->ri.filename = NULL;
+	data->bt.tmp = NULL;
+	data->bt.rtn = NULL;
+	data->exp.words = NULL;
+	data->sys.path = NULL;
+	data->sys.temp = NULL;
+	data->sys.cmd = NULL;
+	data->un2.tmp = NULL;
+	data->un2.temp = NULL;
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -34,7 +46,7 @@ int	main(int argc, char **argv, char **envp)
 	t_ls	data;
 	t_term	t;
 
-	ft_init(&data, &t);
+	ft_init(&data);
 	ft_minishell_init(&t, &data);
 	if (!argv)
 		return (0);
