@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 17:33:17 by minummin          #+#    #+#             */
-/*   Updated: 2021/05/03 17:19:09 by minummin         ###   ########.fr       */
+/*   Updated: 2021/05/03 17:31:25 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ void	ft_exit_2(char **words, t_v **v, t_ls *data)
 		if (tmp > 255)
 			tmp = tmp % 256;
 		printf("exit\n");
-		ft_error();
+		ft_error(); //
 		exit(tmp);
 	}
 	else
 	{
 		printf("exit\n");
-		ft_error();
+		ft_error(); //
 		exit(0);
 	}
 }
@@ -59,7 +59,7 @@ void	ft_exit(char **words, t_v **v, t_ls *data)
 	{
 		ft_printf_fd(2,
 			"exit\nexit: %s: numeric argument required\n", words[1]);
-		ft_error();
+		ft_error(); //
 		exit(128);
 	}
 	ft_exit_2(words, v, data);

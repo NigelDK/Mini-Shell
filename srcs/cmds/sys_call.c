@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 18:22:33 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/30 10:49:30 by minummin         ###   ########.fr       */
+/*   Updated: 2021/05/03 17:32:57 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,32 +27,36 @@ int	get_lstat(char *cmd, int *j)
 
 char	*path_variable(t_ls *data, int *j, t_v **v)
 {
-	char		**path;
-	char		*temp;
-	char		*cmd;
-
+	if (!v) //
+		return (NULL); //
 	data->i = -1;
-	temp = ft_strjoin("/", data->words2[0]);
-	path = shell_split(getenv("PATH"), ':');
-	while (path[++data->i])
+	data->sys.temp = ft_strjoin("/", data->words2[0]);
+	if (!data->sys.temp)
+		ft_error();
+	data->sys.path = shell_split(getenv("PATH"), ':');
+	if (!data->sys.path)
+		ft_error();
+	while (data->sys.path[++data->i])
 	{
-		cmd = ft_strjoin(path[data->i], temp);
-		if (!cmd)
-			ft_error_syscall(data, v, path, temp);
-		if (get_lstat(cmd, j) == 0)
+		data->sys.cmd = ft_strjoin(data->sys.path[data->i], data->sys.temp);
+		if (!data->sys.cmd)
+			ft_error();
+		if (get_lstat(data->sys.cmd, j) == 0)
 			break ;
-		free(cmd);
+		free(data->sys.cmd);
 	}
 	data->i = -1;
-	while (path[++data->i])
-		free(path[data->i]);
-	free(path);
-	free(temp);
-	return (cmd);
+	while (data->sys.path[++data->i])
+		free_string(&data->sys.path[data->i]);
+	free_2d_string(&data->sys.path);
+	free_string(&data->sys.temp);
+	return (data->sys.cmd);
 }
 
 void	child_call(t_ls *data, t_v **v, char *cmd, int j)
 {
+	if (!v) //
+		return ; //
 	if (execve(cmd, data->words2, data->envp) < 0)
 		if (data->words2[0])
 			ft_printf_fd(2,
@@ -61,7 +65,7 @@ void	child_call(t_ls *data, t_v **v, char *cmd, int j)
 		free(cmd);
 	if (!data->words2[0])
 		exit(data->statuscode);
-	ft_error_data_v_child(data, v);
+	ft_error(); //
 	exit(127);
 }
 
@@ -78,7 +82,7 @@ void	sys_call(t_ls *data, t_v **v)
 	if (pid < 0)
 	{
 		free(cmd);
-		ft_error_data_v_2(data, v);
+		ft_error();
 	}
 	if (pid == 0)
 		child_call(data, v, cmd, j);
