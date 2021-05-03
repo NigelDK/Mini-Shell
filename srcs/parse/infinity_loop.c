@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 16:23:36 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/03 16:30:49 by minummin         ###   ########.fr       */
+/*   Updated: 2021/05/03 16:44:40 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_builtins(t_ls *data, t_v **v, int mark)
 	else if (ft_strcmp_2(data->words2[0], "cd", 1) == 0)
 		data->cd = ft_cd(data->words2, data->cd, data, v);
 	else if (ft_strcmp_2(data->words2[0], "pwd", 1) == 0)
-		ft_pwd(data->words2);
+		ft_pwd(data, v);
 	else if (ft_strcmp_2(data->words2[0], "export", 1) == 0)
 		ft_export(data->words2, *v, data->exp_mark, data);
 	else if (ft_strcmp_2(data->words2[0], "env", 1) == 0)

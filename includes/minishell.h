@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/05/03 16:33:27 by minummin         ###   ########.fr       */
+/*   Updated: 2021/05/03 16:44:42 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,6 @@ typedef struct	s_exp
 	char	**words;
 }		t_exp;
 
-typedef struct	s_pwd
-{
-	char	*buf;
-}		t_pwd;
-
 typedef struct	s_sys
 {
 	char	**path;
@@ -128,7 +123,6 @@ typedef struct s_ls
 	t_ri	ri;
 	t_bt	bt;
 	t_exp	exp;
-	t_pwd	pwd;
 	t_sys	sys;
 	t_un	un;
 	t_un2	un2;
@@ -155,7 +149,7 @@ void			ft_exit_success(char **line, char ***words);
 void			ft_error_data_v(t_ls *data, t_v *v);
 void			ft_error(void);
 void			ft_echo(char **words);
-void			ft_pwd(char **words);
+void			ft_pwd(t_ls *data, t_v **v);
 void			ft_print_prompt(t_ls *data, t_v *v);
 void			ft_print_prompt_2(int statuscode);
 void			ft_export(char **words, t_v *v, int mark, t_ls *data);
