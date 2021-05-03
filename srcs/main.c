@@ -53,8 +53,9 @@ int	main(int argc, char **argv, char **envp)
 	t_ls	data;
 	t_term	t;
 
+	v = NULL;
 	ft_init(&data);
-	ft_minishell_init(&t, &data);
+	ft_minishell_init(&t, &data, v);
 	if (!argv)
 		return (0);
 	data.envp = envp;
@@ -62,7 +63,7 @@ int	main(int argc, char **argv, char **envp)
 	if (!v)
 		ft_error_v(v);
 	argc = (unsigned int)argc;
-	ft_envp(v, envp);
+	ft_envp(v, envp, &data);
 	if (argc < 2)
 		ft_print_prompt_3(300);
 	if (argc >= 2)
