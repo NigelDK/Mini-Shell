@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 14:49:09 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/03 16:44:40 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 17:51:53 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,6 @@ static void	last_pipe(t_v *v, t_ls *data)
 
 int	ft_pipe(t_v *v, char **line, t_ls *data)
 {
-//	int			**fd;
-//	t_pipe		p;
-
 	data->words1 = shell_split(line[0], '|');
 	if (!data->words1)
 		ft_error();

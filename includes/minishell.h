@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/05/03 17:46:53 by minummin         ###   ########.fr       */
+/*   Updated: 2021/05/03 18:02:09 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,5 +216,6 @@ void			ft_create_env(t_v *v, char *str, t_ls *data);
 int				change_home(t_ls *data, int i, t_v *v);
 void			free_string(char **s);
 void			free_2d_string(char ***s);
+void    		free_int(int **i);
 
 #endif

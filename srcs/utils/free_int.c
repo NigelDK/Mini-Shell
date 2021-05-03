@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_tab.c                                         :+:      :+:    :+:   */
+/*   free_int.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nde-koni <nde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/08 21:07:03 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/03 17:55:19 by nde-koni         ###   ########.fr       */
+/*   Created: 2021/05/03 17:56:36 by nde-koni          #+#    #+#             */
+/*   Updated: 2021/05/03 18:01:22 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	free_tab(char ***tab2)
+void    free_int(int **i)
 {
-	int	i;
-
-	i = -1;
-	while (tab2[0][++i])
-	{
-		free(tab2[0][i]);
-		tab2[0][i] = NULL;
-	}
-	free(tab2[0]);
-	tab2[0] = NULL;
+    free(i[0]);
+    i[0] = NULL;
 }
