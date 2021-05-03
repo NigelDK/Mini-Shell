@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:35:12 by minummin          #+#    #+#             */
-/*   Updated: 2021/05/03 16:34:11 by minummin         ###   ########.fr       */
+/*   Updated: 2021/05/04 00:02:07 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ void	ft_unset2(char **words, t_v **v, t_ls *data)
 		else
 		{
 			data->un.temp = ft_strstr_reverse((*v)->str, "=");
-			if (!data->un.temp)
-				ft_error();
 			if (ft_strcmp_2(words[1], data->un.temp, 1) == 0)
 			{
 				t = *v;
