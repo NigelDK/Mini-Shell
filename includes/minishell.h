@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/05/03 12:58:32 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 16:33:27 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,14 @@ typedef struct	s_sys
 
 typedef struct	s_un
 {
+	char	*tmp;
 	char	*temp;
 }		t_un;
 
 typedef struct	s_un2
 {
 	char	*tmp;
+	char	*temp;
 }		t_un2;
 
 typedef struct s_ls
@@ -212,7 +214,7 @@ char			*d_dq_trim_pad_str(char *s);
 char			*bslash_trim_str(char *s);
 int				bslash_trim_len(char *s);
 void			redir_trim(t_ls *data, char *line);
-void			unset_export(char **words, t_ls *data, t_v **v, char *temp);
+void			unset_export(char **words, t_ls *data, t_v **v);
 int				shell_split_cmd_cnt(char *s, char c);
 void			init_zero(int *i, int *j);
 void			trim_filename(char **filename);
