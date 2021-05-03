@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/05/03 17:40:12 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 17:46:53 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,8 +126,7 @@ typedef struct s_ls
 	t_sys	sys;
 	t_un	un;
 	t_un2	un2;
-	t_v	v;
-	t_term	term;
+	t_term	t;
 }			t_ls;
 
 typedef struct s_it
@@ -192,7 +191,7 @@ int				redir_out_at_start(char *s);
 int				too_many_redir_out(char *s);
 void			replace_env_var(t_ls *data, t_v *v);
 void			ft_backspace(t_term *t);
-char			*ft_get_string(t_term *t, char *str);
+char			*ft_get_string(t_term *t, char *str, t_ls *data, t_v *v);
 void			ft_envp(t_v *v, char **envp);
 void			ft_minishell_init(t_term *t, t_ls *data);
 int				check_spechar(char c);
