@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:36:33 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/29 12:09:37 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 16:59:31 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,32 +66,35 @@ void	ft_print_export_2(char **words, int count, int mark)
 				ft_print_some(words[i]);
 }
 
-void	ft_print_export(t_v *v, int mark)
+void	ft_print_export(t_v *v, int mark, t_ls *data)
 {
-	char	**words;
 	int		i;
 	int		count;
 
 	i = 0;
 	count = ft_lstsize_2(v);
-	words = (char **)malloc(sizeof(char *) * count);
-	if (!words)
+	data->exp.words = (char **)malloc(sizeof(char *) * count);
+	if (!data->exp.words)
 		ft_error();
 	while (v)
 	{
-		words[i] = ft_strdup(v->str);
+		data->exp.words[i] = ft_strdup(v->str);
+		if (!data->exp.words[i])
+			ft_error();
 		i++;
 		v = v->next;
 	}
-	ft_print_export_2(words, count, mark);
+	ft_print_export_2(data->exp.words, count, mark);
 	i = -1;
-	while (words[++i])
-		free(words[i]);
-	free(words);
+	while (data->exp.words[++i])
+		free_string(&data->exp.words[i]);
+	free_2d_string(&data->exp.words);
 }
 
-void	ft_create_env(t_v *v, char *str)
+void	ft_create_env(t_v *v, char *str, t_ls *data)
 {
+	if (!data) //
+		return ; //
 	while (v->next)
 		v = v->next;
 	v->str = ft_strdup(str);
@@ -114,12 +117,12 @@ void	ft_export(char **words, t_v *v, int mark, t_ls *data)
 		set = 1;
 		if (words[i] == NULL)
 		{
-			ft_print_export(v, mark);
+			ft_print_export(v, mark, data);
 			return ;
 		}
 		else if (ft_isalpha(words[i][0])
 				&& ft_check_export(words[i]) == 0 && data->c_e[i] == 'a')
-			ft_create_env(v, words[i]);
+			ft_create_env(v, words[i], data);
 		else if (!ft_isalpha(words[i][0]) || ft_check_export(words[i]) != 0)
 		{
 			ft_printf_fd(2,
@@ -127,5 +130,5 @@ void	ft_export(char **words, t_v *v, int mark, t_ls *data)
 			data->statuscode = 400;
 		}
 	}
-	free(data->c_e);
+	free_string(&data->c_e);
 }

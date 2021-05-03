@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 19:39:59 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/29 11:45:54 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 16:59:34 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@ void	ft_error(void)
 }
 
 void	free_string(char **s)
+{
+	if (*s)
+	{
+		free(*s);
+		*s = NULL;
+	}
+}
+
+void	free_2d_string(char ***s)
 {
 	if (*s)
 	{
