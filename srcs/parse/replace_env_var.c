@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 22:47:48 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/30 10:39:22 by minummin         ###   ########.fr       */
+/*   Updated: 2021/05/03 17:04:42 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	replace_env_var(t_ls *data, t_v *v)
 		{
 			if (data->words2[i][0] == '~' && (data->words2[i][1] == '/'
 				|| data->words2[i][1] == '\0'))
-				j = change_home(data, i);
+				j = change_home(data, i, v);
 			if (data->words2[i][j] == '$' && data->words2[i][j + 1] != '\0'
 					&& q == 0)
 				if (!prev_bslash(data->words2[i], j, q))
