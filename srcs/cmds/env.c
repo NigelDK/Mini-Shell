@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 17:47:16 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/03 17:07:52 by minummin         ###   ########.fr       */
+/*   Updated: 2021/05/03 17:18:12 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	change_home(t_ls *data, int i, t_v *v)
 		ft_error();
 	free_string(&data->words2[i]);
 	data->words2[i] = tmp;
-	free(tmp);
 	return (0);
 }
 

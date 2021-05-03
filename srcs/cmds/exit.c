@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 17:33:17 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/29 12:11:27 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 17:19:09 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,52 +23,44 @@ int	ft_strisnum(char *s)
 	return (1);
 }
 
-void	ft_exit_2(char **words, int i)
+void	ft_exit_2(char **words, t_v **v, t_ls *data)
 {
 	int	tmp;
 
+	if (!v || !data) //
+		return ; //
 	if (words[1] && !words[2])
 	{
 		tmp = ft_atoi(words[1]);
 		if (tmp > 255)
 			tmp = tmp % 256;
 		printf("exit\n");
-		while (words[++i])
-			free(words[i]);
-		free(words);
+		ft_error();
 		exit(tmp);
 	}
 	else
 	{
 		printf("exit\n");
-		while (words[++i])
-			free(words[i]);
-		free(words);
+		ft_error();
 		exit(0);
 	}
 }
 
 void	ft_exit(char **words, t_v **v, t_ls *data)
 {
-	int	i;
-
 	if (words[1] && words[2] && ft_strisnum(words[1]) == 1)
 	{
 		data->statuscode = 500;
 		ft_printf_fd(2, "exit\nexit: too many arguments\n");
 		return ;
 	}
-	i = -1;
-	ft_lstclear_2(v, ft_memdel);
 	if (words[1] && ft_strisnum(words[1]) == 0
 		&& words[1][0] != '-' && words[1][0] != '+')
 	{
 		ft_printf_fd(2,
 			"exit\nexit: %s: numeric argument required\n", words[1]);
-		while (words[++i])
-			free(words[i]);
-		free(words);
+		ft_error();
 		exit(128);
 	}
-	ft_exit_2(words, i);
+	ft_exit_2(words, v, data);
 }
