@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/05/04 11:42:49 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/04 11:46:01 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,7 +209,7 @@ void			redir_trim(t_ls *data, t_v **v, char *line);
 void			unset_export(char **words, t_ls *data, t_v **v);
 int				shell_split_cmd_cnt(char *s, char c);
 void			init_zero(int *i, int *j);
-void			trim_filename(t_ls *data);
+void			trim_filename(t_ls *data, t_v **v);
 void			tester_lexer(t_v *v, t_ls *data, t_term t, char **argv);
 void			ft_create_env(t_v *v, char *str, t_ls *data);
 int				change_home(t_ls *data, int i, t_v *v);

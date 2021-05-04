@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 15:55:22 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/04 11:41:54 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/04 11:44:51 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	append(char *s, int *k)
 
 static void	open_close_fd(t_ls *data, t_v **v, int i, int j)
 {
-	trim_filename(data);
+	trim_filename(data, v);
 	if (j)
 		data->ro.fd[i] = open(data->ro.filename[0], O_WRONLY | O_CREAT | O_APPEND, 0644);
 	else
