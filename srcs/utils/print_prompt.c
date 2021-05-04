@@ -30,8 +30,6 @@ void	ft_print_prompt_3(int statuscode)
 	if (statuscode != 300)
 		statuscode = 1;
 	buf = (char *)malloc(sizeof(char) * 1025);
-	if (!buf)
-		ft_error();
 	ft_bzero(buf, 1025);
 	ptr = getcwd(buf, 1025);
 	if (ft_strcmp_2(ptr, getenv("HOME"), 1) == 0)
@@ -58,13 +56,13 @@ void	ft_print_prompt_2(int statuscode)
 	fflush(stdout);
 }
 
-char	*ft_prompt_2(t_v *v)
+char	*ft_prompt_2(t_ls *data, t_v *v)
 {
 	char	*buf;
 
 	buf = (char *)malloc(sizeof(char) * 1025);
 	if (!buf)
-		ft_error_v(v);
+		ft_error(data, &v);
 	ft_bzero(buf, 1025);
 	return (getcwd(buf, 1025));
 }
@@ -75,7 +73,7 @@ void	ft_print_prompt(t_ls *data, t_v *v)
 
 	if (data->cd != 3 && data->cd != 0)
 		ft_oldpwd(v);
-	ptr = ft_prompt_2(v);
+	ptr = ft_prompt_2(data, v);
 	if (data->cd != 3)
 		ft_newpwd(v, ptr);
 	if (data->cd == 0 || data->cd == 2)
