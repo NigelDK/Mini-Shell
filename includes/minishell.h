@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/05/04 11:46:01 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/04 11:50:40 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,7 @@ char			**ft_get_w(int *count, int *i, char *yo);
 void			ft_putstr(char *s);
 void			main_signal_handler(int signr);
 void			backslash_trim(t_ls *data);
-void			quote_dquote_trim(t_ls *data);
+void			quote_dquote_trim(t_ls *data, t_v **v);
 int				prev_bslash(char *s, int k, int q);
 void			q_dq_index(char *s, int i, int *q, int *dq);
 void			ft_putchar_2(char c);

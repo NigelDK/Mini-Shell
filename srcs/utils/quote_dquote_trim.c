@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quote_dquote_trim.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-koni <nde-koni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 21:35:28 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/03 17:31:55 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/04 11:50:06 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	*d_dq_trim_pad_str(char *s)
 ** Inefficient coding because of layering a fix on top of a fix.
 */
 
-void	quote_dquote_trim(t_ls *data)
+void	quote_dquote_trim(t_ls *data, t_v **v)
 {
 	int		i;
 	char	*tmp;
@@ -105,7 +105,7 @@ void	quote_dquote_trim(t_ls *data)
 	{
 		tmp = d_dq_trim_pad_str(data->words2[i]);
 		if (!tmp)
-			ft_error();
+			ft_error(data, v);
 		free(data->words2[i]);
 		data->words2[i] = tmp;
 	}

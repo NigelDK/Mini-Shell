@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 14:49:09 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/04 11:38:50 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/04 11:47:17 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	first_pipe(t_v *v, t_ls *data)
 {
 	data->p.pid[0] = fork();
 	if (data->p.pid[0] == -1)
-		ft_error();
+		ft_error(data, &v);
 	if (data->p.pid[0] == 0)
 	{
 		if (dup2(data->p.fd[0][1], 1) == -1)
