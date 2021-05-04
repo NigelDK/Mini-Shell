@@ -55,19 +55,7 @@ int	unset_del_1(char *words, t_v *v, int i, t_ls *data)
 	t_v		*t;
 
 	data->un.temp = ft_strstr_reverse(v->next->str, "=");
-	if (data->un.temp == NULL)
-	{
-		data->un.temp = ft_strdup(v->next->str);
-		if (!data->un.temp)
-			ft_error(data, &v);
-	}
-	data->un.tmp = ft_strstr_reverse(words, "=");
-	if (data->un.tmp == NULL)
-	{
-		data->un.tmp = ft_strdup(words);
-		if (!data->un.tmp)
-			ft_error(data, &v);
-	}
+	unset_del_lol(words, v, data);
 	if (ft_strcmp_2(data->un.temp, data->un.tmp, 1) == 0
 		&& ft_strlen(data->un.temp) < ft_strlen(words))
 	{

@@ -45,27 +45,23 @@ int	check_spechar(char c)
 
 void	ft_envp(t_v *v, char **envp, t_ls *data)
 {
-	int		i;
-	int		process;
-	char	*s;
+	t_e t;
 
-	process = 0;
-	i = -1;
-	while (envp[++i])
+	t.i = -1;
+	while (envp[++t.i])
 	{
-		if (ft_strncmp(envp[i], "SHLVL", 5) == 0)
+		if (ft_strncmp(envp[t.i], "SHLVL", 5) == 0)
 		{
-			process = ft_atoi(ft_strstr_2(envp[i], "=")) + 1;
-			s = ft_itoa(process);
-			if (!s)
+			t.s = ft_itoa(ft_atoi(ft_strstr_2(envp[t.i], "=")) + 1);
+			if (!t.s)
 				ft_error(data, &v);
-			v->str = ft_strjoin("SHLVL=", s);
-			free(s);
+			v->str = ft_strjoin("SHLVL=", t.s);
+			free(t.s);
 			if (!v->str)
 				ft_error(data, &v);
 		}
 		else
-			v->str = ft_strdup(envp[i]);
+			v->str = ft_strdup(envp[t.i]);
 		if (!v->str)
 			ft_error_v(v);
 		v->next = ft_lstnew_2(NULL);

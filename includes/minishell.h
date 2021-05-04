@@ -58,6 +58,12 @@ typedef struct s_pipe
 	int				**fd;
 }					t_pipe;
 
+typedef struct s_e
+{
+	int		i;
+	char	*s;
+}			t_e;
+
 typedef struct s_ro
 {
 	int		*fd;
@@ -218,5 +224,6 @@ void			free_2d_string(char ***s);
 void			free_int(int **i);
 void			free_tab_int(int ***i);
 void			ft_free_all(t_ls *data, t_v **v);
+void			unset_del_lol(char *words, t_v *v, t_ls *data);
 
 #endif
