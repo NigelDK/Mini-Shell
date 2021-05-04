@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_int.c                                         :+:      :+:    :+:   */
+/*   free_string.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/03 17:56:36 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/04 12:27:51 by nde-koni         ###   ########.fr       */
+/*   Created: 2021/05/04 12:30:43 by nde-koni          #+#    #+#             */
+/*   Updated: 2021/05/04 12:30:50 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	free_int(int **i)
+void	free_string(char **s)
 {
-	free(i[0]);
-	i[0] = NULL;
+	if (*s)
+	{
+		free(*s);
+		*s = NULL;
+	}
 }
 
-void	free_tab_int(int ***i)
+void	free_2d_string(char ***s)
 {
-	int	j;
-
-	j = 0;
-	while (i[0][j])
-		free(i[0][j++]);
-	free(i[0]);
+	if (*s)
+	{
+		free(*s);
+		*s = NULL;
+	}
 }

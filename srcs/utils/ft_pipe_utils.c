@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pipe_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-koni <nde-koni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 21:11:02 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/03 18:24:28 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/04 12:26:46 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,3 @@ void	close_fd(int **fd, int cmd_cnt)
 		close(fd[i][1]);
 	}
 }
-
-// free fix done

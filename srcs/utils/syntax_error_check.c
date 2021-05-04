@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_error_check.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-koni <nde-koni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 15:48:07 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/03 17:02:45 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/04 12:27:33 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ static int	newline_err(t_ls *data, int i)
 {
 	if (data->line[i] && data->line[i] == '\n')
 	{
-		ft_printf_fd(2, "minishell: syntax error near unexpected token `newline'\n");
+		ft_printf_fd(2,
+			"minishell: syntax error near unexpected token `newline'\n");
 		data->statuscode = 2;
 		return (1);
 	}

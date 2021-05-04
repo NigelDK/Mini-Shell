@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 15:55:22 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/04 11:44:51 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/04 12:28:53 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ static void	open_close_fd(t_ls *data, t_v **v, int i, int j)
 {
 	trim_filename(data, v);
 	if (j)
-		data->ro.fd[i] = open(data->ro.filename[0], O_WRONLY | O_CREAT | O_APPEND, 0644);
+		data->ro.fd[i] = open(data->ro.filename[0],
+			O_WRONLY | O_CREAT | O_APPEND, 0644);
 	else
-		data->ro.fd[i] = open(data->ro.filename[0], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+		data->ro.fd[i] = open(data->ro.filename[0],
+			O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (data->ro.fd[i] == -1)
 	{
 		ft_printf_fd(2,
