@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 19:39:59 by minummin          #+#    #+#             */
-/*   Updated: 2021/05/04 12:29:33 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/04 12:32:46 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,22 +90,4 @@ void	ft_free_all(t_ls *data, t_v **v)
 		free_string(&data->un2.tmp);
 	if (data->un2.temp)
 		free_string(&data->un2.temp);
-}
-
-void	free_string(char **s)
-{
-	if (*s)
-	{
-		free(*s);
-		*s = NULL;
-	}
-}
-
-void	free_2d_string(char ***s)
-{
-	if (*s)
-	{
-		free(*s);
-		*s = NULL;
-	}
 }
