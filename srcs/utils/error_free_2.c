@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 19:39:59 by minummin          #+#    #+#             */
-/*   Updated: 2021/05/04 11:55:58 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/04 11:57:56 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	ft_error(t_ls *data, t_v **v)
 {
 	ft_lstclear_2(v, ft_memdel);
 	ft_error_a(data);
-	ft_error_a(data);
+	ft_error_b(data);
 	if (data->un2.tmp)
 		free_string(&data->un2.tmp);
 	if (data->un2.temp)
