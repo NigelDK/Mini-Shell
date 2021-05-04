@@ -34,6 +34,7 @@ void	ft_unset2(char **words, t_v **v, t_ls *data)
 			data->un.temp = ft_strstr_reverse((*v)->str, "=");
 			if (ft_strcmp_2(words[1], data->un.temp, 1) == 0)
 			{
+				free_string(&data->un.temp);
 				t = *v;
 				ft_while_unset(words, *v, data);
 				*v = (*v)->next;
@@ -41,10 +42,10 @@ void	ft_unset2(char **words, t_v **v, t_ls *data)
 			}
 			else
 			{
+				free_string(&data->un.temp);
 				t = *v;
 				ft_while_unset(words, t, data);
 			}
-			free_string(&data->un.temp);
 		}
 	}
 }

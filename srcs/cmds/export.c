@@ -91,8 +91,6 @@ void	ft_print_export(t_v *v, int mark, t_ls *data)
 
 void	ft_create_env(t_v *v, char *str, t_ls *data)
 {
-	if (!data) //
-		return ; //
 	while (v->next)
 		v = v->next;
 	v->str = ft_strdup(str);
