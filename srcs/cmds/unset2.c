@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 15:46:47 by minummin          #+#    #+#             */
-/*   Updated: 2021/05/03 16:21:30 by minummin         ###   ########.fr       */
+/*   Updated: 2021/05/04 12:59:12 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	unset_export(char **words, t_ls *data, t_v **v)
 	if (data->un2.tmp == NULL)
 		data->un2.tmp = ft_strdup(words[1]);
 	if (ft_strcmp_2(data->un2.tmp, data->un2.temp, 1) == 0
-			&& ft_strlen((*v)->str) > ft_strlen(words[1]))
+		&& ft_strlen((*v)->str) > ft_strlen(words[1]))
 		unset_export_2(words, data, v);
 	else
 		unset_export_3(words, data, v);

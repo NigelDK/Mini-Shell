@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 21:47:05 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/30 11:01:22 by minummin         ###   ########.fr       */
+/*   Updated: 2021/05/04 13:00:03 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	check_spechar(char c)
 
 void	ft_envp(t_v *v, char **envp, t_ls *data)
 {
-	t_e t;
+	t_e	t;
 
 	t.i = -1;
 	while (envp[++t.i])
