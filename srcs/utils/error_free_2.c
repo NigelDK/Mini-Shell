@@ -6,12 +6,12 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 19:39:59 by minummin          #+#    #+#             */
-/*   Updated: 2021/05/03 21:14:30 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/04 11:55:58 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-/*
+
 static void	ft_error_a(t_ls *data)
 {
 	if (data->envp)
@@ -67,17 +67,16 @@ static void	ft_error_b(t_ls *data)
 	if (data->un.temp)
 		free_string(&data->un.temp);
 }
-*/
-void	ft_error(void)
+
+void	ft_error(t_ls *data, t_v **v)
 {
-/*	ft_lstclear_2(v, ft_memdel);
+	ft_lstclear_2(v, ft_memdel);
 	ft_error_a(data);
 	ft_error_a(data);
 	if (data->un2.tmp)
 		free_string(&data->un2.tmp);
 	if (data->un2.temp)
-		free_string(&data->un2.temp);
-*/	
+		free_string(&data->un2.temp);	
 	ft_printf_fd(2, "Error: %s\n", strerror(errno));
 	if (errno == 0)
 		exit(EXIT_SUCCESS);
