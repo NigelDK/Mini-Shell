@@ -27,21 +27,19 @@ void	ft_exit_2(char **words, t_v **v, t_ls *data)
 {
 	int	tmp;
 
-	if (!v || !data) //
-		return ; //
 	if (words[1] && !words[2])
 	{
 		tmp = ft_atoi(words[1]);
 		if (tmp > 255)
 			tmp = tmp % 256;
 		printf("exit\n");
-		ft_error(); //
+		ft_free_all(data, v);
 		exit(tmp);
 	}
 	else
 	{
 		printf("exit\n");
-		ft_error(); //
+		ft_free_all(data, v);
 		exit(0);
 	}
 }
@@ -59,7 +57,7 @@ void	ft_exit(char **words, t_v **v, t_ls *data)
 	{
 		ft_printf_fd(2,
 			"exit\nexit: %s: numeric argument required\n", words[1]);
-		ft_error(); //
+		ft_free_all(data, v);
 		exit(128);
 	}
 	ft_exit_2(words, v, data);

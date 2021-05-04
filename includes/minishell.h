@@ -217,5 +217,6 @@ void			free_string(char **s);
 void			free_2d_string(char ***s);
 void			free_int(int **i);
 void			free_tab_int(int ***i);
+void			ft_free_all(t_ls *data, t_v **v);
 
 #endif

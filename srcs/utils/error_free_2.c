@@ -70,7 +70,8 @@ static void	ft_error_b(t_ls *data)
 */
 void	ft_error(void)
 {
-/*	ft_error_a(data);
+/*	ft_lstclear_2(v, ft_memdel);
+	ft_error_a(data);
 	ft_error_a(data);
 	if (data->un2.tmp)
 		free_string(&data->un2.tmp);
@@ -81,6 +82,17 @@ void	ft_error(void)
 	if (errno == 0)
 		exit(EXIT_SUCCESS);
 	exit(EXIT_FAILURE);
+}
+
+void	ft_free_all(t_ls *data, t_v **v)
+{
+	ft_lstclear_2(v, ft_memdel);
+	ft_error_a(data);
+	ft_error_a(data);
+	if (data->un2.tmp)
+		free_string(&data->un2.tmp);
+	if (data->un2.temp)
+		free_string(&data->un2.temp);
 }
 
 void	free_string(char **s)
