@@ -52,6 +52,8 @@ int	main(int argc, char **argv, char **envp)
 	t_ls	data;
 	t_term	t;
 
+	data.exp_mark = 0;
+	data.cd = 0;
 	v = NULL;
 	ft_init(&data);
 	ft_minishell_init(&t, &data, v);
@@ -63,11 +65,7 @@ int	main(int argc, char **argv, char **envp)
 		ft_error_v(v);
 	argc = (unsigned int)argc;
 	ft_envp(v, envp, &data);
-	if (argc < 2)
-		ft_print_prompt_3(300);
-	if (argc >= 2)
-		tester_lexer(v, &data, t, argv);
-	else
-		lexer(v, &data, t);
+	ft_print_prompt_3(300);
+	lexer(v, &data, t);
 	return (0);
 }

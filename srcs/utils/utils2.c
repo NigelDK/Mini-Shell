@@ -90,7 +90,6 @@ void	ft_minishell_init(t_term *t, t_ls *data, t_v *v)
 		ft_printf_fd(2, "Could not access the termcap data base.\n");
 	if (t->success == 0)
 		ft_printf_fd(2, "Terminal type `%s' is not defined.\n", getenv("TERM"));
-	data->cd = 0;
 	signal(SIGINT, main_signal_handler);
 	signal(SIGQUIT, main_signal_handler);
 	t->mark = 0;
@@ -102,7 +101,6 @@ void	ft_minishell_init(t_term *t, t_ls *data, t_v *v)
 		ft_error(data, &v);
 	t->w[0] = NULL;
 	t->errcode = 0;
-	data->exp_mark = 0;
 }
 
 char	*ft_change_nl(char *s1)
