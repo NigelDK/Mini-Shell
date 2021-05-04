@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 14:49:09 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/04 11:47:17 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/04 11:57:01 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	mid_pipes(t_v *v, t_ls *data)
 		if (data->p.pid[i] == 0)
 		{
 			if (dup2(data->p.fd[i - 1][0], 0) == -1)
-				ft_error();
+				ft_error(data, &v);
 			if (dup2(data->p.fd[i][1], 1) == -1)
 				ft_error(data, &v);
 			close_fd(data->p.fd, data->p.cmd_cnt);
