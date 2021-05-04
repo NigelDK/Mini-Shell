@@ -27,20 +27,18 @@ int	get_lstat(char *cmd, int *j)
 
 char	*path_variable(t_ls *data, int *j, t_v **v)
 {
-	if (!v) //
-		return (NULL); //
 	data->i = -1;
 	data->sys.temp = ft_strjoin("/", data->words2[0]);
 	if (!data->sys.temp)
-		ft_error();
+		ft_error(data, v);
 	data->sys.path = shell_split(getenv("PATH"), ':');
 	if (!data->sys.path)
-		ft_error();
+		ft_error(data, v);
 	while (data->sys.path[++data->i])
 	{
 		data->sys.cmd = ft_strjoin(data->sys.path[data->i], data->sys.temp);
 		if (!data->sys.cmd)
-			ft_error();
+			ft_error(data, v);
 		if (get_lstat(data->sys.cmd, j) == 0)
 			break ;
 		free(data->sys.cmd);
@@ -55,8 +53,6 @@ char	*path_variable(t_ls *data, int *j, t_v **v)
 
 void	child_call(t_ls *data, t_v **v, char *cmd, int j)
 {
-	if (!v) //
-		return ; //
 	if (execve(cmd, data->words2, data->envp) < 0)
 		if (data->words2[0])
 			ft_printf_fd(2,
@@ -65,7 +61,7 @@ void	child_call(t_ls *data, t_v **v, char *cmd, int j)
 		free(cmd);
 	if (!data->words2[0])
 		exit(data->statuscode);
-	ft_error(); //
+	ft_free_all(data, v);
 	exit(127);
 }
 
@@ -82,7 +78,7 @@ void	sys_call(t_ls *data, t_v **v)
 	if (pid < 0)
 	{
 		free(cmd);
-		ft_error();
+		ft_error(data, v);
 	}
 	if (pid == 0)
 		child_call(data, v, cmd, j);

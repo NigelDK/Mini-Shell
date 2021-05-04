@@ -58,14 +58,14 @@ int	unset_del_1(char *words, t_v *v, int i, t_ls *data)
 	{
 		data->un.temp = ft_strdup(v->next->str);
 		if (!data->un.temp)
-			ft_error();
+			ft_error(data, &v);
 	}
 	data->un.tmp = ft_strstr_reverse(words, "=");
 	if (data->un.tmp == NULL)
 	{
 		data->un.tmp = ft_strdup(words);
 		if (!data->un.tmp)
-			ft_error();
+			ft_error(data, &v);
 	}
 	if (ft_strcmp_2(data->un.temp, data->un.tmp, 1) == 0 && ft_strlen(data->un.temp) < ft_strlen(words))
 	{
@@ -93,7 +93,7 @@ int	unset_del_2(char *words, t_v *v, int i, t_ls *data)
 	{
 		data->un.temp = ft_strdup(v->next->str);
 		if (!data->un.temp)
-			ft_error();
+			ft_error(data, &v);
 	}
 	if (ft_strcmp_2(words, data->un.temp, 1) == 0)
 	{

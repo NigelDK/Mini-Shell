@@ -41,7 +41,7 @@ void	unset_export(char **words, t_ls *data, t_v **v)
 		count++;
 	data->c_e = (char *)malloc(sizeof(char) * count);
 	if (data->c_e == NULL)
-		ft_error();
+		ft_error(data, v);
 	data->c_e[0] = 'm';
 	data->un2.temp = ft_strstr_reverse((*v)->str, "=");
 	if (data->un2.temp == NULL)

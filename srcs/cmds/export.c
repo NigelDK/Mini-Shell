@@ -75,12 +75,12 @@ void	ft_print_export(t_v *v, int mark, t_ls *data)
 	count = ft_lstsize_2(v);
 	data->exp.words = (char **)malloc(sizeof(char *) * count);
 	if (!data->exp.words)
-		ft_error();
+		ft_error(data, &v);
 	while (v)
 	{
 		data->exp.words[i] = ft_strdup(v->str);
 		if (!data->exp.words[i])
-			ft_error();
+			ft_error(data, &v);
 		i++;
 		v = v->next;
 	}
@@ -99,10 +99,10 @@ void	ft_create_env(t_v *v, char *str, t_ls *data)
 		v = v->next;
 	v->str = ft_strdup(str);
 	if (v->str == NULL)
-		ft_error();
+		ft_error(data, &v);
 	v->next = ft_lstnew_2(NULL);
 	if (v->next == NULL)
-		ft_error();
+		ft_error(data, &v);
 }
 
 void	ft_export(char **words, t_v *v, int mark, t_ls *data)
