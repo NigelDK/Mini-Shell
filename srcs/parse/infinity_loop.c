@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 16:23:36 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/04 11:49:51 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/04 11:52:07 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	infinity_loop(t_v **v, char *line, t_ls *data)
 		ft_error_data_v_2(data, v);
 	replace_env_var(data, *v);
 	quote_dquote_trim(data, v);
-	backslash_trim(data);
+	backslash_trim(data, v);
 	if (ft_strcmp_2(data->words2[0], "export", 1) == 0 && data->words2[1])
 		ft_unset2(data->words2, v, data);
 	mark = ft_builtins(data, v, mark);
