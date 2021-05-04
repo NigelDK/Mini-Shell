@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_trim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nde-koni <nde-koni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 15:13:50 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/03 17:42:40 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/04 11:41:52 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static int	trim_len(char *s)
 	return (i);
 }
 
-void	redir_trim(t_ls *data, char *line)
+void	redir_trim(t_ls *data, t_v **v, char *line)
 {
 	char	*tmp;
 	int		i;
@@ -76,7 +76,7 @@ void	redir_trim(t_ls *data, char *line)
 	init_int(&i, &j, &q, &dq);
 	tmp = malloc(sizeof(char) * (trim_len(line) + 1));
 	if (!tmp)
-		ft_error();
+		ft_error(data, v);
 	while (line[j])
 	{
 		if (line[j] == '>' && q == 0 && dq == 0 && !prev_bslash(line, j, q))

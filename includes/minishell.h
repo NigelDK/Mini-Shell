@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/05/03 23:57:36 by minummin         ###   ########.fr       */
+/*   Updated: 2021/05/04 11:42:49 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,7 +205,7 @@ int				d_dq_trim_pad_len(char *s);
 char			*d_dq_trim_pad_str(char *s);
 char			*bslash_trim_str(char *s);
 int				bslash_trim_len(char *s);
-void			redir_trim(t_ls *data, char *line);
+void			redir_trim(t_ls *data, t_v **v, char *line);
 void			unset_export(char **words, t_ls *data, t_v **v);
 int				shell_split_cmd_cnt(char *s, char c);
 void			init_zero(int *i, int *j);
