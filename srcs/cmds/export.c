@@ -79,8 +79,6 @@ void	ft_print_export(t_v *v, int mark, t_ls *data)
 	while (v)
 	{
 		data->exp.words[i] = ft_strdup(v->str);
-		if (!data->exp.words[i])
-			ft_error(data, &v);
 		i++;
 		v = v->next;
 	}
