@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:35:12 by minummin          #+#    #+#             */
-/*   Updated: 2021/05/04 00:02:07 by minummin         ###   ########.fr       */
+/*   Updated: 2021/05/04 12:26:43 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ int	unset_del_1(char *words, t_v *v, int i, t_ls *data)
 		if (!data->un.tmp)
 			ft_error(data, &v);
 	}
-	if (ft_strcmp_2(data->un.temp, data->un.tmp, 1) == 0 && ft_strlen(data->un.temp) < ft_strlen(words))
+	if (ft_strcmp_2(data->un.temp, data->un.tmp, 1) == 0
+		&& ft_strlen(data->un.temp) < ft_strlen(words))
 	{
 		data->c_e[i] = 'a';
 		i = 0;
@@ -76,7 +77,8 @@ int	unset_del_1(char *words, t_v *v, int i, t_ls *data)
 		ft_lstdelone_2(v->next, ft_memdel);
 		v->next = t;
 	}
-	else if (!ft_strcmp_2(data->un.tmp, data->un.temp, 1) && ft_strlen(data->un.temp) == ft_strlen(words))
+	else if (!ft_strcmp_2(data->un.tmp, data->un.temp, 1)
+		&& ft_strlen(data->un.temp) == ft_strlen(words))
 		data->c_e[i] = 'b';
 	else if (data->c_e[i] != 'b')
 		data->c_e[i] = 'a';
