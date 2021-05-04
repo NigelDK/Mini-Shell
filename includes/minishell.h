@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/05/03 21:01:02 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/03 23:57:36 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,31 +70,31 @@ typedef struct s_ri
 	char	**filename;
 }			t_ri;
 
-typedef struct	s_bt
+typedef struct s_bt
 {
 	char	*tmp;
 	char	*rtn;
 }				t_bt;
 
-typedef struct	s_exp
+typedef struct s_exp
 {
 	char	**words;
 }		t_exp;
 
-typedef struct	s_sys
+typedef struct s_sys
 {
 	char	**path;
 	char	*temp;
 	char	*cmd;
 }		t_sys;
 
-typedef struct	s_un
+typedef struct s_un
 {
 	char	*tmp;
 	char	*temp;
 }		t_un;
 
-typedef struct	s_un2
+typedef struct s_un2
 {
 	char	*tmp;
 	char	*temp;
@@ -191,8 +191,8 @@ int				too_many_redir_out(char *s);
 void			replace_env_var(t_ls *data, t_v *v);
 void			ft_backspace(t_term *t);
 char			*ft_get_string(t_term *t, char *str);
-void			ft_envp(t_v *v, char **envp);
-void			ft_minishell_init(t_term *t, t_ls *data);
+void			ft_envp(t_v *v, char **envp, t_ls *data);
+void			ft_minishell_init(t_term *t, t_ls *data, t_v *v);
 int				check_spechar(char c);
 void			ft_eof(t_term *t);
 void			ft_while_unset(char **words, t_v *v, t_ls *data);
@@ -215,7 +215,7 @@ void			ft_create_env(t_v *v, char *str, t_ls *data);
 int				change_home(t_ls *data, int i, t_v *v);
 void			free_string(char **s);
 void			free_2d_string(char ***s);
-void    		free_int(int **i);
+void			free_int(int **i);
 void			free_tab_int(int ***i);
 
 #endif

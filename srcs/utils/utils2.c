@@ -43,12 +43,14 @@ int	check_spechar(char c)
 		return (0);
 }
 
-void	ft_envp(t_v *v, char **envp)
+void	ft_envp(t_v *v, char **envp, t_ls *data)
 {
 	int		i;
 	int		process;
 	char	*s;
 
+	if (!data) //
+		return ; //
 	process = 0;
 	i = -1;
 	while (envp[++i])
@@ -57,8 +59,12 @@ void	ft_envp(t_v *v, char **envp)
 		{
 			process = ft_atoi(ft_strstr_2(envp[i], "=")) + 1;
 			s = ft_itoa(process);
+			if (!s)
+				ft_error();
 			v->str = ft_strjoin("SHLVL=", s);
 			free(s);
+			if (!v->str)
+				ft_error();
 		}
 		else
 			v->str = ft_strdup(envp[i]);
@@ -71,8 +77,10 @@ void	ft_envp(t_v *v, char **envp)
 	}
 }
 
-void	ft_minishell_init(t_term *t, t_ls *data)
+void	ft_minishell_init(t_term *t, t_ls *data, t_v *v)
 {
+	if (v) //
+		return ; //
 	t->i = 0;
 	t->yo = NULL;
 	t->w = NULL;
@@ -94,6 +102,8 @@ void	ft_minishell_init(t_term *t, t_ls *data)
 	data->oldpwd = 0;
 	data->statuscode = 0;
 	t->w = (char **)malloc(sizeof(char *) * (1));
+	if (!t->w)
+		ft_error();
 	t->w[0] = NULL;
 	t->errcode = 0;
 	data->exp_mark = 0;
