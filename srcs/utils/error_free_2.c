@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 19:39:59 by minummin          #+#    #+#             */
-/*   Updated: 2021/05/04 11:57:56 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/04 12:05:49 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static void	ft_error_a(t_ls *data)
 {
-	if (data->envp)
-		free_tab(&data->envp);
 	if (data->words)
 		free_tab(&data->words);
 	if (data->words1)

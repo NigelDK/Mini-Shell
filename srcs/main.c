@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 09:32:22 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/03 21:06:41 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/04 12:06:28 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static void	init_a(t_ls *data)
 
 void	ft_init(t_ls *data)
 {
-	data->envp = NULL;
 	data->words = NULL;
 	data->words1 = NULL;
 	data->words2 = NULL;
