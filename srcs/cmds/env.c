@@ -16,15 +16,13 @@ int	change_home(t_ls *data, int i, t_v *v)
 {
 	char	*tmp;
 
-	if (!v) //
-		return(0); //
 	if (data->words2[i][1] == '\0')
 		tmp = ft_strdup(getenv("HOME"));
 	else
 		tmp = ft_strjoin(getenv("HOME"),
 				ft_substr(data->words2[i], 1, ft_strlen(data->words2[i])));
 	if (!tmp)
-		ft_error();
+		ft_error(data, &v);
 	free_string(&data->words2[i]);
 	data->words2[i] = tmp;
 	return (0);
