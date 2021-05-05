@@ -26,10 +26,6 @@ static void	ft_error_a(t_ls *data)
 		free_string(&data->temp);
 	if (data->line)
 		free_string(&data->line);
-	if (data->lol)
-		free_string(&data->lol);
-	if (data->tmp_begin)
-		free_string(&data->tmp_begin);
 	if (data->c_e)
 		free_string(&data->c_e);
 	if (data->p.pid)

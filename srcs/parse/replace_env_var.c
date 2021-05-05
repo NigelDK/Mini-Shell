@@ -24,6 +24,8 @@ char	*ft_replace_3(char *tmp_end, char *lol,
 		word = ft_strjoin2(tmp_begin, tmp_middle);
 		word = ft_strjoin2(word, tmp_end);
 		free(tmp_end);
+		if (*lol == '?')
+			free(tmp_middle);
 		return (word);
 	}
 	else if (res == 4)
@@ -67,7 +69,7 @@ char	*ft_replace(char *word, t_v *v, int j, t_ls *data)
 	int	n;
 
 	data->i = 0;
-	data->lol = ft_strdup(word);
+	data->lol = word; // ft_strdup(word);
 	if (!data->lol)
 		ft_error(data, &v);
 	n = j + 1;
@@ -87,6 +89,7 @@ int	change_variable(t_ls *data, t_v *v, int j, int i)
 {
 	char	*tmp;
 
+//	ft_replace(data->words2[i], v, j, data);
 	tmp = ft_replace(data->words2[i], v, j, data);
 	free_string(&data->words2[i]);
 	data->words2[i] = tmp;

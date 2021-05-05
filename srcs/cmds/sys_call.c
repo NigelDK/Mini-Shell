@@ -30,8 +30,8 @@ int	get_lstat(char *cmd, int *j, int a)
 
 char	*path_variable(t_ls *data, int *j, t_v **v)
 {
-	if (get_lstat(data->words2[0], j, 0) == 0)
-		return (data->words2[0]);
+//	if (get_lstat(data->words2[0], j, 0) == 0)
+//		return (data->words2[0]);
 	data->i = -1;
 	data->sys.temp = ft_strjoin("/", data->words2[0]);
 	if (!data->sys.temp)
