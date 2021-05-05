@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 17:33:17 by minummin          #+#    #+#             */
-/*   Updated: 2021/05/03 17:31:25 by minummin         ###   ########.fr       */
+/*   Updated: 2021/05/05 12:49:25 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ void	ft_exit(char **words, t_v **v, t_ls *data)
 	if (words[1] && words[2] && ft_strisnum(words[1]) == 1)
 	{
 		data->statuscode = 500;
-		ft_printf_fd(2, "exit\nexit: too many arguments\n");
+		ft_printf_fd(2, "exit\nminishell: exit: too many arguments\n");
 		return ;
 	}
 	if (words[1] && ft_strisnum(words[1]) == 0
 		&& words[1][0] != '-' && words[1][0] != '+')
 	{
 		ft_printf_fd(2,
-			"exit\nexit: %s: numeric argument required\n", words[1]);
+			"exit\nminishell: exit: %s: numeric argument required\n", words[1]);
 		ft_free_all(data, v);
 		exit(128);
 	}

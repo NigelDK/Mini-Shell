@@ -6,19 +6,22 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 18:22:33 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/03 17:32:57 by minummin         ###   ########.fr       */
+/*   Updated: 2021/05/05 13:24:26 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	get_lstat(char *cmd, int *j)
+int	get_lstat(char *cmd, int *j, int a)
 {
 	struct stat	info;
 
 	if (lstat(cmd, &info) == 0)
 	{
-		*j = 1;
+		if (a == 1)
+			*j = 1;
+		else
+			*j = 24223;
 		return (0);
 	}
 	else
@@ -27,6 +30,8 @@ int	get_lstat(char *cmd, int *j)
 
 char	*path_variable(t_ls *data, int *j, t_v **v)
 {
+	if (get_lstat(data->words2[0], j, 0) == 0)
+		return (data->words2[0]);
 	data->i = -1;
 	data->sys.temp = ft_strjoin("/", data->words2[0]);
 	if (!data->sys.temp)
@@ -39,7 +44,7 @@ char	*path_variable(t_ls *data, int *j, t_v **v)
 		data->sys.cmd = ft_strjoin(data->sys.path[data->i], data->sys.temp);
 		if (!data->sys.cmd)
 			ft_error(data, v);
-		if (get_lstat(data->sys.cmd, j) == 0)
+		if (get_lstat(data->sys.cmd, j, 1) == 0)
 			break ;
 		free(data->sys.cmd);
 	}
