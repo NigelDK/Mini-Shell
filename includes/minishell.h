@@ -108,6 +108,7 @@ typedef struct s_un2
 
 typedef struct s_ls
 {
+	char	*tmp;
 	int		sys_m;
 	int		cd;
 	char	**envp;
@@ -226,5 +227,6 @@ void			free_int(int **i);
 void			free_tab_int(int ***i);
 void			ft_free_all(t_ls *data, t_v **v);
 void			unset_del_lol(char *words, t_v *v, t_ls *data);
+char			*ft_sys_free(t_ls *data);
 
 #endif

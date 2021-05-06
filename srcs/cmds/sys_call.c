@@ -28,17 +28,6 @@ int	get_lstat(char *cmd, int *j, int a)
 		return (1);
 }
 
-int	ft_check_path(t_v *v)
-{
-	while (v)
-	{
-		if (v->str && ft_strcmp_2(ft_strstr_2(v->str, "="), getenv("PATH"), 1) == 0)
-			return (1);
-		v = v->next;
-	}
-	return (0);
-}
-
 char	*path_1(t_v *v)
 {
 	while (v)
@@ -52,11 +41,8 @@ char	*path_1(t_v *v)
 
 char	*path_variable(t_ls *data, int *j, t_v **v)
 {
-	char *tmp;
-
-	data->sys_m = 0;
-	tmp = path_1(*v);
-	if (tmp == NULL)
+	data->tmp = path_1(*v);
+	if (data->tmp == NULL)
 	{
 		data->sys_m = 1;
 		return (data->sys.temp);
@@ -67,7 +53,7 @@ char	*path_variable(t_ls *data, int *j, t_v **v)
 	data->sys.temp = ft_strjoin("/", data->words2[0]);
 	if (!data->sys.temp)
 		ft_error(data, v);
-	data->sys.path = shell_split(tmp, ':');
+	data->sys.path = shell_split(data->tmp, ':');
 	if (!data->sys.path)
 		ft_error(data, v);
 	while (data->sys.path[++data->i])
@@ -79,12 +65,7 @@ char	*path_variable(t_ls *data, int *j, t_v **v)
 			break ;
 		free(data->sys.cmd);
 	}
-	data->i = -1;
-	while (data->sys.path[++data->i])
-		free_string(&data->sys.path[data->i]);
-	free_2d_string(&data->sys.path);
-	free_string(&data->sys.temp);
-	return (data->sys.cmd);
+	return (ft_sys_free(data));
 }
 
 void	child_call(t_ls *data, t_v **v, char *cmd, int j)
@@ -114,6 +95,8 @@ void	sys_call(t_ls *data, t_v **v)
 	int		j;
 	int		wstatus;
 
+	data->tmp = NULL;
+	data->sys_m = 0;
 	j = 0;
 	cmd = path_variable(data, &j, v);
 	pid = fork();
