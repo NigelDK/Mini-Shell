@@ -108,6 +108,7 @@ typedef struct s_un2
 
 typedef struct s_ls
 {
+	int		sys_m;
 	int		cd;
 	char	**envp;
 	char	**words;

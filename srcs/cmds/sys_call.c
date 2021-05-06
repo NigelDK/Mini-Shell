@@ -28,15 +28,46 @@ int	get_lstat(char *cmd, int *j, int a)
 		return (1);
 }
 
+int	ft_check_path(t_v *v)
+{
+	while (v)
+	{
+		if (v->str && ft_strcmp_2(ft_strstr_2(v->str, "="), getenv("PATH"), 1) == 0)
+			return (1);
+		v = v->next;
+	}
+	return (0);
+}
+
+char	*path_1(t_v *v)
+{
+	while (v)
+	{
+		if (v->str && ft_strncmp(v->str, "PATH=", 5) == 0)
+			return (ft_strstr_2(v->str, "="));
+		v = v->next;
+	}
+	return (NULL);
+}
+
 char	*path_variable(t_ls *data, int *j, t_v **v)
 {
-//	if (get_lstat(data->words2[0], j, 0) == 0)
-//		return (data->words2[0]);
+	char *tmp;
+
+	data->sys_m = 0;
+	tmp = path_1(*v);
+	if (tmp == NULL)
+	{
+		data->sys_m = 1;
+		return (data->sys.temp);
+	}
+	if (get_lstat(data->words2[0], j, 0) == 0)
+		return (data->words2[0]);
 	data->i = -1;
 	data->sys.temp = ft_strjoin("/", data->words2[0]);
 	if (!data->sys.temp)
 		ft_error(data, v);
-	data->sys.path = shell_split(getenv("PATH"), ':');
+	data->sys.path = shell_split(tmp, ':');
 	if (!data->sys.path)
 		ft_error(data, v);
 	while (data->sys.path[++data->i])
@@ -58,7 +89,13 @@ char	*path_variable(t_ls *data, int *j, t_v **v)
 
 void	child_call(t_ls *data, t_v **v, char *cmd, int j)
 {
-	if (execve(cmd, data->words2, data->envp) < 0)
+	if (data->sys_m == 1)
+	{
+		if (data->words2[0])
+			ft_printf_fd(2,
+				"minishell: %s: No such file or directory\n", data->words2[0]);
+	}
+	else if (execve(cmd, data->words2, data->envp) < 0)
 		if (data->words2[0])
 			ft_printf_fd(2,
 				"minishell: %s: command not found\n", data->words2[0]);
