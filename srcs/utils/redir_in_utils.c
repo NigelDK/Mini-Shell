@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redir_out_utils.c                                  :+:      :+:    :+:   */
+/*   redir_in_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/22 17:32:33 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/08 13:31:02 by nde-koni         ###   ########.fr       */
+/*   Created: 2021/05/08 13:20:28 by nde-koni          #+#    #+#             */
+/*   Updated: 2021/05/08 13:28:23 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 static int	error_check(int i)
 {
-	if (i > 2)
+	if (i > 1)
 	{
 		ft_printf_fd(2, "bash:  syntax error near unexpected token `");
-		while (i-- > 2)
-			printf(">");
+		while (i-- > 1)
+			printf("<");
 		printf("'\n");
 		return (1);
 	}
 	return (0);
 }
 
-int	too_many_redir_out(char *s)
+int	too_many_redir_in(char *s)
 {
 	int	i;
 	int	j;
@@ -38,7 +38,7 @@ int	too_many_redir_out(char *s)
 	while (s[j])
 	{
 		i = 0;
-		while (s[j] == '>' && q == 0 && dq == 0 && !prev_bslash(s, j, q))
+		while (s[j] == '<' && q == 0 && dq == 0 && !prev_bslash(s, j, q))
 		{
 			i++;
 			q_dq_index(s, j++, &q, &dq);
@@ -49,32 +49,4 @@ int	too_many_redir_out(char *s)
 			q_dq_index(s, j++, &q, &dq);
 	}
 	return (0);
-}
-
-int	redir_out_at_start(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] == ' ')
-		i++;
-	if (s[i] == '>')
-		return (1);
-	return (0);
-}
-
-void	trim_filename(t_ls *data, t_v **v)
-{
-	char	*tmp;
-
-	tmp = d_dq_trim_pad_str(data->ro.filename[0]);
-	if (!tmp)
-		ft_error(data, v);
-	free(data->ro.filename[0]);
-	data->ro.filename[0] = tmp;
-	tmp = bslash_trim_str(data->ro.filename[0]);
-	if (!tmp)
-		ft_error(data, v);
-	free(data->ro.filename[0]);
-	data->ro.filename[0] = tmp;
 }

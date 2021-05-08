@@ -38,6 +38,7 @@ SRCS = srcs/main.c \
 	srcs/utils/shell_split_utils.c \
 	srcs/utils/free_int.c \
 	srcs/utils/free_string.c \
+	srcs/utils/redir_in_utils.c \
 	srcs/termcap/print_termcap.c \
 	srcs/termcap/termcap_utils.c \
 	srcs/termcap/print_termcap2.c \

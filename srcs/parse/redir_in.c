@@ -6,37 +6,11 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 20:19:57 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/04 11:38:20 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/08 13:28:35 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-static int	too_many_redir(char *s)
-{
-	int	i;
-
-	while (*s)
-	{
-		i = 0;
-		while (*s == '<')
-		{
-			i++;
-			s++;
-		}
-		if (i > 1)
-		{
-			ft_printf_fd(2, "bash:  syntax error near unexpected token `");
-			while (i-- > 1)
-				printf("<");
-			printf("'\n");
-			return (1);
-		}
-		if (i == 0)
-			s++;
-	}
-	return (0);
-}
 
 static int	redir_at_start(char *s)
 {
@@ -98,7 +72,7 @@ int	redir_in(t_v **v, char *line, t_ls *data)
 	int		cmd_cnt;
 	int		pid;
 
-	if (too_many_redir(line))
+	if (too_many_redir_in(line))
 		exit (2);
 	data->words3 = shell_split(line, '<');
 	if (!data->words3)

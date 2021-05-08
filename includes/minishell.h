@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/05/04 11:55:50 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/08 13:28:45 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,5 +228,7 @@ void			free_tab_int(int ***i);
 void			ft_free_all(t_ls *data, t_v **v);
 void			unset_del_lol(char *words, t_v *v, t_ls *data);
 char			*ft_sys_free(t_ls *data);
+int				semicolon_comb(t_ls *data);
+int				too_many_redir_in(char *s);
 
 #endif
