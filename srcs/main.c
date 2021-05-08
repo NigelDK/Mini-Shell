@@ -53,7 +53,7 @@ int	main(int argc, char **argv, char **envp)
 	t_term	t;
 
 	data.exp_mark = 0;
-	data.cd = 0;
+	data.cd = 1;
 	v = NULL;
 	ft_init(&data);
 	ft_minishell_init(&t, &data, v);

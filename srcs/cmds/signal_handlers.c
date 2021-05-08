@@ -22,7 +22,7 @@ void	main_signal_handler(int signr)
 {
 	if (signr == SIGINT)
 	{
-		printf("\n");
+		ft_printf_fd(1, "\n");
 		ft_print_prompt_3(g_sigint);
 		g_sigint = 0;
 	}
