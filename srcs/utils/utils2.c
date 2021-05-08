@@ -89,7 +89,6 @@ void	ft_minishell_init(t_term *t, t_ls *data, t_v *v)
 	signal(SIGINT, main_signal_handler);
 	signal(SIGQUIT, main_signal_handler);
 	t->mark = 0;
-	g_sigint = 0;
 	data->oldpwd = 0;
 	data->statuscode = 0;
 	t->w = (char **)malloc(sizeof(char *) * (1));

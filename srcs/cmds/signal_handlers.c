@@ -22,7 +22,11 @@ void	main_signal_handler(int signr)
 {
 	if (signr == SIGINT)
 	{
-		ft_printf_fd(1, "\n");
+		if (g_sigint == 3)
+			ft_printf_fd(1, "^C\n");
+		else
+			ft_printf_fd(1, "\n");
+		g_sigint = 1;
 		ft_print_prompt_3(g_sigint);
 		g_sigint = 0;
 	}

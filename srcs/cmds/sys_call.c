@@ -109,7 +109,10 @@ void	sys_call(t_ls *data, t_v **v)
 		child_call(data, v, cmd, j);
 	if (j == 1)
 		free(cmd);
+	g_sigint = 3;
 	waitpid(pid, &wstatus, 0);
+	if (g_sigint == 3)
+		g_sigint = 1;
 	if (WIFEXITED(wstatus))
 		data->statuscode = WEXITSTATUS(wstatus);
 }

@@ -47,6 +47,7 @@ void	lexer(t_v *v, t_ls *data, t_term t)
 
 	in = 1;
 	str[0] = '\0';
+	g_sigint = 1;
 	while (ft_strcmp_2(str, "\4", 1) || in == 1)
 	{
 		in = 0;
