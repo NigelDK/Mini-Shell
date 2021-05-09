@@ -31,5 +31,10 @@ void	main_signal_handler(int signr)
 		g_sigint = 0;
 	}
 	else if (signr == SIGQUIT)
-		return ;
+	{
+		if (g_sigint == 3)
+			ft_printf_fd(2, "^\\Quit: %d\n", signr);
+		else
+			return ;
+	}
 }
