@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 21:35:28 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/11 16:59:17 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/11 17:01:54 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	in_charset(char c)
 	if (c == '\\')
 		return (1);
 	if (c == '"')
+		return (1);
+	if (c == '`')
 		return (1);
 	return (0);
 }
