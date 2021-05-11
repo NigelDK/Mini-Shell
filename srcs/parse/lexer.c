@@ -51,7 +51,19 @@ void	lexer(t_v *v, t_ls *data, t_term t)
 	while (ft_strcmp_2(str, "\4", 1) || in == 1)
 	{
 		in = 0;
+		tcgetattr(0, &t.termioush);
+		t.term = t.termioush;
+		t.term.c_lflag &= ~(ECHO);
+		t.term.c_lflag &= ~(ICANON);
+		t.termioush.c_cc[VEOF] = 4;
+		tcsetattr(0, TCSANOW, &t.term);
+		t.success = tgetent(NULL, getenv("TERM"));
+		if (t.success < 0)
+			ft_printf_fd(2, "Could not access the termcap data base.\n");
+		if (t.success == 0)
+			ft_printf_fd(2, "Terminal type `%s' is not defined.\n", getenv("TERM"));
 		data->line = ft_get_string(&t, str);
+		tcsetattr(0, TCSANOW, &t.termioush);
 		lexer_2(&v, data, t);
 	}
 }

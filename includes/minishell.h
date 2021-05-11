@@ -37,6 +37,7 @@ int	g_sigint;
 typedef struct s_term
 {
 	struct termios	term;
+	struct termios	termioush;
 	char			*yo;
 	int				count;
 	char			**w;

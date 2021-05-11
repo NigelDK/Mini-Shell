@@ -77,15 +77,6 @@ void	ft_minishell_init(t_term *t, t_ls *data, t_v *v)
 	t->yo = NULL;
 	t->w = NULL;
 	t->count = 1;
-	tcgetattr(0, &t->term);
-	t->term.c_lflag &= ~(ECHO);
-	t->term.c_lflag &= ~(ICANON);
-	tcsetattr(0, TCSANOW, &t->term);
-	t->success = tgetent(NULL, getenv("TERM"));
-	if (t->success < 0)
-		ft_printf_fd(2, "Could not access the termcap data base.\n");
-	if (t->success == 0)
-		ft_printf_fd(2, "Terminal type `%s' is not defined.\n", getenv("TERM"));
 	signal(SIGINT, main_signal_handler);
 	signal(SIGQUIT, main_signal_handler);
 	t->mark = 0;
