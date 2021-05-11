@@ -41,14 +41,14 @@ char	*path_1(t_v *v)
 
 char	*path_variable(t_ls *data, int *j, t_v **v)
 {
+	if (get_lstat(data->words2[0], j, 0) == 0)
+                return (data->words2[0]);
 	data->tmp = path_1(*v);
 	if (data->tmp == NULL)
 	{
 		data->sys_m = 1;
 		return (data->sys.temp);
 	}
-	if (get_lstat(data->words2[0], j, 0) == 0)
-		return (data->words2[0]);
 	data->i = -1;
 	data->sys.temp = ft_strjoin("/", data->words2[0]);
 	if (!data->sys.temp)
