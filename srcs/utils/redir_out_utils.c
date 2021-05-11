@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 17:32:33 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/08 13:31:02 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/11 18:06:10 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ static int	error_check(int i)
 {
 	if (i > 2)
 	{
-		ft_printf_fd(2, "bash:  syntax error near unexpected token `");
+		if (i > 4)
+			i = 4;
+		ft_printf_fd(2, "minishell:  syntax error near unexpected token `");
 		while (i-- > 2)
 			printf(">");
 		printf("'\n");
