@@ -6,13 +6,13 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 17:32:33 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/11 18:06:10 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/11 18:35:29 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static int	error_check(int i)
+static int	error_check(t_ls *data, int i)
 {
 	if (i > 2)
 	{
@@ -22,12 +22,13 @@ static int	error_check(int i)
 		while (i-- > 2)
 			printf(">");
 		printf("'\n");
+		data->statuscode = 2;
 		return (1);
 	}
 	return (0);
 }
 
-int	too_many_redir_out(char *s)
+int	too_many_redir_out(t_ls *data, char *s)
 {
 	int	i;
 	int	j;
@@ -45,7 +46,7 @@ int	too_many_redir_out(char *s)
 			i++;
 			q_dq_index(s, j++, &q, &dq);
 		}
-		if (error_check(i))
+		if (error_check(data, i))
 			return (1);
 		if (i == 0)
 			q_dq_index(s, j++, &q, &dq);

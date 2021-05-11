@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 15:55:22 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/11 18:12:57 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/11 18:34:55 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	redir_out(t_v **v, char *line, t_ls *data)
 	int		cmd_cnt;
 	int		pid;
 
-	if (too_many_redir_out(line))
+	if (too_many_redir_out(data, line))
 		return (1);
 	data->words3 = shell_split(line, '>');
 	if (!data->words3[0])

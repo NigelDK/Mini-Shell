@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:39:09 by minummin          #+#    #+#             */
-/*   Updated: 2021/05/08 13:28:45 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/11 18:36:15 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,7 +196,7 @@ void			q_dq_index(char *s, int i, int *q, int *dq);
 void			ft_putchar_2(char c);
 void			ft_print_prompt_3(int statuscode);
 int				redir_out_at_start(char *s);
-int				too_many_redir_out(char *s);
+int				too_many_redir_out(t_ls *data, char *s);
 void			replace_env_var(t_ls *data, t_v *v);
 void			ft_backspace(t_term *t);
 char			*ft_get_string(t_term *t, char *str);
@@ -230,6 +230,6 @@ void			ft_free_all(t_ls *data, t_v **v);
 void			unset_del_lol(char *words, t_v *v, t_ls *data);
 char			*ft_sys_free(t_ls *data);
 int				semicolon_comb(t_ls *data);
-int				too_many_redir_in(char *s);
+int				too_many_redir_in(t_ls *data, char *s);
 
 #endif
