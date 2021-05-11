@@ -42,7 +42,7 @@ void	ft_print_env_3(t_v *v)
 {
 	while (v)
 	{
-		if (v->str && (v->str[0] != '_' || v->str[1] != '='))
+		if (v->str && (v->str[0] != '_' || v->str[1] != '=') && ft_strchr(v->str, '='))
 			printf("%s\n", v->str);
 		v = v->next;
 	}
