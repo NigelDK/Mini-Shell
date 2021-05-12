@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 18:22:33 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/12 14:20:22 by minummin         ###   ########.fr       */
+/*   Updated: 2021/05/12 14:57:29 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ void	sys_call(t_ls *data, t_v **v)
 	int		j;
 	int		wstatus;
 
+	if (data->words2[0] == NULL)
+		return ;
 	data->tmp = NULL;
 	data->sys_m = 0;
 	j = 0;
