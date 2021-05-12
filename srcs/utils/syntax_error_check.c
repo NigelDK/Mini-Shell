@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 15:48:07 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/11 18:28:20 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/12 14:33:02 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ static int	newline_err(t_ls *data, int i)
 static int	second_char_check(t_ls *data, int i)
 {
 	if (data->line[i] && (data->line[i] == '&' || data->line[i] == ';'
-			|| (data->line[i] == '<' &&  data->line[i - 1]
-			&& data->line[i - 1] != '<') || (data->line[i] == '>'
-			&& data->line[i - 1] != '>') || data->line[i] == '|'))
+			|| (data->line[i] == '<' && data->line[i - 1]
+				&& data->line[i - 1] != '<') || (data->line[i] == '>'
+				&& data->line[i - 1] != '>') || data->line[i] == '|'))
 	{
 		ft_printf_fd(2, "minishell: syntax error near unexpected token `%c'\n",
 			data->line[i]);
@@ -67,7 +67,7 @@ static int	big_small_than_comb(t_ls *data)
 	dq = 0;
 	while (data->line[i] && ((data->line[i] != '<' && data->line[i] != '>')
 			|| ((data->line[i] == '<' || data->line[i] == '>') && (q == 1
-			|| dq == 1 || prev_bslash(data->line, i, q)))))
+					|| dq == 1 || prev_bslash(data->line, i, q)))))
 		q_dq_index(data->line, i++, &q, &dq);
 	if (data->line[i])
 		q_dq_index(data->line, i++, &q, &dq);
