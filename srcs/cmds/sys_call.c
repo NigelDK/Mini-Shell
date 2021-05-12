@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 18:22:33 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/12 13:29:14 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/12 14:20:22 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*path_1(t_v *v)
 char	*path_variable(t_ls *data, int *j, t_v **v)
 {
 	if (get_lstat(data->words2[0], j, 0) == 0)
-                return (data->words2[0]);
+		return (data->words2[0]);
 	data->tmp = path_1(*v);
 	if (data->tmp == NULL)
 	{
@@ -70,7 +70,7 @@ char	*path_variable(t_ls *data, int *j, t_v **v)
 
 void	child_call(t_ls *data, t_v **v, char *cmd, int j)
 {
-	int mark;
+	int	mark;
 
 	mark = 0;
 	if (data->sys_m == 1)

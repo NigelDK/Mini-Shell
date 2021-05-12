@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 10:36:18 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/04/29 11:02:20 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/12 14:21:25 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	lexer(t_v *v, t_ls *data, t_term t)
 		if (t.success < 0)
 			ft_printf_fd(2, "Could not access the termcap data base.\n");
 		if (t.success == 0)
-			ft_printf_fd(2, "Terminal type `%s' is not defined.\n", getenv("TERM"));
+			ft_printf_fd(2, "Terminal type is not defined.\n");
 		data->line = ft_get_string(&t, str);
 		tcsetattr(0, TCSANOW, &t.termioush);
 		lexer_2(&v, data, t);
