@@ -1,64 +1,82 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: minummin <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/28 16:59:14 by minummin          #+#    #+#             */
-/*   Updated: 2021/04/22 15:42:16 by minummin         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "get_next_line.h"
 
-static int	ft_strlen(char *s)
+int	get_next_line(int fd, char **line)
 {
-	int	i;
+	static char *str;
+	char buf[2];
+	int ret;
+
+	ret = 1;
+	while (ret > 0 && !ft_strchr(str))
+	{
+		if ((ret = read(fd, buf, 1)) == -1)
+			return (ft_free(&str));
+		buf[ret] = '\0';
+		if (!(str = ft_strjoin(str, buf)))
+			return (ft_free(&str));
+	}
+	if (!(*line = ft_get_line(str)))
+		return (-1);
+	str = ft_get_rest(str);
+	if (ret == 0)
+		return (0);
+	return (1);	
+}
+
+char	*ft_get_rest(char *s)
+{
+	char *str;
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (s[i] && s[i] != '\n')
+		i++;
+	if (!s[i])
+	{
+		free(s);
+		return (NULL);
+	}
+	if (!(str = (char *)malloc(sizeof(char) * ((ft_strlen(s) - i) + 1))))
+		return (NULL);
+	i++;
+	while (s[i])
+		str[j++] = s[i++];
+	str[j] = '\0';
+	free(s);
+	return (str);
+}
+
+char	*ft_get_line(char *s)
+{
+	char *str;
+	int i;
 
 	if (!s)
-		return (0);
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-static void	*ft_memmove(void *dst, void *src, size_t len)
-{
-	unsigned char	*d;
-	unsigned char	*s;
-
-	d = (unsigned char *)dst;
-	s = (unsigned char *)src;
-	if (dst == src || (dst == NULL && src == NULL))
 		return (NULL);
-	if (d > s)
-	{
-		while (len > 0)
-		{
-			d[len - 1] = s[len - 1];
-			len--;
-		}
-	}
-	else
-		while (len--)
-			*d++ = *s++;
-	return (dst);
+	i = 0;
+	while (s[i] && s[i] != '\n')
+		i++;
+	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
+		return (NULL);
+	str[i] = '\0';
+	while (--i >= 0)
+		str[i] = s[i];
+	return (str);
 }
 
-static char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	char	*str;
-	int		i;
-	int		j;
+	int i;
+	int j;
+	char *str;
 
 	if (!s1 && !s2)
 		return (NULL);
 	i = ft_strlen(s1);
 	j = ft_strlen(s2);
-	str = (char *)malloc(sizeof(char) * (i + j + 1));
-	if (!str)
+	if (!(str = (char *)malloc(sizeof(char) * (i + j + 1))))
 		return (NULL);
 	ft_memmove(str, s1, i);
 	ft_memmove(str + i, s2, j);
@@ -67,48 +85,16 @@ static char	*ft_strjoin(char *s1, char *s2)
 	return (str);
 }
 
-static char	*ft_strchr(const char *s, int c)
+void	*ft_memmove(char *dest, char *src, int len)
 {
-	char	*str;
+	unsigned char *d;
+	unsigned char *s;
 
-	if (!s)
+	d = (unsigned char *)dest;
+	s = (unsigned char *)src;
+	if (d == s || (d == NULL && s == NULL))
 		return (NULL);
-	str = (char *)s;
-	while (*str)
-	{
-		if (*str == (char)c)
-			return (str);
-		str++;
-	}
-	if (*str == '\0' && (char)c == '\0')
-		return (str);
-	return (NULL);
-}
-
-int	get_next_line(int fd, char **line)
-{
-	static char	*str;
-	char		buff[33];
-	int			ret;
-
-	if (fd < 0 || !line)
-		return (-1);
-	ret = 1;
-	while (ret > 0 && !ft_strchr(str, '\n'))
-	{
-		ret = read(fd, buff, 32);
-		if (ret == -1)
-			return (ft_free(&str));
-		buff[ret] = '\0';
-		str = ft_strjoin(str, buff);
-		if (!str)
-			return (ft_free(&str));
-	}
-	*line = ft_get_line(str);
-	if (*line == NULL)
-		return (ft_free(&str));
-	str = ft_get_rest(str);
-	if (!str)
-		return (ft_free(&str));
-	return (ft_return(&str, ret));
+	while (len--)
+		d[len] = s[len];
+	return (dest);
 }
