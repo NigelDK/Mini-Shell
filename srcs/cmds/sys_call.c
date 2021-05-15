@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 18:22:33 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/11 16:05:01 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/12 15:06:20 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*path_1(t_v *v)
 char	*path_variable(t_ls *data, int *j, t_v **v)
 {
 	if (get_lstat(data->words2[0], j, 0) == 0)
-                return (data->words2[0]);
+		return (data->words2[0]);
 	data->tmp = path_1(*v);
 	if (data->tmp == NULL)
 	{
@@ -70,6 +70,9 @@ char	*path_variable(t_ls *data, int *j, t_v **v)
 
 void	child_call(t_ls *data, t_v **v, char *cmd, int j)
 {
+	int	mark;
+
+	mark = 0;
 	if (data->sys_m == 1)
 	{
 		if (data->words2[0])
@@ -77,15 +80,15 @@ void	child_call(t_ls *data, t_v **v, char *cmd, int j)
 				"minishell: %s: No such file or directory\n", data->words2[0]);
 	}
 	else if (execve(cmd, data->words2, data->envp) < 0)
-		if (data->words2[0])
-			ft_printf_fd(2,
-				"minishell: %s: command not found\n", data->words2[0]);
+		mark = print_err_child(data);
 	if (j == 1)
 		free(cmd);
 	if (!data->words2[0])
 		exit(data->statuscode);
 	ft_free_all(data, v);
-	exit(127);
+	if (mark == 0)
+		exit(127);
+	exit(126);
 }
 
 void	sys_call(t_ls *data, t_v **v)

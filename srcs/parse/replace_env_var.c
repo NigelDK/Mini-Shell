@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 22:47:48 by minummin          #+#    #+#             */
-/*   Updated: 2021/05/03 17:04:42 by minummin         ###   ########.fr       */
+/*   Updated: 2021/05/12 14:22:58 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	*ft_replace(char *word, t_v *v, int j, t_ls *data)
 	int	n;
 
 	data->i = 0;
-	data->lol = word; // ft_strdup(word);
+	data->lol = word;
 	if (!data->lol)
 		ft_error(data, &v);
 	n = j + 1;
@@ -89,7 +89,6 @@ int	change_variable(t_ls *data, t_v *v, int j, int i)
 {
 	char	*tmp;
 
-//	ft_replace(data->words2[i], v, j, data);
 	tmp = ft_replace(data->words2[i], v, j, data);
 	free_string(&data->words2[i]);
 	data->words2[i] = tmp;

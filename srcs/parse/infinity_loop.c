@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 16:23:36 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/04 11:52:07 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/12 15:07:03 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ static int	ft_builtins(t_ls *data, t_v **v, int mark)
 	else
 	{
 		mark = 1;
-		sys_call(data, v);
+		if (data->words2[0] != NULL)
+			sys_call(data, v);
 	}
 	if (data->cd != 0 && data->cd != 1 && data->cd != 2)
 		data->cd = 3;

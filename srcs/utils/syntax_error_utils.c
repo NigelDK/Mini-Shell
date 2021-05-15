@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 19:00:35 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/08 12:33:58 by nde-koni         ###   ########.fr       */
+/*   Updated: 2021/05/12 14:33:58 by nde-koni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	semicolon_comb(t_ls *data)
 	q = 0;
 	dq = 0;
 	while (data->line[i] && (data->line[i] != ';' || (data->line[i] == ';'
-			&& (q == 1 || dq == 1 || prev_bslash(data->line, i, q)))))
+				&& (q == 1 || dq == 1 || prev_bslash(data->line, i, q)))))
 		q_dq_index(data->line, i++, &q, &dq);
 	if (data->line[i])
 		q_dq_index(data->line, i++, &q, &dq);
@@ -84,7 +84,7 @@ int	pipe_comb(t_ls *data)
 	q = 0;
 	dq = 0;
 	while (data->line[i] && (data->line[i] != '|' || (data->line[i] == '|'
-			&& (q == 1 || dq == 1 || prev_bslash(data->line, i, q)))))
+				&& (q == 1 || dq == 1 || prev_bslash(data->line, i, q)))))
 		q_dq_index(data->line, i++, &q, &dq);
 	if (data->line[i])
 		q_dq_index(data->line, i++, &q, &dq);

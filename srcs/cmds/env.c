@@ -6,7 +6,7 @@
 /*   By: nde-koni <nde-koni@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 17:47:16 by nde-koni          #+#    #+#             */
-/*   Updated: 2021/05/03 17:18:12 by minummin         ###   ########.fr       */
+/*   Updated: 2021/05/12 14:19:33 by minummin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	ft_print_env_3(t_v *v)
 {
 	while (v)
 	{
-		if (v->str && (v->str[0] != '_' || v->str[1] != '=') && ft_strchr(v->str, '='))
+		if (v->str && (v->str[0] != '_' || v->str[1] != '=')
+			&& ft_strchr(v->str, '='))
 			printf("%s\n", v->str);
 		v = v->next;
 	}
