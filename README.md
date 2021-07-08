@@ -2,7 +2,7 @@
 Validated on 13-05-2021.
 
 
-The objective of this project is to create a simple shell.
+The objective of this project was to create a simple shell.
 
 - With the Makefile you will compile the program called "minishell".
 - Our minishell has:
